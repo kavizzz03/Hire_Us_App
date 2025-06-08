@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4DD0E1">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <!-- Header -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hire me"
+            android:textSize="32sp"
+            android:textStyle="italic"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Sign in button -->
+        <Button
+            android:id="@+id/signInBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="← Sign In"
+            android:textColor="#000000"
+            android:background="@drawable/rounded_button_white"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Full Name -->
+        <EditText
+            android:id="@+id/fullName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Full Name"
+            android:background="@drawable/rounded_edittext_white"
+            android:padding="12dp"
+            android:textColor="#000000"/>
+
+        <!-- Username -->
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Username"
+            android:background="@drawable/rounded_edittext_white"
+            android:padding="12dp"
+            android:layout_marginTop="12dp"
+            android:textColor="#000000"/>
+
+        <!-- Contact Number -->
+        <EditText
+            android:id="@+id/contactNumber"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Contact Number"
+            android:inputType="phone"
+            android:background="@drawable/rounded_edittext_white"
+            android:padding="12dp"
+            android:layout_marginTop="12dp"
+            android:textColor="#000000"/>
+
+        <!-- Email -->
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:background="@drawable/rounded_edittext_white"
+            android:padding="12dp"
+            android:layout_marginTop="12dp"
+            android:textColor="#000000"/>
+
+        <!-- ID Number -->
+        <EditText
+            android:id="@+id/idNumber"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="ID Number"
+            android:background="@drawable/rounded_edittext_white"
+            android:padding="12dp"
+            android:layout_marginTop="12dp"
+            android:textColor="#000000"/>
+
+        <!-- Permanent Address -->
+        <EditText
+            android:id="@+id/permanentAddress"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Permanent Address"
+            android:background="@drawable/rounded_edittext_white"
+            android:padding="12dp"
+            android:layout_marginTop="12dp"
+            android:textColor="#000000"/>
+
+        <!-- Current Address (Optional) -->
+        <EditText
+            android:id="@+id/currentAddress"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Current Address (Optional)"
+            android:background="@drawable/rounded_edittext_white"
+            android:padding="12dp"
+            android:layout_marginTop="12dp"
+            android:textColor="#000000"/>
+
+        <!-- Early Work Experience -->
+        <EditText
+            android:id="@+id/workExperience"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:hint="Early Work Experience (e.g., Waiter at XYZ Café)"
+            android:background="@drawable/rounded_edittext_white"
+            android:padding="12dp"
+            android:layout_marginTop="12dp"
+            android:textColor="#000000"
+            android:gravity="top"
+            android:inputType="textMultiLine"/>
+
+        <!-- Password -->
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:background="@drawable/rounded_edittext_white"
+            android:padding="12dp"
+            android:layout_marginTop="12dp"
+            android:textColor="#000000"/>
+
+        <!-- Confirm Password -->
+        <EditText
+            android:id="@+id/confirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            android:background="@drawable/rounded_edittext_white"
+            android:padding="12dp"
+            android:layout_marginTop="12dp"
+            android:textColor="#000000"/>
+
+        <!-- Create Account Button -->
+        <Button
+            android:id="@+id/createAccountBtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Create Account"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/rounded_button_blue"
+            android:layout_marginTop="24dp"/>
+    </LinearLayout>
+</ScrollView>

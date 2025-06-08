@@ -1,5 +1,6 @@
 package com.example.hire_me_test;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,7 +44,7 @@ public class FindJobActivity extends AppCompatActivity {
         // New User Button Click
         newUserBtn.setOnClickListener(view -> {
             Toast.makeText(FindJobActivity.this, "New User clicked", Toast.LENGTH_SHORT).show();
-            // TODO: startActivity(new Intent(FindJobActivity.this, RegisterActivity.class));
+            startActivity(new Intent(FindJobActivity.this, RegisterActivity.class));
         });
 
         // Forgot Password Button Click

@@ -11,31 +11,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Hire_me_test"
         tools:targetApi="31">
-
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
         <!-- ✅ Set SplashActivity as launcher -->
         <activity
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- ❌ Remove incorrect .Splashactivity (lowercase) -->
-
+        </activity> <!-- ❌ Remove incorrect .Splashactivity (lowercase) -->
         <activity
             android:name=".GiveJobActivity"
             android:exported="false" />
-
         <activity
             android:name=".FindJobActivity"
-            android:exported="false" />
-
-        <!-- ✅ Keep MainActivity, but no launcher intent -->
+            android:exported="false" /> <!-- ✅ Keep MainActivity, but no launcher intent -->
         <activity
             android:name=".MainActivity"
             android:exported="true" />
-
     </application>
+
 </manifest>
