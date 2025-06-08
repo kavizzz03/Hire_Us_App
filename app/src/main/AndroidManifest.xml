@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.hire_me_test"> <!-- Replace with your actual package name -->
 
     <application
         android:allowBackup="true"
@@ -11,28 +12,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Hire_me_test"
         tools:targetApi="31">
-        <activity
-            android:name=".RegisterActivity"
-            android:exported="false" />
-        <!-- ✅ Set SplashActivity as launcher -->
+
+        <!-- Launcher Activity -->
         <activity
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- ❌ Remove incorrect .Splashactivity (lowercase) -->
+        </activity>
+
+        <!-- Other Activities -->
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="true" />
+
         <activity
             android:name=".GiveJobActivity"
             android:exported="false" />
+
         <activity
             android:name=".FindJobActivity"
-            android:exported="false" /> <!-- ✅ Keep MainActivity, but no launcher intent -->
+            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true" />
+
     </application>
 
 </manifest>
