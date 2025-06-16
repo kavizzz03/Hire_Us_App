@@ -2,8 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.hire_me_test">
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <!-- Replace with your actual package name -->
+
+    <!-- Permissions -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -15,7 +17,7 @@
         android:theme="@style/Theme.Hire_me_test"
         tools:targetApi="31">
 
-        <!-- Launcher Activity -->
+        <!-- Splash / Launcher Activity -->
         <activity
             android:name=".SplashActivity"
             android:exported="true">
@@ -25,22 +27,12 @@
             </intent-filter>
         </activity>
 
-        <!-- Other Activities -->
-        <activity
-            android:name=".RegisterActivity"
-            android:exported="true" />
-
-        <activity
-            android:name=".GiveJobActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".FindJobActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".MainActivity"
-            android:exported="true" />
+        <!-- App Activities -->
+        <activity android:name=".MainActivity" android:exported="true" />
+        <activity android:name=".RegisterActivity" android:exported="true" />
+        <activity android:name=".FindJobActivity" android:exported="false" />
+        <activity android:name=".GiveJobActivity" android:exported="false" />
+        <activity android:name=".EmpProfileActivity" android:exported="false" />
 
     </application>
 

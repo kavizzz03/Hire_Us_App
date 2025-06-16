@@ -1,40 +1,41 @@
 package com.example.hire_me_test;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.*;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.Request;
+import com.android.volley.toolbox.Volley;
+
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    // Fields
-    EditText fullName, username, contactNumber, email, idNumber,
-            permanentAddress, currentAddress, workExperience,
-            password, confirmPassword, bankAccountNumber, bankName, bankBranch;
-
+    EditText fullName, username, contactNumber, email, idNumber, permanentAddress, currentAddress,
+            workExperience, password, confirmPassword, bankAccountNumber, bankName, bankBranch;
     ImageView idFrontImage, idBackImage;
-    Button uploadIdFrontBtn, uploadIdBackBtn, createAccountBtn, signInBtn;
+    Button uploadIdFrontBtn, uploadIdBackBtn, createAccountBtn;
 
-    private static final int PICK_FRONT_IMAGE = 100;
-    private static final int PICK_BACK_IMAGE = 101;
-
-    private Uri frontImageUri, backImageUri;
+    Bitmap bitmapFront, bitmapBack;
+    final int REQ_FRONT = 100, REQ_BACK = 200;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        // Bind views
         fullName = findViewById(R.id.fullName);
         username = findViewById(R.id.username);
         contactNumber = findViewById(R.id.contactNumber);
@@ -51,88 +52,92 @@ public class RegisterActivity extends AppCompatActivity {
 
         idFrontImage = findViewById(R.id.idFrontImage);
         idBackImage = findViewById(R.id.idBackImage);
-
         uploadIdFrontBtn = findViewById(R.id.uploadIdFrontBtn);
         uploadIdBackBtn = findViewById(R.id.uploadIdBackBtn);
         createAccountBtn = findViewById(R.id.createAccountBtn);
-        signInBtn = findViewById(R.id.signInBtn);
 
-        // Upload ID Front
-        uploadIdFrontBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            startActivityForResult(intent, PICK_FRONT_IMAGE);
-        });
+        uploadIdFrontBtn.setOnClickListener(v -> pickImage(REQ_FRONT));
+        uploadIdBackBtn.setOnClickListener(v -> pickImage(REQ_BACK));
 
-        // Upload ID Back
-        uploadIdBackBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            startActivityForResult(intent, PICK_BACK_IMAGE);
-        });
-
-        // Create account
         createAccountBtn.setOnClickListener(v -> {
-            if (validateInputs()) {
-                Toast.makeText(this, "Account created successfully!", Toast.LENGTH_SHORT).show();
-                // TODO: Send data and images to PHP backend here
+            if (password.getText().toString().equals(confirmPassword.getText().toString())) {
+                registerUser();
+            } else {
+                Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show();
             }
         });
+    }
 
-        // Go to sign in
-        signInBtn.setOnClickListener(v -> {
-            // TODO: startActivity(new Intent(this, LoginActivity.class));
-            finish();
-        });
+    private void pickImage(int requestCode) {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(intent, requestCode);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode == RESULT_OK && data != null && data.getData() != null) {
-            Uri selectedImage = data.getData();
-
+        if (resultCode == Activity.RESULT_OK && data != null) {
+            Uri imageUri = data.getData();
             try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
+                Bitmap selectedImage = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
 
-                if (requestCode == PICK_FRONT_IMAGE) {
-                    frontImageUri = selectedImage;
-                    idFrontImage.setImageBitmap(bitmap);
-                } else if (requestCode == PICK_BACK_IMAGE) {
-                    backImageUri = selectedImage;
-                    idBackImage.setImageBitmap(bitmap);
+                if (requestCode == REQ_FRONT) {
+                    bitmapFront = selectedImage;
+                    idFrontImage.setImageBitmap(bitmapFront);
+                } else if (requestCode == REQ_BACK) {
+                    bitmapBack = selectedImage;
+                    idBackImage.setImageBitmap(bitmapBack);
                 }
 
             } catch (IOException e) {
                 e.printStackTrace();
-                Toast.makeText(this, "Failed to load image.", Toast.LENGTH_SHORT).show();
             }
         }
     }
 
-    private boolean validateInputs() {
-        if (TextUtils.isEmpty(fullName.getText()) ||
-                TextUtils.isEmpty(username.getText()) ||
-                TextUtils.isEmpty(contactNumber.getText()) ||
-                TextUtils.isEmpty(email.getText()) ||
-                TextUtils.isEmpty(idNumber.getText()) ||
-                TextUtils.isEmpty(permanentAddress.getText()) ||
-                TextUtils.isEmpty(password.getText()) ||
-                TextUtils.isEmpty(confirmPassword.getText()) ||
-                TextUtils.isEmpty(bankAccountNumber.getText()) ||
-                TextUtils.isEmpty(bankName.getText()) ||
-                TextUtils.isEmpty(bankBranch.getText()) ||
-                frontImageUri == null ||
-                backImageUri == null) {
+    private void registerUser() {
+        String url = "https://hireme.cpsharetxt.com/register_worker.php"; // change to your actual PHP file URL
 
-            Toast.makeText(this, "Please fill all required fields and select ID images.", Toast.LENGTH_LONG).show();
-            return false;
-        }
+        VolleyMultipartRequest request = new VolleyMultipartRequest(Request.Method.POST, url,
+                response -> Toast.makeText(this, "Account Created!", Toast.LENGTH_LONG).show(),
+                error -> Toast.makeText(this, "Error: " + error.getMessage(), Toast.LENGTH_LONG).show()
+        ) {
+            @Override
+            protected Map<String, DataPart> getByteData() {
+                Map<String, DataPart> params = new HashMap<>();
+                if (bitmapFront != null)
+                    params.put("idFront", new DataPart("front.jpg", getFileDataFromBitmap(bitmapFront)));
+                if (bitmapBack != null)
+                    params.put("idBack", new DataPart("back.jpg", getFileDataFromBitmap(bitmapBack)));
+                return params;
+            }
 
-        if (!password.getText().toString().equals(confirmPassword.getText().toString())) {
-            Toast.makeText(this, "Passwords do not match.", Toast.LENGTH_SHORT).show();
-            return false;
-        }
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> map = new HashMap<>();
+                map.put("fullName", fullName.getText().toString());
+                map.put("username", username.getText().toString());
+                map.put("contactNumber", contactNumber.getText().toString());
+                map.put("email", email.getText().toString());
+                map.put("idNumber", idNumber.getText().toString());
+                map.put("permanentAddress", permanentAddress.getText().toString());
+                map.put("currentAddress", currentAddress.getText().toString());
+                map.put("workExperience", workExperience.getText().toString());
+                map.put("password", password.getText().toString());
+                map.put("bankAccountNumber", bankAccountNumber.getText().toString());
+                map.put("bankName", bankName.getText().toString());
+                map.put("bankBranch", bankBranch.getText().toString());
+                return map;
+            }
+        };
 
-        return true;
+        Volley.newRequestQueue(this).add(request);
+    }
+
+    private byte[] getFileDataFromBitmap(Bitmap bitmap) {
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 80, bos);
+        return bos.toByteArray();
     }
 }
