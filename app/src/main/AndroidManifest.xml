@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.hire_me_test"> <!-- Replace with your actual package name -->
+    package="com.example.hire_me_test">
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <!-- Replace with your actual package name -->
 
     <application
         android:allowBackup="true"
