@@ -3,13 +3,12 @@ package com.example.hire_me_test;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.*;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -60,10 +59,12 @@ public class RegisterActivity extends AppCompatActivity {
         uploadIdBackBtn.setOnClickListener(v -> pickImage(REQ_BACK));
 
         createAccountBtn.setOnClickListener(v -> {
-            if (password.getText().toString().equals(confirmPassword.getText().toString())) {
-                registerUser();
-            } else {
+            if (!areAllFieldsFilled()) {
+                Toast.makeText(this, "Please fill in all required fields", Toast.LENGTH_SHORT).show();
+            } else if (!password.getText().toString().equals(confirmPassword.getText().toString())) {
                 Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show();
+            } else {
+                registerUser();
             }
         });
     }
@@ -97,10 +98,14 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void registerUser() {
-        String url = "https://hireme.cpsharetxt.com/register_worker.php"; // change to your actual PHP file URL
+        String url = "https://hireme.cpsharetxt.com/register_worker.php"; // your actual PHP file
 
         VolleyMultipartRequest request = new VolleyMultipartRequest(Request.Method.POST, url,
-                response -> Toast.makeText(this, "Account Created!", Toast.LENGTH_LONG).show(),
+                response -> {
+                    Toast.makeText(this, "Account Created!", Toast.LENGTH_LONG).show();
+                    clearAllFields();
+                    startActivity(new Intent(RegisterActivity.this, FindJobActivity.class));
+                },
                 error -> Toast.makeText(this, "Error: " + error.getMessage(), Toast.LENGTH_LONG).show()
         ) {
             @Override
@@ -139,5 +144,43 @@ public class RegisterActivity extends AppCompatActivity {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 80, bos);
         return bos.toByteArray();
+    }
+
+    private boolean areAllFieldsFilled() {
+        return !fullName.getText().toString().isEmpty() &&
+                !username.getText().toString().isEmpty() &&
+                !contactNumber.getText().toString().isEmpty() &&
+                !email.getText().toString().isEmpty() &&
+                !idNumber.getText().toString().isEmpty() &&
+                !permanentAddress.getText().toString().isEmpty() &&
+                !currentAddress.getText().toString().isEmpty() &&
+                !workExperience.getText().toString().isEmpty() &&
+                !password.getText().toString().isEmpty() &&
+                !confirmPassword.getText().toString().isEmpty() &&
+                !bankAccountNumber.getText().toString().isEmpty() &&
+                !bankName.getText().toString().isEmpty() &&
+                !bankBranch.getText().toString().isEmpty() &&
+                bitmapFront != null &&
+                bitmapBack != null;
+    }
+
+    private void clearAllFields() {
+        fullName.setText("");
+        username.setText("");
+        contactNumber.setText("");
+        email.setText("");
+        idNumber.setText("");
+        permanentAddress.setText("");
+        currentAddress.setText("");
+        workExperience.setText("");
+        password.setText("");
+        confirmPassword.setText("");
+        bankAccountNumber.setText("");
+        bankName.setText("");
+        bankBranch.setText("");
+        idFrontImage.setImageResource(R.mipmap.icon1); // Replace with your placeholder image
+        idBackImage.setImageResource(R.mipmap.icon1);  // Replace with your placeholder image
+        bitmapFront = null;
+        bitmapBack = null;
     }
 }
