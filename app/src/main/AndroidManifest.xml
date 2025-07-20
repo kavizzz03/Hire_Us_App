@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.hire_me_test">
-
     <!-- Permissions -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -16,24 +15,39 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Hire_me_test"
         tools:targetApi="31">
-
-        <!-- Splash / Launcher Activity -->
+        <activity
+            android:name=".CompanyRegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DashboardActivity"
+            android:exported="false" /> <!-- Splash / Launcher Activity -->
         <activity
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- App Activities -->
-        <activity android:name=".MainActivity" android:exported="true" />
-        <activity android:name=".RegisterActivity" android:exported="true" />
-        <activity android:name=".FindJobActivity" android:exported="false" />
-        <activity android:name=".GiveJobActivity" android:exported="false" />
-        <activity android:name=".EmpProfileActivity" android:exported="false" />
-
+        </activity> <!-- App Activities -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="true" />
+        <activity
+            android:name=".FindJobActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GiveJobActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EmpProfileActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
