@@ -6,7 +6,6 @@ import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import okhttp3.*;
 import org.json.JSONObject;
-
 import java.io.IOException;
 
 public class GiveJobActivity extends AppCompatActivity {
@@ -15,7 +14,7 @@ public class GiveJobActivity extends AppCompatActivity {
     Button buttonLogin, buttonNewUser;
     TextView textViewForgotPassword;
 
-    private static final String LOGIN_URL = "https://hireme.cpsharetxt.com/login_employer.php"; // Change to your real URL
+    private static final String LOGIN_URL = "https://hireme.cpsharetxt.com/login_employer.php";
     OkHttpClient client = new OkHttpClient();
 
     @Override
@@ -51,8 +50,6 @@ public class GiveJobActivity extends AppCompatActivity {
     }
 
     private void loginUser(String email, String password) {
-        Toast.makeText(this, "Logging in...", Toast.LENGTH_SHORT).show();
-
         RequestBody formBody = new FormBody.Builder()
                 .add("email", email)
                 .add("password", password)
@@ -66,41 +63,35 @@ public class GiveJobActivity extends AppCompatActivity {
         client.newCall(request).enqueue(new Callback() {
             @Override public void onFailure(Call call, IOException e) {
                 runOnUiThread(() ->
-                        Toast.makeText(GiveJobActivity.this, "Network error: " + e.getMessage(), Toast.LENGTH_LONG).show());
+                        Toast.makeText(GiveJobActivity.this, "Network error: " + e.getMessage(), Toast.LENGTH_LONG).show()
+                );
             }
 
             @Override public void onResponse(Call call, Response response) throws IOException {
-                if (!response.isSuccessful()) {
-                    runOnUiThread(() ->
-                            Toast.makeText(GiveJobActivity.this, "Server error: " + response.message(), Toast.LENGTH_LONG).show());
-                    return;
-                }
-
                 String responseData = response.body().string();
-
                 try {
                     JSONObject json = new JSONObject(responseData);
-
                     boolean success = json.getBoolean("success");
                     String message = json.getString("message");
 
                     runOnUiThread(() -> {
                         if (success) {
-                            Toast.makeText(GiveJobActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+                            String userId = json.optString("user_id");
+                            String companyName = json.optString("company_name");
 
-                            // Optionally save user info in SharedPreferences here
-
-                            // Navigate to Dashboard
-                            startActivity(new Intent(GiveJobActivity.this, DashboardActivity.class));
+                            Intent intent = new Intent(GiveJobActivity.this, DashboardActivity.class);
+                            intent.putExtra("user_id", userId);
+                            intent.putExtra("company_name", companyName);
+                            startActivity(intent);
                             finish();
                         } else {
                             Toast.makeText(GiveJobActivity.this, "Login failed: " + message, Toast.LENGTH_LONG).show();
                         }
                     });
-
                 } catch (Exception e) {
                     runOnUiThread(() ->
-                            Toast.makeText(GiveJobActivity.this, "Response parsing error", Toast.LENGTH_LONG).show());
+                            Toast.makeText(GiveJobActivity.this, "Error parsing server response", Toast.LENGTH_LONG).show()
+                    );
                 }
             }
         });

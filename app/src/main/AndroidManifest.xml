@@ -15,9 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Hire_me_test"
         tools:targetApi="31">
-
-
-
+        <activity
+            android:name=".PostJobActivity"
+            android:exported="false" />
         <activity
             android:name=".CompanyRegisterActivity"
             android:exported="false" />
