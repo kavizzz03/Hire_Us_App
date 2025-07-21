@@ -3,7 +3,7 @@
     android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFDE7"
+    android:background="#FFFfff"
     android:padding="20dp">
 
     <LinearLayout
@@ -28,7 +28,8 @@
             android:hint="Company Name"
             android:inputType="textPersonName"
             android:padding="10dp"
-            android:background="@android:drawable/edit_text"/>
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_edittext"/>
 
         <EditText
             android:id="@+id/name"
@@ -37,7 +38,8 @@
             android:hint="Your Name"
             android:inputType="textPersonName"
             android:padding="10dp"
-            android:background="@android:drawable/edit_text"/>
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_edittext"/>
 
         <EditText
             android:id="@+id/address"
@@ -46,7 +48,8 @@
             android:hint="Address"
             android:inputType="textPostalAddress"
             android:padding="10dp"
-            android:background="@android:drawable/edit_text"/>
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_edittext"/>
 
         <EditText
             android:id="@+id/email"
@@ -55,7 +58,8 @@
             android:hint="Email"
             android:inputType="textEmailAddress"
             android:padding="10dp"
-            android:background="@android:drawable/edit_text"/>
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_edittext"/>
 
         <EditText
             android:id="@+id/contact"
@@ -64,7 +68,8 @@
             android:hint="Contact Number"
             android:inputType="phone"
             android:padding="10dp"
-            android:background="@android:drawable/edit_text"/>
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_edittext"/>
 
         <Button
             android:id="@+id/uploadIcon"
@@ -89,7 +94,8 @@
             android:hint="Password"
             android:inputType="textPassword"
             android:padding="10dp"
-            android:background="@android:drawable/edit_text"/>
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_edittext"/>
 
         <EditText
             android:id="@+id/confirmPassword"
@@ -98,7 +104,8 @@
             android:hint="Confirm Password"
             android:inputType="textPassword"
             android:padding="10dp"
-            android:background="@android:drawable/edit_text"/>
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_edittext"/>
 
         <CheckBox
             android:id="@+id/policyCheckbox"
