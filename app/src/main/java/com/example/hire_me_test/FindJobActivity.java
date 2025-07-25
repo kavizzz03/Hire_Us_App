@@ -13,33 +13,35 @@ import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class FindJobActivity extends AppCompatActivity {
 
-    private EditText editTextEmail, editTextPassword;  // Using these because your XML uses those IDs
+    private EditText editTextEmail, editTextPassword;
     private Button buttonLogin, buttonNewUser;
     private TextView textViewForgotPassword;
 
-    // PHP URL where login is checked
+    // PHP login URL
     private static final String LOGIN_URL = "https://hireme.cpsharetxt.com/login.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_find_job); // 🔁 Replace with your actual layout file name
+        setContentView(R.layout.activity_find_job); // Make sure this is your correct layout file
 
-        // Match XML views
-        editTextEmail = findViewById(R.id.editTextEmail);       // used as ID number field
+        // Initialize views
+        editTextEmail = findViewById(R.id.editTextEmail);   // used for ID number
         editTextPassword = findViewById(R.id.editTextPassword);
         buttonLogin = findViewById(R.id.buttonLogin);
         buttonNewUser = findViewById(R.id.buttonNewUser);
         textViewForgotPassword = findViewById(R.id.textViewForgotPassword);
 
-        // Login button click
+        // Login button
         buttonLogin.setOnClickListener(v -> {
-            String idNumber = editTextEmail.getText().toString().trim();  // treated as ID number
+            String idNumber = editTextEmail.getText().toString().trim();
             String password = editTextPassword.getText().toString().trim();
 
             if (idNumber.isEmpty() || password.isEmpty()) {
@@ -49,12 +51,12 @@ public class FindJobActivity extends AppCompatActivity {
             }
         });
 
-        // Create New User
+        // Register button
         buttonNewUser.setOnClickListener(v -> {
             startActivity(new Intent(this, RegisterActivity.class));
         });
 
-        // Forgot Password
+        // Forgot password
         textViewForgotPassword.setOnClickListener(v -> {
             startActivity(new Intent(this, ResetRequestActivity.class));
         });
@@ -63,13 +65,29 @@ public class FindJobActivity extends AppCompatActivity {
     private void checkLogin(String idNumber, String password) {
         StringRequest request = new StringRequest(Request.Method.POST, LOGIN_URL,
                 response -> {
-                    if (response.contains("success")) {
-                        Intent intent = new Intent(this, EmpProfileActivity.class);
-                        intent.putExtra("id_number", idNumber);  // Pass ID number if needed
-                        startActivity(intent);
-                        finish();
-                    } else {
-                        Toast.makeText(this, "Invalid ID number or password", Toast.LENGTH_SHORT).show();
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        String status = jsonObject.getString("status");
+
+                        if (status.equals("success")) {
+                            // Get values from JSON
+                            String fullName = jsonObject.getString("full_name");
+                            String jobTitle = jsonObject.getString("job_title");
+
+                            // Start profile activity and pass data
+                            Intent intent = new Intent(this, EmpProfileActivity.class);
+                            intent.putExtra("id_number", idNumber);
+                            intent.putExtra("full_name", fullName);
+                            intent.putExtra("job_title", jobTitle);
+                           startActivity(intent);
+                            finish();
+                        } else {
+                            String message = jsonObject.getString("message");
+                            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+                        }
+
+                    } catch (Exception e) {
+                        Toast.makeText(this, "Response parsing error: " + e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 },
                 error -> Toast.makeText(this, "Error: " + error.getMessage(), Toast.LENGTH_LONG).show()
@@ -77,7 +95,7 @@ public class FindJobActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("id_number", idNumber);   // <-- Send as ID number
+                params.put("id_number", idNumber);
                 params.put("password", password);
                 return params;
             }

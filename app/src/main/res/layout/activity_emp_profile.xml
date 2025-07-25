@@ -1,137 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E0F7FA"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="#fdfdfd">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
-        <!-- Greeting Text -->
+        <!-- Profile Header -->
         <TextView
-            android:id="@+id/greetingText"
+            android:id="@+id/textViewWelcome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hi Mr. Kavindu"
+            android:text="Welcome, User"
             android:textSize="24sp"
-            android:textColor="#000000"
             android:textStyle="bold"
-            android:layout_gravity="center_horizontal"
-            android:paddingTop="16dp"
-            android:paddingBottom="8dp" />
+            android:textColor="#222"
+            android:layout_marginTop="16dp" />
 
-        <!-- Card View for Profile Info -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textViewJobTitle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
-            android:padding="16dp"
-            android:background="#FFFFFF">
+            android:text="Job Title"
+            android:textSize="18sp"
+            android:textColor="#555"
+            android:layout_marginTop="4dp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+        <TextView
+            android:id="@+id/textViewIdNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID Number"
+            android:textSize="16sp"
+            android:textColor="#777"
+            android:layout_marginBottom="20dp" />
 
-                <!-- ID Number -->
-                <EditText
-                    android:id="@+id/idNumberEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="ID Number"
-                    android:enabled="false"
-                    android:textColorHint="#888888" />
-
-                <!-- Full Name -->
-                <EditText
-                    android:id="@+id/fullNameEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Full Name" />
-
-                <!-- Username -->
-                <EditText
-                    android:id="@+id/usernameEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Username" />
-
-                <!-- Email -->
-                <EditText
-                    android:id="@+id/emailEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Email" />
-
-                <!-- Contact Number -->
-                <EditText
-                    android:id="@+id/contactEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Contact Number"
-                    android:inputType="phone" />
-
-                <!-- Permanent Address -->
-                <EditText
-                    android:id="@+id/permanentAddressEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Permanent Address" />
-
-                <!-- Current Address -->
-                <EditText
-                    android:id="@+id/currentAddressEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Current Address" />
-
-                <!-- Work Experience -->
-                <EditText
-                    android:id="@+id/workExperienceEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Work Experience" />
-
-                <!-- Bank Account Number -->
-                <EditText
-                    android:id="@+id/bankAccountEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Bank Account Number" />
-
-                <!-- Bank Name -->
-                <EditText
-                    android:id="@+id/bankNameEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Bank Name" />
-
-                <!-- Bank Branch -->
-                <EditText
-                    android:id="@+id/bankBranchEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Bank Branch" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <!-- Save Button -->
+        <!-- Buttons -->
         <Button
-            android:id="@+id/saveProfileBtn"
+            android:id="@+id/btnFindJobs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Update Profile"
-            android:layout_marginTop="24dp"
-            android:backgroundTint="#00796B"
-            android:textColor="#FFFFFF"
-            android:padding="12dp" />
+            android:text="🔍 Find New Jobs"
+            android:backgroundTint="#FFB800"
+            android:textColor="#000"
+            android:layout_marginTop="12dp" />
 
+        <Button
+            android:id="@+id/btnMyVault"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="💼 My Vault"
+            android:layout_marginTop="12dp" />
+
+        <Button
+            android:id="@+id/btnMyReviews"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="⭐ My Reviews and Ratings"
+            android:layout_marginTop="12dp" />
+
+        <Button
+            android:id="@+id/btnViewProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="👤 View Profile"
+            android:layout_marginTop="12dp" />
+
+        <Button
+            android:id="@+id/btnEditJobs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="✏️ Edit My Jobs"
+            android:layout_marginTop="12dp" />
+
+        <Button
+            android:id="@+id/btnJobHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📄 Job History"
+            android:layout_marginTop="12dp" />
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🚪 Logout"
+            android:backgroundTint="#FF4444"
+            android:textColor="#fff"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp" />
     </LinearLayout>
 </ScrollView>

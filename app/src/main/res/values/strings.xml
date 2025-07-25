@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Hire Me</string>
     <string name="select_job_title">Select Job Title</string>
+    <string name="select_date_filter">Select date filter</string>
+
 </resources>
 
