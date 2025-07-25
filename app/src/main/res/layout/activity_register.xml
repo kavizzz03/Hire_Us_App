@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4DD0E1">
+    android:background="#E0F7FA">
 
     <LinearLayout
         android:orientation="vertical"
@@ -15,23 +15,39 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hire me"
-            android:textSize="32sp"
-            android:textStyle="italic"
-            android:textColor="#FFFFFF"
-            android:layout_marginBottom="16dp" />
+            android:text="Hire Me"
+            android:textSize="36sp"
+            android:textStyle="bold|italic"
+            android:textColor="#006064"
+            android:layout_marginBottom="8dp" />
 
-        <!-- Sign in button -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create your profile to get started"
+            android:textSize="16sp"
+            android:textColor="#004D40"
+            android:layout_marginBottom="24dp" />
+
         <Button
             android:id="@+id/signInBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="← Sign In"
+            android:text="← Already have an account? Sign In"
             android:textColor="#000000"
             android:background="@drawable/rounded_button_white"
-            android:layout_marginBottom="24dp"/>
+            android:layout_marginBottom="24dp" />
 
-        <!-- Full Name -->
+        <!-- Personal Details -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Personal Details"
+            android:textColor="#006064"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
         <EditText
             android:id="@+id/fullName"
             android:layout_width="match_parent"
@@ -39,120 +55,169 @@
             android:hint="Full Name"
             android:background="@drawable/rounded_edittext_white"
             android:padding="12dp"
-            android:textColor="#000000"/>
+            android:textColor="#000000" />
 
-        <!-- Username -->
         <EditText
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="Username"
+            android:layout_marginTop="12dp"
             android:background="@drawable/rounded_edittext_white"
             android:padding="12dp"
-            android:layout_marginTop="12dp"
-            android:textColor="#000000"/>
+            android:textColor="#000000" />
 
-        <!-- Contact Number -->
         <EditText
             android:id="@+id/contactNumber"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="Contact Number"
             android:inputType="phone"
+            android:layout_marginTop="12dp"
             android:background="@drawable/rounded_edittext_white"
             android:padding="12dp"
-            android:layout_marginTop="12dp"
-            android:textColor="#000000"/>
+            android:textColor="#000000" />
 
-        <!-- Email -->
         <EditText
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint="Email"
+            android:hint="Email Address"
             android:inputType="textEmailAddress"
+            android:layout_marginTop="12dp"
             android:background="@drawable/rounded_edittext_white"
             android:padding="12dp"
-            android:layout_marginTop="12dp"
-            android:textColor="#000000"/>
+            android:textColor="#000000" />
 
-        <!-- ID Number -->
         <EditText
             android:id="@+id/idNumber"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint="ID Number"
+            android:hint="National ID Number"
+            android:layout_marginTop="12dp"
             android:background="@drawable/rounded_edittext_white"
             android:padding="12dp"
-            android:layout_marginTop="12dp"
-            android:textColor="#000000"/>
+            android:textColor="#000000" />
 
-        <!-- Permanent Address -->
         <EditText
             android:id="@+id/permanentAddress"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="Permanent Address"
+            android:layout_marginTop="12dp"
             android:background="@drawable/rounded_edittext_white"
             android:padding="12dp"
-            android:layout_marginTop="12dp"
-            android:textColor="#000000"/>
+            android:textColor="#000000" />
 
-        <!-- Current Address -->
         <EditText
             android:id="@+id/currentAddress"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="Current Address (Optional)"
+            android:layout_marginTop="12dp"
             android:background="@drawable/rounded_edittext_white"
             android:padding="12dp"
-            android:layout_marginTop="12dp"
-            android:textColor="#000000"/>
+            android:textColor="#000000" />
 
-        <!-- Early Work Experience -->
+        <!-- Job Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Job Title"
+            android:textColor="#006064"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp" />
+
+        <Spinner
+            android:id="@+id/jobTitleSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_edittext_white"
+            android:padding="12dp" />
+
+        <!-- Custom Job Title Input (initially hidden) -->
+        <LinearLayout
+            android:id="@+id/customJobTitleLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_marginTop="12dp">
+
+            <EditText
+                android:id="@+id/customJobTitle"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Enter Custom Job Title"
+                android:background="@drawable/rounded_edittext_white"
+                android:padding="12dp"
+                android:textColor="#000000" />
+        </LinearLayout>
+
+        <!-- Work Experience -->
         <EditText
             android:id="@+id/workExperience"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:hint="Early Work Experience (e.g., Waiter at XYZ Café)"
+            android:hint="Previous Work Experience"
+            android:layout_marginTop="12dp"
+            android:gravity="top"
+            android:inputType="textMultiLine"
             android:background="@drawable/rounded_edittext_white"
             android:padding="12dp"
-            android:layout_marginTop="12dp"
-            android:textColor="#000000"
-            android:gravity="top"
-            android:inputType="textMultiLine"/>
+            android:textColor="#000000" />
 
-        <!-- Password -->
+        <!-- Security -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Security"
+            android:textColor="#006064"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp" />
+
         <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint="Password"
+            android:hint="Password (min 6 characters)"
             android:inputType="textPassword"
             android:background="@drawable/rounded_edittext_white"
             android:padding="12dp"
-            android:layout_marginTop="12dp"
-            android:textColor="#000000"/>
+            android:textColor="#000000" />
 
-        <!-- Confirm Password -->
         <EditText
             android:id="@+id/confirmPassword"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="Confirm Password"
             android:inputType="textPassword"
+            android:layout_marginTop="12dp"
             android:background="@drawable/rounded_edittext_white"
             android:padding="12dp"
-            android:layout_marginTop="12dp"
-            android:textColor="#000000"/>
+            android:textColor="#000000" />
 
-        <!-- Upload ID Front Side -->
+        <!-- ID Document Upload -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID Document Upload"
+            android:textColor="#006064"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Upload ID Front Side"
-            android:textColor="#FFFFFF"
-            android:layout_marginTop="16dp"/>
+            android:textColor="#004D40" />
+
         <ImageView
             android:id="@+id/idFrontImage"
             android:layout_width="match_parent"
@@ -160,6 +225,7 @@
             android:scaleType="centerCrop"
             android:background="#FFFFFF"
             android:layout_marginTop="8dp" />
+
         <Button
             android:id="@+id/uploadIdFrontBtn"
             android:layout_width="wrap_content"
@@ -167,15 +233,15 @@
             android:text="Select Front Side"
             android:layout_marginTop="8dp"
             android:background="@drawable/rounded_button_white"
-            android:textColor="#000000"/>
+            android:textColor="#000000" />
 
-        <!-- Upload ID Back Side -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Upload ID Back Side"
-            android:textColor="#FFFFFF"
-            android:layout_marginTop="16dp"/>
+            android:textColor="#004D40"
+            android:layout_marginTop="16dp" />
+
         <ImageView
             android:id="@+id/idBackImage"
             android:layout_width="match_parent"
@@ -183,6 +249,7 @@
             android:scaleType="centerCrop"
             android:background="#FFFFFF"
             android:layout_marginTop="8dp" />
+
         <Button
             android:id="@+id/uploadIdBackBtn"
             android:layout_width="wrap_content"
@@ -190,9 +257,19 @@
             android:text="Select Back Side"
             android:layout_marginTop="8dp"
             android:background="@drawable/rounded_button_white"
-            android:textColor="#000000"/>
+            android:textColor="#000000" />
 
-        <!-- Bank Account Number -->
+        <!-- Bank Details -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bank Details"
+            android:textColor="#006064"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp" />
+
         <EditText
             android:id="@+id/bankAccountNumber"
             android:layout_width="match_parent"
@@ -201,21 +278,16 @@
             android:inputType="number"
             android:background="@drawable/rounded_edittext_white"
             android:padding="12dp"
-            android:layout_marginTop="16dp"
-            android:textColor="#000000"/>
+            android:textColor="#000000" />
 
-        <!-- Bank Name -->
-        <EditText
-            android:id="@+id/bankName"
+        <Spinner
+            android:id="@+id/bankNameSpinner"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint="Bank Name"
             android:background="@drawable/rounded_edittext_white"
             android:padding="12dp"
-            android:layout_marginTop="12dp"
-            android:textColor="#000000"/>
+            android:layout_marginTop="12dp" />
 
-        <!-- Branch -->
         <EditText
             android:id="@+id/bankBranch"
             android:layout_width="match_parent"
@@ -224,9 +296,17 @@
             android:background="@drawable/rounded_edittext_white"
             android:padding="12dp"
             android:layout_marginTop="12dp"
-            android:textColor="#000000"/>
+            android:textColor="#000000" />
 
-        <!-- Create Account Button -->
+        <!-- Privacy Policy -->
+        <CheckBox
+            android:id="@+id/privacyPolicyCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I agree to the Privacy Policy"
+            android:textColor="#000000"
+            android:layout_marginTop="16dp" />
+
         <Button
             android:id="@+id/createAccountBtn"
             android:layout_width="match_parent"
@@ -234,7 +314,7 @@
             android:text="Create Account"
             android:textColor="#FFFFFF"
             android:background="@drawable/rounded_button_blue"
-            android:layout_marginTop="24dp"/>
-
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="24dp" />
     </LinearLayout>
 </ScrollView>

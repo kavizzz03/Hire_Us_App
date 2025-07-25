@@ -1,159 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4DD0E1"
-    android:padding="24dp"
-    tools:context=".MainActivity">
+    android:fillViewport="true"
+    android:background="#FFF">
 
-    <!-- Welcome & Title Section -->
-    <TextView
-        android:id="@+id/welcomeText"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome"
-        android:textSize="48sp"
-        android:textStyle="bold"
-        android:textColor="#000000"
-        android:fontFamily="sans-serif-condensed"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:gravity="center">
 
-    <TextView
-        android:id="@+id/hireMeText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hire Me"
-        android:textSize="36sp"
-        android:textStyle="italic"
-        android:textColor="#FFFFFF"
-        android:fontFamily="serif"
-        android:letterSpacing="0.05"
-        app:layout_constraintTop_toBottomOf="@id/welcomeText"
-        android:layout_marginTop="6dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <!-- ID Number Input -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/idNumberInputLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:boxBackgroundColor="@android:color/white"
-        app:boxStrokeColor="#000000"
-        android:layout_marginTop="48dp"
-        app:layout_constraintTop_toBottomOf="@id/hireMeText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/idNumberEditText"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:hint="ID Number"
+        <TextView
+            android:id="@+id/appTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Job Maker"
+            android:textSize="28sp"
+            android:textStyle="bold"
             android:textColor="#000000"
-            android:textColorHint="#888888"
-            android:inputType="text"
-            android:paddingHorizontal="20dp"
-            android:importantForAccessibility="yes"
-            android:contentDescription="Input your ID number"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginBottom="32dp"/>
 
-    <!-- Password Input with Visibility Toggle -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/passwordInputLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:passwordToggleEnabled="true"
-        app:boxBackgroundColor="@android:color/white"
-        app:boxStrokeColor="#000000"
-        android:layout_marginTop="24dp"
-        app:layout_constraintTop_toBottomOf="@id/idNumberInputLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/passwordEditText"
+        <EditText
+            android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="wrap_content"
+            android:hint="ID Number"
+            android:inputType="text"
+            android:padding="12dp"
+            android:background="@android:drawable/edit_text"
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:hint="Password"
             android:inputType="textPassword"
-            android:textColor="#000000"
-            android:textColorHint="#888888"
-            android:paddingHorizontal="20dp"
-            android:importantForAccessibility="yes"
-            android:contentDescription="Input your password"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:padding="12dp"
+            android:background="@android:drawable/edit_text"
+            android:layout_marginBottom="16dp" />
 
-    <!-- Forgot Password Button (Aligned Right) -->
-    <Button
-        android:id="@+id/forgotPasswordBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Forgot Password?"
-        android:textColor="#000000"
-        android:background="@android:color/transparent"
-        android:textStyle="bold"
-        android:fontFamily="sans-serif-medium"
-        android:textAllCaps="false"
-        android:contentDescription="Forgot password button"
-        app:layout_constraintTop_toBottomOf="@id/passwordInputLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="12dp"/>
+        <Button
+            android:id="@+id/buttonLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:background="#FFC107"
+            android:textColor="#000"
+            android:layout_marginBottom="16dp" />
 
-    <!-- Login Button (Full Width) -->
-    <Button
-        android:id="@+id/loginBtn"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
-        android:text="Log in →"
-        android:textColor="#000000"
-        android:background="@drawable/rounded_button_white"
-        android:paddingHorizontal="20dp"
-        android:fontFamily="sans-serif-medium"
-        android:textAllCaps="false"
-        android:contentDescription="Login button"
-        app:layout_constraintTop_toBottomOf="@id/forgotPasswordBtn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp"/>
+        <TextView
+            android:id="@+id/textViewForgotPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forgot Password?"
+            android:textColor="#2196F3"
+            android:layout_marginBottom="32dp"
+            android:textSize="14sp"
+            android:clickable="true"
+            android:focusable="true" />
 
-    <!-- Or Separator -->
-    <TextView
-        android:id="@+id/orSeparator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="OR"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:fontFamily="sans-serif"
-        app:layout_constraintTop_toBottomOf="@id/loginBtn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Don't have an account?"
+            android:textSize="14sp"
+            android:layout_marginBottom="8dp" />
 
-    <!-- New User Button (Full Width, Creative Gradient Background) -->
-    <Button
-        android:id="@+id/newUserBtn"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
-        android:text="New User"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:fontFamily="sans-serif-medium"
-        android:contentDescription="New user registration button"
-        app:layout_constraintTop_toBottomOf="@id/orSeparator"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="16dp"
-        />
+        <Button
+            android:id="@+id/buttonNewUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create New Account"
+            android:background="#4CAF50"
+            android:textColor="#FFF" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</ScrollView>
