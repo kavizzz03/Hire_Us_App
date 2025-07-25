@@ -30,7 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
     Spinner jobTitleSpinner, bankNameSpinner;
     LinearLayout customJobTitleLayout;
     ImageView idFrontImage, idBackImage;
-    Button uploadIdFrontBtn, uploadIdBackBtn, createAccountBtn;
+    Button uploadIdFrontBtn, uploadIdBackBtn, createAccountBtn,signInBtn;
     CheckBox privacyPolicyCheckbox;
 
     Bitmap bitmapFront, bitmapBack;
@@ -66,6 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         // Initialize views
+        signInBtn=findViewById(R.id.signInBtn);
         fullName = findViewById(R.id.fullName);
         username = findViewById(R.id.username);
         contactNumber = findViewById(R.id.contactNumber);
@@ -99,6 +100,11 @@ public class RegisterActivity extends AppCompatActivity {
         ArrayAdapter<String> bankAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, banks);
         bankAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         bankNameSpinner.setAdapter(bankAdapter);
+
+        signInBtn.setOnClickListener(v -> {
+            startActivity(new Intent(this, FindJobActivity.class));
+        });
+
 
         // Show/hide custom job title input
         jobTitleSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

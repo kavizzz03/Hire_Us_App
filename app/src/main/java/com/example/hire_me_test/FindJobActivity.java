@@ -56,7 +56,7 @@ public class FindJobActivity extends AppCompatActivity {
 
         // Forgot Password
         textViewForgotPassword.setOnClickListener(v -> {
-            startActivity(new Intent(this, ForgotPasswordActivity.class));
+            startActivity(new Intent(this, ResetRequestActivity.class));
         });
     }
 
