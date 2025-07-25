@@ -1,18 +1,69 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:padding="16dp"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
 
+    <!-- Welcome Text at the top -->
     <TextView
         android:id="@+id/welcomeText"
-        android:text="Welcome,"
-        android:textSize="20sp"
-        android:layout_marginBottom="20dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Welcome, [Manpower Name]"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#3F51B5"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="20dp" />
 
-    <Button
-        android:id="@+id/makeJobBtn"
-        android:text="Make New Job"
+    <!-- Main content layout -->
+    <LinearLayout
+        android:id="@+id/contentLayout"
+        android:layout_below="@id/welcomeText"
+        android:layout_above="@id/logoutBtn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</LinearLayout>
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/makeJobBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Make New Job"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/editProfileBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Edit Profile"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/jobHistoryBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Job History" />
+    </LinearLayout>
+
+    <!-- Logout Button above navigation bar -->
+    <Button
+        android:id="@+id/logoutBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Log Out"
+        android:backgroundTint="#FF4444"
+        android:textColor="#FFFFFF"
+        android:layout_above="@id/bottomNavigation"
+        android:layout_marginBottom="10dp" />
+
+    <!-- Bottom Navigation Bar -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="?android:attr/windowBackground"
+        app:menu="@menu/bottom_nav_menu" />
+</RelativeLayout>
