@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:padding="16dp"
+    android:background="#FAFAFA">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Profile Header -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Profile"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#222222"
+            android:paddingBottom="20dp" />
+
+        <!-- Personal Information Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Personal Information"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#444444"
+            android:paddingBottom="8dp" />
+
+        <!-- ID Number (non-editable) -->
+        <TextView
+            android:id="@+id/tvLabelIdNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID Number"
+            android:textColor="#666666"
+            android:textStyle="bold"
+            android:paddingTop="8dp" />
+
+        <TextView
+            android:id="@+id/txtIdNumber"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_rounded_gray"
+            android:textColor="#000000"
+            android:gravity="center_vertical"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:enabled="false" />
+
+        <!-- Email (non-editable) -->
+        <TextView
+            android:id="@+id/tvLabelEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textColor="#666666"
+            android:textStyle="bold"
+            android:paddingTop="12dp" />
+
+        <TextView
+            android:id="@+id/txtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_rounded_gray"
+            android:textColor="#000000"
+            android:gravity="center_vertical"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:enabled="false" />
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DDDDDD"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Editable Fields Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Editable Details"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#444444"
+            android:paddingBottom="8dp" />
+
+        <EditText
+            android:id="@+id/edtFullName"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Full Name"
+            android:inputType="textPersonName"
+            android:background="@drawable/bg_rounded_white"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="#222222"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp" />
+
+        <EditText
+            android:id="@+id/edtUsername"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Username"
+            android:inputType="text"
+            android:background="@drawable/bg_rounded_white"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="#222222"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp" />
+
+        <EditText
+            android:id="@+id/edtContact"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Contact Number"
+            android:inputType="phone"
+            android:background="@drawable/bg_rounded_white"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="#222222"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp" />
+
+        <EditText
+            android:id="@+id/edtPermanent"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Permanent Address"
+            android:inputType="textPostalAddress"
+            android:background="@drawable/bg_rounded_white"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="#222222"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp" />
+
+        <EditText
+            android:id="@+id/edtCurrent"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Current Address"
+            android:inputType="textPostalAddress"
+            android:background="@drawable/bg_rounded_white"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="#222222"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp" />
+
+        <EditText
+            android:id="@+id/edtExperience"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:hint="Work Experience"
+            android:inputType="textMultiLine"
+            android:minLines="4"
+            android:gravity="top"
+            android:background="@drawable/bg_rounded_white"
+            android:padding="12dp"
+            android:textColor="#222222"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp" />
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DDDDDD"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Bank Details Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bank Details"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#444444"
+            android:paddingBottom="8dp" />
+
+        <EditText
+            android:id="@+id/edtBankName"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Bank Name"
+            android:inputType="text"
+            android:background="@drawable/bg_rounded_white"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="#222222"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp" />
+
+        <EditText
+            android:id="@+id/edtBranch"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Bank Branch"
+            android:inputType="text"
+            android:background="@drawable/bg_rounded_white"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="#222222"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp" />
+
+        <EditText
+            android:id="@+id/edtAccount"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Bank Account Number"
+            android:inputType="number"
+            android:background="@drawable/bg_rounded_white"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="#222222"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/btnUpdateProfile"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Update Profile"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#FF5722"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="sans-serif-medium" />
+
+    </LinearLayout>
+</ScrollView>

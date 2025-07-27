@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:layout_marginHorizontal="4dp"
+    card_view:cardCornerRadius="12dp"
+    card_view:cardElevation="4dp"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Rated by -->
+        <TextView
+            android:id="@+id/ratedBy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rated by: John Doe"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#222222" />
+
+        <!-- RatingBar -->
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:stepSize="1"
+            android:isIndicator="true"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="6dp"
+            android:theme="@style/Widget.AppCompat.RatingBar.Small" />
+
+        <!-- Job details -->
+        <TextView
+            android:id="@+id/jobDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cleaner at Sparkle Co. (2 Weeks)"
+            android:textColor="#333333"
+            android:textStyle="italic"
+            android:layout_marginBottom="6dp" />
+
+        <!-- Feedback -->
+        <TextView
+            android:id="@+id/feedback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Very responsible and punctual."
+            android:textColor="#555555"
+            android:layout_marginBottom="6dp" />
+
+        <!-- Created At -->
+        <TextView
+            android:id="@+id/createdAt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reviewed on: 2025-07-26"
+            android:textSize="12sp"
+            android:textColor="#888888" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -46,7 +46,6 @@ public class EmpProfileActivity extends AppCompatActivity {
             Intent intentFindJobs = new Intent(EmpProfileActivity.this, JobListActivity.class);
             intentFindJobs.putExtra("id_number", idNumber);
             startActivity(intentFindJobs);
-            finish();
         });
 
 
@@ -55,11 +54,17 @@ public class EmpProfileActivity extends AppCompatActivity {
         });
 
         btnMyReviews.setOnClickListener(v -> {
-            // Go to Reviews screen
+            Intent intentFindJobs = new Intent(EmpProfileActivity.this, WorkerReviewActivity.class);
+            intentFindJobs.putExtra("id_number", idNumber);
+            startActivity(intentFindJobs);
+
         });
 
         btnViewProfile.setOnClickListener(v -> {
-            // Go to View Profile screen
+            Intent intentView = new Intent(EmpProfileActivity.this, ViewProfileActivity.class);
+            intentView.putExtra("id_number", idNumber);
+            startActivity(intentView);
+
         });
 
         btnEditJobs.setOnClickListener(v -> {

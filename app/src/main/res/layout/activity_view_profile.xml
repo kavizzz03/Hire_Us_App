@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:windowBackground"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingBottom="24dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardCornerRadius="16dp"
+            card_view:cardElevation="8dp"
+            android:layout_marginBottom="24dp"
+            android:background="?android:colorBackground">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Profile Details"
+                    android:textSize="22sp"
+                    android:textColor="?android:textColorPrimary"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal"
+                    android:paddingBottom="16dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?android:dividerVertical"
+                    android:layout_marginVertical="12dp" />
+
+                <TextView
+                    android:id="@+id/txtFullName"
+                    style="@style/ProfileLabel" />
+
+                <TextView
+                    android:id="@+id/txtUsername"
+                    style="@style/ProfileLabel" />
+
+                <TextView
+                    android:id="@+id/txtEmail"
+                    style="@style/ProfileLabel" />
+
+                <TextView
+                    android:id="@+id/txtIdNumber"
+                    style="@style/ProfileLabel" />
+
+                <TextView
+                    android:id="@+id/txtContact"
+                    style="@style/ProfileLabel" />
+
+                <TextView
+                    android:id="@+id/txtPermanent"
+                    style="@style/ProfileLabel" />
+
+                <TextView
+                    android:id="@+id/txtCurrent"
+                    style="@style/ProfileLabel" />
+
+                <TextView
+                    android:id="@+id/txtExperience"
+                    style="@style/ProfileLabel" />
+
+                <TextView
+                    android:id="@+id/txtBankName"
+                    style="@style/ProfileLabel" />
+
+                <TextView
+                    android:id="@+id/txtBranch"
+                    style="@style/ProfileLabel" />
+
+                <TextView
+                    android:id="@+id/txtAccount"
+                    style="@style/ProfileLabel" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="12dp">
+
+            <Button
+                android:id="@+id/btnEditProfile"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="48dp"
+                android:text="Edit"
+                android:textColor="?android:textColorPrimaryInverse"
+                android:textAllCaps="false"
+                android:backgroundTint="?attr/colorSecondary"
+                android:stateListAnimator="@null"
+                android:elevation="6dp"
+                android:layout_marginEnd="12dp"
+                android:fontFamily="sans-serif-medium" />
+
+            <Button
+                android:id="@+id/btnDeleteProfile"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="48dp"
+                android:text="Delete"
+                android:textColor="?android:textColorPrimaryInverse"
+                android:textAllCaps="false"
+                android:backgroundTint="?attr/colorError"
+                android:stateListAnimator="@null"
+                android:elevation="6dp"
+                android:fontFamily="sans-serif-medium" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
