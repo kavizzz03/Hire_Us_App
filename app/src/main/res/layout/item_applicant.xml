@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="12dp"
+    android:foreground="?attr/selectableItemBackground">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        <CheckBox
+            android:id="@+id/applicantCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
+
+        <TextView
+            android:id="@+id/applicantName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Full Name"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#000"
+            app:layout_constraintStart_toEndOf="@id/applicantCheckbox"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/applicantEmail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="email@example.com"
+            android:textSize="14sp"
+            android:textColor="#555"
+            app:layout_constraintStart_toStartOf="@id/applicantName"
+            app:layout_constraintTop_toBottomOf="@id/applicantName"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/applicantContact"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Contact: 0123456789"
+            android:textSize="14sp"
+            android:textColor="#555"
+            app:layout_constraintStart_toStartOf="@id/applicantName"
+            app:layout_constraintTop_toBottomOf="@id/applicantEmail"
+            app:layout_constraintEnd_toStartOf="@id/applicantRating" />
+
+        <TextView
+            android:id="@+id/applicantRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rating: 4.5"
+            android:textSize="14sp"
+            android:textColor="#388E3C"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBaseline_toBaselineOf="@id/applicantContact" />
+
+        <TextView
+            android:id="@+id/applicantHiredStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status"
+            android:textColor="#FF9800"
+            android:textSize="13sp"
+            android:textStyle="italic"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="@id/applicantName"
+            app:layout_constraintTop_toBottomOf="@id/applicantContact"/>
+
+        <TextView
+            android:id="@+id/alreadyHiredLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Already Hired"
+            android:textColor="#D32F2F"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            android:layout_marginTop="4dp"
+            app:layout_constraintTop_toBottomOf="@id/applicantHiredStatus"
+            app:layout_constraintStart_toStartOf="@id/applicantName"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
