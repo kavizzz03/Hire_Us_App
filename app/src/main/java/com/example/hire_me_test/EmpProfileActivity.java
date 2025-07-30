@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class EmpProfileActivity extends AppCompatActivity {
 
     TextView textViewWelcome, textViewJobTitle, textViewId;
-    Button btnFindJobs, btnMyVault, btnMyReviews, btnViewProfile, btnEditJobs, btnJobHistory, btnLogout;
+    Button btnFindJobs, btnMyVault, btnMyReviews, btnViewProfile, btnEditJobs, btnJobHistory, btnLogout, btnOrderFood;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,7 @@ public class EmpProfileActivity extends AppCompatActivity {
         btnEditJobs = findViewById(R.id.btnEditJobs);
         btnJobHistory = findViewById(R.id.btnJobHistory);
         btnLogout = findViewById(R.id.btnLogout);
+        btnOrderFood = findViewById(R.id.btnOrderFood); // New button
 
         // Display passed user info
         textViewWelcome.setText("👋 Welcome, " + fullName);
@@ -48,23 +49,20 @@ public class EmpProfileActivity extends AppCompatActivity {
             startActivity(intentFindJobs);
         });
 
-
         btnMyVault.setOnClickListener(v -> {
             // Go to My Vault screen
         });
 
         btnMyReviews.setOnClickListener(v -> {
-            Intent intentFindJobs = new Intent(EmpProfileActivity.this, WorkerReviewActivity.class);
-            intentFindJobs.putExtra("id_number", idNumber);
-            startActivity(intentFindJobs);
-
+            Intent intentReview = new Intent(EmpProfileActivity.this, WorkerReviewActivity.class);
+            intentReview.putExtra("id_number", idNumber);
+            startActivity(intentReview);
         });
 
         btnViewProfile.setOnClickListener(v -> {
             Intent intentView = new Intent(EmpProfileActivity.this, ViewProfileActivity.class);
             intentView.putExtra("id_number", idNumber);
             startActivity(intentView);
-
         });
 
         btnEditJobs.setOnClickListener(v -> {
@@ -73,6 +71,13 @@ public class EmpProfileActivity extends AppCompatActivity {
 
         btnJobHistory.setOnClickListener(v -> {
             // Go to Job History screen
+        });
+
+        btnOrderFood.setOnClickListener(v -> {
+            // Navigate to order food screen
+            Intent intentOrder = new Intent(EmpProfileActivity.this, OrderFoodActivity.class);
+            intentOrder.putExtra("id_number", idNumber); // Optional
+            startActivity(intentOrder);
         });
 
         btnLogout.setOnClickListener(v -> {
