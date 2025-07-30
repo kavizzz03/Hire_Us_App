@@ -3,8 +3,8 @@
     android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:padding="16dp">
+    android:background="#FAFAFA"
+    android:padding="24dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,35 +12,46 @@
         android:orientation="vertical"
         android:gravity="center_horizontal">
 
+        <!-- CardView-like container for meal info -->
         <TextView
             android:id="@+id/txtMealInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_card"
+            android:elevation="4dp"
+            android:padding="16dp"
             android:text="Checking available meals..."
-            android:textColor="#000000"
-            android:textSize="16sp"
-            android:padding="8dp"
-            android:background="#EEEEEE"
-            android:layout_marginBottom="20dp" />
+            android:textAlignment="center"
+            android:textColor="#212121"
+            android:textSize="18sp"
+            android:layout_marginBottom="24dp" />
 
+        <!-- Yes Button -->
         <Button
             android:id="@+id/btnYesMeal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Yes, I want meals"
             android:backgroundTint="#4CAF50"
+            android:text="🍽 Yes, I want meals"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:textColor="#FFFFFF"
             android:visibility="gone"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginBottom="12dp"
+            android:padding="12dp" />
 
+        <!-- No Button -->
         <Button
             android:id="@+id/btnNoMeal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="No, I don't want meals"
             android:backgroundTint="#F44336"
+            android:text="🚫 No, I don't want meals"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:textColor="#FFFFFF"
-            android:visibility="gone" />
+            android:visibility="gone"
+            android:padding="12dp" />
 
     </LinearLayout>
 </ScrollView>
