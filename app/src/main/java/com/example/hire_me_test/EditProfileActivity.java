@@ -2,118 +2,87 @@ package com.example.hire_me_test;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.volley.*;
-import com.android.volley.toolbox.*;
+public class EmpProfileActivity extends AppCompatActivity {
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
-
-public class EditProfileActivity extends AppCompatActivity {
-
-    EditText edtFullName, edtUsername, edtContact, edtPermanent, edtCurrent, edtExperience, edtBankName, edtBranch, edtAccount;
-    TextView txtEmail, txtIdNumber;
-    Button btnUpdate;
-    String idNumber;
+    TextView textViewWelcome, textViewJobTitle, textViewId;
+    Button btnFindJobs, btnMyVault, btnMyReviews, btnViewProfile, btnEditJobs, btnJobHistory, btnLogout, btnOrderFood;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_profile);
+        setContentView(R.layout.activity_emp_profile);
 
-        idNumber = getIntent().getStringExtra("id_number");
+        // Get data from intent
+        Intent intent = getIntent();
+        String fullName = intent.getStringExtra("full_name");
+        String jobTitle = intent.getStringExtra("job_title");
+        String idNumber = intent.getStringExtra("id_number");
 
-        edtFullName = findViewById(R.id.edtFullName);
-        edtUsername = findViewById(R.id.edtUsername);
-        edtContact = findViewById(R.id.edtContact);
-        edtPermanent = findViewById(R.id.edtPermanent);
-        edtCurrent = findViewById(R.id.edtCurrent);
-        edtExperience = findViewById(R.id.edtExperience);
-        edtBankName = findViewById(R.id.edtBankName);
-        edtBranch = findViewById(R.id.edtBranch);
-        edtAccount = findViewById(R.id.edtAccount);
+        // Bind views
+        textViewWelcome = findViewById(R.id.textViewWelcome);
+        textViewJobTitle = findViewById(R.id.textViewJobTitle);
+        textViewId = findViewById(R.id.textViewIdNumber);
 
-        txtEmail = findViewById(R.id.txtEmail);
-        txtIdNumber = findViewById(R.id.txtIdNumber);
+        btnFindJobs = findViewById(R.id.btnFindJobs);
+        btnMyVault = findViewById(R.id.btnMyVault);
+        btnMyReviews = findViewById(R.id.btnMyReviews);
+        btnViewProfile = findViewById(R.id.btnViewProfile);
+        btnEditJobs = findViewById(R.id.btnEditJobs);
+        btnJobHistory = findViewById(R.id.btnJobHistory);
+        btnLogout = findViewById(R.id.btnLogout);
+        btnOrderFood = findViewById(R.id.btnOrderFood); // New button
 
-        btnUpdate = findViewById(R.id.btnUpdateProfile);
+        // Display passed user info
+        textViewWelcome.setText("👋 Welcome, " + fullName);
+        textViewJobTitle.setText("🧑‍💼 Job Title: " + jobTitle);
+        textViewId.setText("🆔 ID: " + idNumber);
 
-        loadProfile();
+        // Handle button clicks
+        btnFindJobs.setOnClickListener(v -> {
+            Intent intentFindJobs = new Intent(EmpProfileActivity.this, JobListActivity.class);
+            intentFindJobs.putExtra("id_number", idNumber);
+            startActivity(intentFindJobs);
+        });
 
-        btnUpdate.setOnClickListener(v -> updateProfile());
-    }
+        btnMyVault.setOnClickListener(v -> {
+            // Go to My Vault screen
+        });
 
-    private void loadProfile() {
-        String url = "https://hireme.cpsharetxt.com/get_worker_profile_12.php?id_number=" + idNumber;
+        btnMyReviews.setOnClickListener(v -> {
+            Intent intentReview = new Intent(EmpProfileActivity.this, WorkerReviewActivity.class);
+            intentReview.putExtra("id_number", idNumber);
+            startActivity(intentReview);
+        });
 
-        StringRequest request = new StringRequest(Request.Method.GET, url,
-                response -> {
-                    try {
-                        Log.d("ProfileResponse", response);
-                        JSONObject obj = new JSONObject(response);
-                        if (obj.getBoolean("success")) {
-                            JSONObject user = obj.getJSONObject("user");
-                            edtFullName.setText(user.optString("fullName", "N/A"));
-                            edtUsername.setText(user.optString("username", "N/A"));
-                            txtEmail.setText(user.optString("email", "N/A"));
-                            txtIdNumber.setText(user.optString("idNumber", "N/A"));
-                            edtContact.setText(user.optString("contactNumber", "N/A"));
-                            edtPermanent.setText(user.optString("permanentAddress", "N/A"));
-                            edtCurrent.setText(user.optString("currentAddress", "N/A"));
-                            edtExperience.setText(user.optString("workExperience", "N/A"));
-                            edtBankName.setText(user.optString("bankName", "N/A"));
-                            edtBranch.setText(user.optString("bankBranch", "N/A"));
-                            edtAccount.setText(user.optString("bankAccountNumber", "N/A"));
-                        } else {
-                            Toast.makeText(EditProfileActivity.this, "User not found", Toast.LENGTH_SHORT).show();
-                        }
-                    } catch (JSONException e) {
-                        Log.e("JSONError", e.toString());
-                        Toast.makeText(EditProfileActivity.this, "Error parsing data", Toast.LENGTH_SHORT).show();
-                    }
-                },
-                error -> {
-                    error.printStackTrace();
-                    Toast.makeText(EditProfileActivity.this, "Connection error", Toast.LENGTH_SHORT).show();
-                });
+        btnViewProfile.setOnClickListener(v -> {
+            Intent intentView = new Intent(EmpProfileActivity.this, ViewProfileActivity.class);
+            intentView.putExtra("id_number", idNumber);
+            startActivity(intentView);
+        });
 
-        Volley.newRequestQueue(this).add(request);
-    }
+        btnEditJobs.setOnClickListener(v -> {
+            // Go to Edit Jobs screen
+        });
 
-    private void updateProfile() {
-        String url = "https://hireme.cpsharetxt.com/update_worker_profile.php";
+        btnJobHistory.setOnClickListener(v -> {
+            // Go to Job History screen
+        });
 
-        StringRequest request = new StringRequest(Request.Method.POST, url,
-                response -> {
-                    Toast.makeText(this, "Profile Updated", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(this, ViewProfileActivity.class);
-                    intent.putExtra("id_number", idNumber);
-                    startActivity(intent);
-                    finish();
-                },
-                error -> Toast.makeText(this, "Update Failed", Toast.LENGTH_SHORT).show()) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> param = new HashMap<>();
-                param.put("id_number", idNumber);
-                param.put("fullName", edtFullName.getText().toString());
-                param.put("username", edtUsername.getText().toString());
-                param.put("contactNumber", edtContact.getText().toString());
-                param.put("permanentAddress", edtPermanent.getText().toString());
-                param.put("currentAddress", edtCurrent.getText().toString());
-                param.put("workExperience", edtExperience.getText().toString());
-                param.put("bankName", edtBankName.getText().toString());
-                param.put("bankBranch", edtBranch.getText().toString());
-                param.put("bankAccountNumber", edtAccount.getText().toString());
-                return param;
-            }
-        };
-        Volley.newRequestQueue(this).add(request);
+        btnOrderFood.setOnClickListener(v -> {
+            // Navigate to order food screen
+            Intent intentOrder = new Intent(EmpProfileActivity.this, OrderFoodActivity.class);
+            intentOrder.putExtra("id_number", idNumber); // Optional
+            startActivity(intentOrder);
+        });
+
+        btnLogout.setOnClickListener(v -> {
+            startActivity(new Intent(EmpProfileActivity.this, FindJobActivity.class));
+            finish();
+        });
     }
 }
