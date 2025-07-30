@@ -28,8 +28,8 @@
             android:layout_height="wrap_content"
             android:hint="ID Number"
             android:inputType="text"
-            android:padding="12dp"
-            android:background="@android:drawable/edit_text"
+            android:padding="10dp"
+            android:background="@drawable/rounded_edittext"
             android:layout_marginBottom="16dp" />
 
         <EditText
@@ -38,8 +38,8 @@
             android:layout_height="wrap_content"
             android:hint="Password"
             android:inputType="textPassword"
-            android:padding="12dp"
-            android:background="@android:drawable/edit_text"
+            android:padding="10dp"
+            android:background="@drawable/rounded_edittext"
             android:layout_marginBottom="16dp" />
 
         <Button
@@ -47,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Login"
-            android:background="#FFC107"
+            android:backgroundTint="#FFC107"
             android:textColor="#000"
             android:layout_marginBottom="16dp" />
 
@@ -74,7 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Create New Account"
-            android:background="#4CAF50"
+            android:backgroundTint="#4CAF50"
             android:textColor="#FFF" />
 
     </LinearLayout>
