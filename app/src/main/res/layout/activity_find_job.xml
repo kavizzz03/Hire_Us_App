@@ -16,10 +16,10 @@
             android:id="@+id/appTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Job Maker"
+            android:text="Welcome Hire Us"
             android:textSize="28sp"
             android:textStyle="bold"
-            android:textColor="#000000"
+            android:textColor="#673AB7"
             android:layout_marginBottom="32dp"/>
 
         <EditText
@@ -28,8 +28,8 @@
             android:layout_height="wrap_content"
             android:hint="ID Number"
             android:inputType="text"
-            android:padding="12dp"
-            android:background="@android:drawable/edit_text"
+            android:padding="10dp"
+            android:background="@drawable/rounded_edittext"
             android:layout_marginBottom="16dp" />
 
         <EditText
@@ -38,18 +38,19 @@
             android:layout_height="wrap_content"
             android:hint="Password"
             android:inputType="textPassword"
-            android:padding="12dp"
-            android:background="@android:drawable/edit_text"
+            android:padding="10dp"
+            android:background="@drawable/rounded_edittext"
             android:layout_marginBottom="16dp" />
 
         <Button
             android:id="@+id/buttonLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#673AB7"
             android:text="Login"
-            android:background="#FFC107"
-            android:textColor="#000"
-            android:layout_marginBottom="16dp" />
+            android:textColor="#ffffff
+" />
 
         <TextView
             android:id="@+id/textViewForgotPassword"
@@ -73,8 +74,8 @@
             android:id="@+id/buttonNewUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#673AB7"
             android:text="Create New Account"
-            android:background="#4CAF50"
             android:textColor="#FFF" />
 
     </LinearLayout>

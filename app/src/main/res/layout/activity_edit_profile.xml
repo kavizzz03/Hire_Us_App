@@ -14,13 +14,14 @@
 
         <!-- Profile Header -->
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Edit Profile"
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="#222222"
-            android:paddingBottom="20dp" />
+            android:paddingBottom="20dp"
+            android:gravity="center" />
 
         <!-- Personal Information Section -->
         <TextView
@@ -30,9 +31,10 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="#444444"
-            android:paddingBottom="8dp" />
+            android:paddingBottom="8dp"
+            android:gravity="center" />
 
-        <!-- ID Number (non-editable) -->
+        <!-- ID Number -->
         <TextView
             android:id="@+id/tvLabelIdNumber"
             android:layout_width="wrap_content"
@@ -53,7 +55,7 @@
             android:paddingEnd="12dp"
             android:enabled="false" />
 
-        <!-- Email (non-editable) -->
+        <!-- Email -->
         <TextView
             android:id="@+id/tvLabelEmail"
             android:layout_width="wrap_content"
@@ -90,7 +92,8 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="#444444"
-            android:paddingBottom="8dp" />
+            android:paddingBottom="8dp"
+            android:gravity="center" />
 
         <EditText
             android:id="@+id/edtFullName"
@@ -187,7 +190,8 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="#444444"
-            android:paddingBottom="8dp" />
+            android:paddingBottom="8dp"
+            android:gravity="center" />
 
         <EditText
             android:id="@+id/edtBankName"
