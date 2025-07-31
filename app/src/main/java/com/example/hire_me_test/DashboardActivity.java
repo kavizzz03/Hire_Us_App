@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class DashboardActivity extends AppCompatActivity {
 
     TextView welcomeText;
-    Button makeJobBtn,jobHistoryBtn;
+    Button makeJobBtn,jobHistoryBtn,logoutBtn;
 
     String userId, companyName;
 
@@ -20,6 +20,7 @@ public class DashboardActivity extends AppCompatActivity {
         welcomeText = findViewById(R.id.welcomeText);
         makeJobBtn = findViewById(R.id.makeJobBtn);
         jobHistoryBtn=findViewById(R.id.jobHistoryBtn);
+        logoutBtn=findViewById(R.id.logoutBtn);
 
         userId = getIntent().getStringExtra("user_id");
         companyName = getIntent().getStringExtra("company_name");
@@ -35,6 +36,11 @@ public class DashboardActivity extends AppCompatActivity {
             Intent intent = new Intent(DashboardActivity.this, EmployerJobsActivity.class);
             intent.putExtra("employer_id", userId);
             startActivity(intent);
+        });
+       logoutBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(DashboardActivity.this, GiveJobActivity.class);
+            startActivity(intent);
+            finish();
         });
 
     }
