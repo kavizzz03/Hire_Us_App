@@ -4,25 +4,36 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.List;
 
 public class EmployerJobsAdapter extends RecyclerView.Adapter<EmployerJobsAdapter.JobViewHolder> {
 
-    public interface OnJobClickListener {
-        void onJobClick(JobModel job);
+    public interface OnViewApplicantsClickListener {
+        void onViewApplicantsClick(JobModel job);
+    }
+
+    public interface OnAddMealsClickListener {
+        void onAddMealsClick(JobModel job);
     }
 
     Context context;
     List<JobModel> jobList;
-    OnJobClickListener listener;
+    OnViewApplicantsClickListener applicantsListener;
+    OnAddMealsClickListener mealsListener;
 
-    public EmployerJobsAdapter(Context context, List<JobModel> jobList, OnJobClickListener listener) {
+    public EmployerJobsAdapter(Context context, List<JobModel> jobList,
+                               OnViewApplicantsClickListener applicantsListener,
+                               OnAddMealsClickListener mealsListener) {
         this.context = context;
         this.jobList = jobList;
-        this.listener = listener;
+        this.applicantsListener = applicantsListener;
+        this.mealsListener = mealsListener;
     }
 
     @NonNull
@@ -39,7 +50,8 @@ public class EmployerJobsAdapter extends RecyclerView.Adapter<EmployerJobsAdapte
         holder.txtCompany.setText(job.getJobDate());
         holder.txtSalary.setText("Rs. " + job.getBasicSalary());
 
-        holder.itemView.setOnClickListener(v -> listener.onJobClick(job));
+        holder.btnViewApplicants.setOnClickListener(v -> applicantsListener.onViewApplicantsClick(job));
+        holder.btnAddMeal.setOnClickListener(v -> mealsListener.onAddMealsClick(job));
     }
 
     @Override
@@ -49,12 +61,15 @@ public class EmployerJobsAdapter extends RecyclerView.Adapter<EmployerJobsAdapte
 
     static class JobViewHolder extends RecyclerView.ViewHolder {
         TextView txtJobTitle, txtCompany, txtSalary;
+        Button btnViewApplicants, btnAddMeal;
 
         public JobViewHolder(@NonNull View itemView) {
             super(itemView);
             txtJobTitle = itemView.findViewById(R.id.txtJobTitle);
             txtCompany = itemView.findViewById(R.id.txtCompany);
             txtSalary = itemView.findViewById(R.id.txtSalary);
+            btnViewApplicants = itemView.findViewById(R.id.btnViewApplicants);
+            btnAddMeal = itemView.findViewById(R.id.btnAddMeal);
         }
     }
 }

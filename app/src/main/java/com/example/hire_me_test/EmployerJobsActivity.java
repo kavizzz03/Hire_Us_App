@@ -33,16 +33,26 @@ public class EmployerJobsActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerJobs);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        adapter = new EmployerJobsAdapter(this, jobList, job -> {
-            Intent intent = new Intent(this, ApplicantsActivity.class);
-            intent.putExtra("job_id", job.getId());
-            startActivity(intent);
-        });
+        adapter = new EmployerJobsAdapter(this, jobList,
+                job -> {
+                    // Meal button clicked
+
+                    Intent intent = new Intent(EmployerJobsActivity.this, ApplicantsActivity.class);
+                    intent.putExtra("job_id", job.getId());
+                    startActivity(intent);
+                },
+                job -> {
+                    // Whole item clicked
+                    Intent intent = new Intent(EmployerJobsActivity.this, AddMealActivity.class);
+                    intent.putExtra("job_id", job.getId());
+                    startActivity(intent);
+                }
+        );
 
         recyclerView.setAdapter(adapter);
-
         fetchJobs();
     }
+
 
     private void fetchJobs() {
         String url = "https://hireme.cpsharetxt.com/get_employer_jobs.php?employer_id=" + employerId;

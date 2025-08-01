@@ -30,14 +30,15 @@ public class RegisterActivity extends AppCompatActivity {
     Spinner jobTitleSpinner, bankNameSpinner;
     LinearLayout customJobTitleLayout;
     ImageView idFrontImage, idBackImage;
-    Button uploadIdFrontBtn, uploadIdBackBtn, createAccountBtn,signInBtn;
+    Button uploadIdFrontBtn, uploadIdBackBtn, createAccountBtn, signInBtn;
     CheckBox privacyPolicyCheckbox;
 
     Bitmap bitmapFront, bitmapBack;
     final int REQ_FRONT = 100, REQ_BACK = 200;
 
+    // Job Titles including "Other"
     List<String> jobTitles = Arrays.asList(
-            "Select the Job Title",
+            "Select Job Title",
             "Welder",
             "Labour/Helper",
             "Electrician",
@@ -48,6 +49,7 @@ public class RegisterActivity extends AppCompatActivity {
             "Other (Fill Custom Title Field)"
     );
 
+    // More complete Sri Lankan bank list
     List<String> banks = Arrays.asList(
             "Select Bank Name",
             "People's Bank",
@@ -57,7 +59,18 @@ public class RegisterActivity extends AppCompatActivity {
             "National Savings Bank",
             "Bank of Ceylon",
             "Nations Trust Bank",
-            "DFCC Bank"
+            "DFCC Bank",
+            "Pan Asia Bank",
+            "Amana Bank",
+            "Seylan Bank",
+            "Union Bank",
+            "State Bank of India",
+            "Indian Bank",
+            "Axis Bank",
+            "Cargills Bank",
+            "HNB Grameen",
+            "Public Bank",
+            "Standard Chartered Bank"
     );
 
     @Override
@@ -66,7 +79,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         // Initialize views
-        signInBtn=findViewById(R.id.signInBtn);
+        signInBtn = findViewById(R.id.signInBtn);
         fullName = findViewById(R.id.fullName);
         username = findViewById(R.id.username);
         contactNumber = findViewById(R.id.contactNumber);
@@ -101,12 +114,7 @@ public class RegisterActivity extends AppCompatActivity {
         bankAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         bankNameSpinner.setAdapter(bankAdapter);
 
-        signInBtn.setOnClickListener(v -> {
-            startActivity(new Intent(this, FindJobActivity.class));
-        });
-
-
-        // Show/hide custom job title input
+        // Show/hide custom job title field if "Other" is selected
         jobTitleSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -126,22 +134,17 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+        signInBtn.setOnClickListener(v -> {
+            startActivity(new Intent(this, FindJobActivity.class));
+            finish();
+        });
+
         uploadIdFrontBtn.setOnClickListener(v -> pickImage(REQ_FRONT));
         uploadIdBackBtn.setOnClickListener(v -> pickImage(REQ_BACK));
 
         createAccountBtn.setOnClickListener(v -> {
             if (!areAllFieldsFilled()) {
                 Toast.makeText(this, "Please fill in all required fields", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            if (!isValidSriLankanNIC(idNumber.getText().toString().trim())) {
-                Toast.makeText(this, "Invalid Sri Lankan ID number format", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            if (password.getText().toString().length() < 6) {
-                Toast.makeText(this, "Password must be at least 6 characters", Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -175,21 +178,6 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    private boolean isValidSriLankanNIC(String nic) {
-        return nic.matches("^[0-9]{9}[vVxX]$") || nic.matches("^[0-9]{12}$");
-    }
-
-    private void showPrivacyPolicyDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Privacy Policy Agreement");
-        builder.setMessage("By creating an account, you agree to our Privacy Policy regarding the storage and use of your personal and sensitive data.");
-        builder.setCancelable(false);
-        builder.setPositiveButton("I Agree", (dialog, which) -> registerUser());
-        builder.setNegativeButton("Cancel", (dialog, which) ->
-                Toast.makeText(this, "You must accept the Privacy Policy to create an account.", Toast.LENGTH_SHORT).show());
-        builder.show();
-    }
-
     private void pickImage(int requestCode) {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, requestCode);
@@ -217,6 +205,42 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
+    private void showPrivacyPolicyDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle("Privacy Policy Agreement")
+                .setMessage("By creating an account, you agree to our Privacy Policy regarding the storage and use of your personal and sensitive data.")
+                .setCancelable(false)
+                .setPositiveButton("I Agree", (dialog, which) -> registerUser())
+                .setNegativeButton("Cancel", (dialog, which) ->
+                        Toast.makeText(this, "You must accept the Privacy Policy to create an account.", Toast.LENGTH_SHORT).show())
+                .show();
+    }
+
+    private boolean areAllFieldsFilled() {
+        boolean basicFields = !fullName.getText().toString().isEmpty()
+                && !username.getText().toString().isEmpty()
+                && !contactNumber.getText().toString().isEmpty()
+                && !email.getText().toString().isEmpty()
+                && !idNumber.getText().toString().isEmpty()
+                && !permanentAddress.getText().toString().isEmpty()
+                && !currentAddress.getText().toString().isEmpty()
+                && !workExperience.getText().toString().isEmpty()
+                && !password.getText().toString().isEmpty()
+                && !confirmPassword.getText().toString().isEmpty()
+                && !bankAccountNumber.getText().toString().isEmpty()
+                && !bankBranch.getText().toString().isEmpty()
+                && bitmapFront != null
+                && bitmapBack != null;
+
+        boolean customJobFilled = true;
+        if (jobTitleSpinner.getSelectedItem() != null &&
+                jobTitleSpinner.getSelectedItem().toString().equals("Other (Fill Custom Title Field)")) {
+            customJobFilled = !customJobTitle.getText().toString().trim().isEmpty();
+        }
+
+        return basicFields && customJobFilled;
+    }
+
     private void registerUser() {
         String url = "https://hireme.cpsharetxt.com/register_worker.php";
 
@@ -227,44 +251,48 @@ public class RegisterActivity extends AppCompatActivity {
                     startActivity(new Intent(RegisterActivity.this, FindJobActivity.class));
                     finish();
                 },
-                error -> Toast.makeText(this, "Error: " + error.getMessage(), Toast.LENGTH_LONG).show()
-        ) {
-            @Override
-            protected Map<String, DataPart> getByteData() {
-                Map<String, DataPart> params = new HashMap<>();
-                if (bitmapFront != null)
-                    params.put("idFront", new DataPart("front.jpg", getFileDataFromBitmap(bitmapFront)));
-                if (bitmapBack != null)
-                    params.put("idBack", new DataPart("back.jpg", getFileDataFromBitmap(bitmapBack)));
-                return params;
-            }
+                error -> Toast.makeText(this, "Error: " + error.getMessage(), Toast.LENGTH_LONG).show()) {
 
             @Override
             protected Map<String, String> getParams() {
-                Map<String, String> map = new HashMap<>();
+                Map<String, String> params = new HashMap<>();
 
-                map.put("fullName", fullName.getText().toString());
-                map.put("username", username.getText().toString());
-                map.put("contactNumber", contactNumber.getText().toString());
-                map.put("email", email.getText().toString());
-                map.put("idNumber", idNumber.getText().toString());
-                map.put("permanentAddress", permanentAddress.getText().toString());
-                map.put("currentAddress", currentAddress.getText().toString());
-                map.put("workExperience", workExperience.getText().toString());
+                params.put("fullName", fullName.getText().toString());
+                params.put("username", username.getText().toString());
+                params.put("contactNumber", contactNumber.getText().toString());
+                params.put("email", email.getText().toString());
+                params.put("idNumber", idNumber.getText().toString());
+                params.put("permanentAddress", permanentAddress.getText().toString());
+                params.put("currentAddress", currentAddress.getText().toString());
+                params.put("workExperience", workExperience.getText().toString());
+                params.put("password", password.getText().toString());
+                params.put("bankAccountNumber", bankAccountNumber.getText().toString());
+                params.put("bankBranch", bankBranch.getText().toString());
 
-                // Use custom job title if "Other" is selected
+                // Job Title handling
                 String jobTitle = jobTitleSpinner.getSelectedItem().toString();
                 if (jobTitle.equals("Other (Fill Custom Title Field)")) {
                     jobTitle = customJobTitle.getText().toString().trim();
                 }
-                map.put("jobTitle", jobTitle);
+                params.put("jobTitle", jobTitle);
 
-                map.put("password", password.getText().toString());
-                map.put("bankAccountNumber", bankAccountNumber.getText().toString());
-                map.put("bankName", bankNameSpinner.getSelectedItem().toString());
-                map.put("bankBranch", bankBranch.getText().toString());
+                // Bank Name
+                String bankName = bankNameSpinner.getSelectedItem().toString();
+                params.put("bankName", bankName);
 
-                return map;
+                return params;
+            }
+
+            @Override
+            protected Map<String, DataPart> getByteData() {
+                Map<String, DataPart> dataPartMap = new HashMap<>();
+                if (bitmapFront != null) {
+                    dataPartMap.put("idFront", new DataPart("front.jpg", getFileDataFromBitmap(bitmapFront)));
+                }
+                if (bitmapBack != null) {
+                    dataPartMap.put("idBack", new DataPart("back.jpg", getFileDataFromBitmap(bitmapBack)));
+                }
+                return dataPartMap;
             }
         };
 
@@ -275,30 +303,6 @@ public class RegisterActivity extends AppCompatActivity {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 80, bos);
         return bos.toByteArray();
-    }
-
-    private boolean areAllFieldsFilled() {
-        boolean basicFields = !fullName.getText().toString().isEmpty() &&
-                !username.getText().toString().isEmpty() &&
-                !contactNumber.getText().toString().isEmpty() &&
-                !email.getText().toString().isEmpty() &&
-                !idNumber.getText().toString().isEmpty() &&
-                !permanentAddress.getText().toString().isEmpty() &&
-                !workExperience.getText().toString().isEmpty() &&
-                !password.getText().toString().isEmpty() &&
-                !confirmPassword.getText().toString().isEmpty() &&
-                !bankAccountNumber.getText().toString().isEmpty() &&
-                !bankBranch.getText().toString().isEmpty() &&
-                bitmapFront != null &&
-                bitmapBack != null;
-
-        boolean customJobFilled = true;
-        if (jobTitleSpinner.getSelectedItem() != null
-                && jobTitleSpinner.getSelectedItem().toString().equals("Other (Fill Custom Title Field)")) {
-            customJobFilled = !customJobTitle.getText().toString().trim().isEmpty();
-        }
-
-        return basicFields && customJobFilled;
     }
 
     private void clearAllFields() {

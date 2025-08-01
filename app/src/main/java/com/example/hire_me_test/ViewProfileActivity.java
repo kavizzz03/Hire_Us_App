@@ -48,11 +48,11 @@ public class ViewProfileActivity extends AppCompatActivity {
 
         loadProfile();
 
-       /* btnEdit.setOnClickListener(v -> {
+        btnEdit.setOnClickListener(v -> {
             Intent intent = new Intent(ViewProfileActivity.this, EditProfileActivity.class);
             intent.putExtra("id_number", idNumber);
             startActivity(intent);
-        });*/
+        });
 
        btnDelete.setOnClickListener(v -> new AlertDialog.Builder(ViewProfileActivity.this)
                 .setTitle("Delete Profile")

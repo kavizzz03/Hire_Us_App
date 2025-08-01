@@ -17,10 +17,13 @@
         android:theme="@style/Theme.Hire_me_test"
         tools:targetApi="31">
         <activity
-            android:name=".OrderFoodActivity"
+            android:name=".EditProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".EditProfileActivity"
+            android:name=".AddMealActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OrderFoodActivity"
             android:exported="false" />
         <activity
             android:name=".ViewProfileActivity"
