@@ -17,61 +17,49 @@
         android:theme="@style/Theme.Hire_me_test"
         tools:targetApi="31">
         <activity
-            android:name=".view.actvities.ChatActivity"
+            android:name=".OrderFoodActivity"
             android:exported="false" />
         <activity
-            android:name=".view.actvities.WithdrawRequestActivity"
+            android:name=".EditProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".view.actvities.VaultActivity"
+            android:name=".ViewProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".view.actvities.EditProfileActivity"
+            android:name=".WorkerReviewActivity"
             android:exported="false" />
         <activity
-            android:name=".view.actvities.AddMealActivity"
+            android:name=".ApplicantDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".view.actvities.OrderFoodActivity"
+            android:name=".ApplicantsActivity"
             android:exported="false" />
         <activity
-            android:name=".view.actvities.ViewProfileActivity"
+            android:name=".EmployerJobsActivity"
             android:exported="false" />
         <activity
-            android:name=".view.actvities.WorkerReviewActivity"
+            android:name=".JobListActivity"
             android:exported="false" />
         <activity
-            android:name=".view.actvities.ApplicantDetailsActivity"
+            android:name=".FindJobEmpActivity"
             android:exported="false" />
         <activity
-            android:name=".view.actvities.ApplicantsActivity"
+            android:name=".ResetRequestActivity"
             android:exported="false" />
         <activity
-            android:name=".view.actvities.EmployerJobsActivity"
+            android:name=".PostJobActivity"
             android:exported="false" />
         <activity
-            android:name=".view.actvities.JobListActivity"
+            android:name=".CompanyRegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".view.actvities.FindJobEmpActivity"
+            android:name=".ForgotPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".view.actvities.ResetRequestActivity"
+            android:name=".DashboardActivity"
             android:exported="false" />
         <activity
-            android:name=".view.actvities.PostJobActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.actvities.CompanyRegisterActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.actvities.ForgotPasswordActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.actvities.DashboardActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.actvities.SplashActivity"
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -80,19 +68,19 @@
             </intent-filter>
         </activity> <!-- App Activities -->
         <activity
-            android:name=".view.actvities.MainActivity"
+            android:name=".MainActivity"
             android:exported="true" />
         <activity
-            android:name=".view.actvities.RegisterActivity"
+            android:name=".RegisterActivity"
             android:exported="true" />
         <activity
-            android:name=".view.actvities.FindJobActivity"
+            android:name=".FindJobActivity"
             android:exported="false" />
         <activity
-            android:name=".view.actvities.GiveJobActivity"
+            android:name=".GiveJobActivity"
             android:exported="false" />
         <activity
-            android:name=".view.actvities.EmpProfileActivity"
+            android:name=".EmpProfileActivity"
             android:exported="false" />
     </application>
 
