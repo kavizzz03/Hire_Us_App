@@ -2,6 +2,6 @@
     <string name="app_name">Hire Me</string>
     <string name="select_job_title">Select Job Title</string>
     <string name="select_date_filter">Select date filter</string>
-
+    <string name="toggle_password_visibility">Toggle password visibility</string>
 </resources>
 

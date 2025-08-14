@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:background="#F7F9FB"
     android:padding="16dp"
-    tools:context=".JobListActivity">
+    tools:context=".view.actvities.JobListActivity">
 
     <!-- Search bar -->
     <androidx.cardview.widget.CardView

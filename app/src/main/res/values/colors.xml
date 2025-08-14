@@ -1,16 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Basic Colors -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00000000</color>
 
-        <!-- Existing colors -->
-        <color name="purple_500">#6200EE</color>
+    <!-- Material Design colors -->
+    <color name="purple_500">#6200EE</color>
+    <color name="purple_700">#3700B3</color>
+    <color name="teal_200">#03DAC5</color>
+    <color name="teal_700">#018786</color>
 
-        <!-- Optional: other Material Design colors -->
-        <color name="purple_700">#3700B3</color>
-        <color name="teal_200">#03DAC5</color>
-        <color name="teal_700">#018786</color>
+    <!-- Light Theme Colors -->
+    <color name="primary">#FFC107</color>           <!-- Main primary color -->
+    <color name="primary_container">#FFF8E1</color> <!-- Card/input surface in light mode -->
+    <color name="onPrimary">#000000</color>
 
+    <color name="secondary">#03A9F4</color>
+    <color name="onSecondary">#FFFFFF</color>
 
+    <color name="background">#FFFFFF</color>       <!-- Window background light -->
+    <color name="surface">#F0F0F0</color>         <!-- Card/input surface light -->
+    <color name="text_primary">#212121</color>
+
+    <!-- Dark Theme Colors -->
+    <color name="primary_dark">#FFB300</color>
+    <color name="primary_container_dark">#4E342E</color>
+    <color name="onPrimary_dark">#FFFFFF</color>
+
+    <color name="secondary_dark">#0288D1</color>
+    <color name="onSecondary_dark">#FFFFFF</color>
+
+    <color name="background_dark">#121212</color>  <!-- Window background dark -->
+    <color name="surface_dark">#1E1E1E</color>     <!-- Card/input surface dark -->
+    <color name="text_primary_dark">#FFFFFF</color>
 </resources>

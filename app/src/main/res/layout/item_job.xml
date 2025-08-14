@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+<com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    card_view:cardCornerRadius="16dp"
-    card_view:cardElevation="8dp"
-    android:background="@color/white">
+    android:layout_margin="16dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="8dp"
+    app:cardBackgroundColor="?attr/colorSurface">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,47 +20,47 @@
             android:id="@+id/txtJobTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Job Title"
+            android:text="Senior Android Developer"
             android:textSize="20sp"
-            android:textColor="#212121"
+            android:textColor="?attr/colorOnSurface"
             android:textStyle="bold"
             android:maxLines="2"
-            android:ellipsize="end"/>
+            android:ellipsize="end" />
 
         <!-- Company Name -->
         <TextView
             android:id="@+id/txtCompany"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Company Name"
-            android:textSize="16sp"
-            android:textColor="#757575"
-            android:layout_marginTop="6dp"
+            android:text="Awesome Tech Co."
+            android:textSize="14sp"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:layout_marginTop="4dp"
             android:maxLines="1"
-            android:ellipsize="end"/>
+            android:ellipsize="end" />
 
-        <!-- Salary with icon -->
+        <!-- Salary and Icon -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="12dp"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:layout_marginTop="12dp">
 
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@android:drawable/ic_menu_info_details"
-                android:tint="#4CAF50"
-                android:contentDescription="Salary Icon"/>
+                android:src="@drawable/ic_salary"
+                android:tint="?attr/colorPrimary"
+                android:contentDescription="Salary Icon" />
 
             <TextView
                 android:id="@+id/txtSalary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Salary: LKR 50,000"
+                android:text="Rs. 50,000"
                 android:textSize="16sp"
-                android:textColor="#4CAF50"
+                android:textColor="?attr/colorPrimary"
                 android:layout_marginStart="8dp" />
         </LinearLayout>
 
@@ -69,29 +69,50 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="16dp"
-            android:gravity="start">
+            android:layout_marginTop="20dp"
+            android:gravity="start"
+            android:weightSum="3">
 
-            <!-- View Applicants Button -->
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnViewApplicants"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
                 android:text="View Applicants"
-                android:backgroundTint="#2196F3"
-                android:textColor="#FFFFFF"
-                android:layout_marginEnd="16dp" />
+                android:textAllCaps="false"
+                android:textColor="?attr/colorPrimary"
+                android:backgroundTint="@android:color/transparent"
+                android:strokeColor="?attr/colorPrimary"
+                android:textSize="14sp"
+                app:cornerRadius="12dp"
+                android:layout_marginEnd="8dp"/>
 
-            <!-- Add Meal Button -->
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnAddMeal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
                 android:text="Add Meals"
-                android:backgroundTint="#FFC107"
-                android:textColor="#000000" />
+                android:textAllCaps="false"
+                android:textColor="?attr/colorOnSecondary"
+                android:backgroundTint="?attr/colorSecondary"
+                android:textSize="14sp"
+                app:cornerRadius="12dp"
+                android:layout_marginEnd="8dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnFinishJob"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="Finish Job"
+                android:textAllCaps="false"
+                android:textColor="?attr/colorOnError"
+                android:backgroundTint="?attr/colorError"
+                android:textSize="14sp"
+                app:cornerRadius="12dp"/>
         </LinearLayout>
 
     </LinearLayout>
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>
