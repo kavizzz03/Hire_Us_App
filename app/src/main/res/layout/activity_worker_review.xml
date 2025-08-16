@@ -19,9 +19,9 @@
 
         <ImageView
             android:id="@+id/backBtn"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@android:drawable/ic_menu_revert"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@drawable/outline_arrow_back_24"
             android:contentDescription="Back"
             android:padding="4dp" />
 

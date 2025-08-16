@@ -5,25 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FAFAFA">
-
     <!-- Page Title -->
     <TextView
         android:id="@+id/txtTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="My Jobs"
-        android:textSize="24sp"
-        android:textColor="#212121"
-        android:textStyle="bold"
         android:paddingStart="16dp"
-        android:paddingEnd="16dp"
         android:paddingTop="24dp"
+        android:paddingEnd="16dp"
         android:paddingBottom="12dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:text="My Jobs"
+        android:textColor="#212121"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Divider below title -->
     <View
         android:id="@+id/divider"
         android:layout_width="0dp"
