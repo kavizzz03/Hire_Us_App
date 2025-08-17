@@ -49,9 +49,9 @@ public class VaultActivity extends AppCompatActivity {
             finish();
             return;
         }
+
         MaterialToolbar topAppBar = findViewById(R.id.topAppBar);
         topAppBar.setNavigationOnClickListener(v -> onBackPressed());
-
 
         adapter = new VaultAdapter(this, vaultList, workerIdNumber);
         recyclerView.setAdapter(adapter);
@@ -59,17 +59,14 @@ public class VaultActivity extends AppCompatActivity {
         loadVaultData(workerIdNumber);
     }
 
-
     private void loadVaultData(String idNumber) {
         String url = "https://hireme.cpsharetxt.com/get_vault.php";
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 response -> {
                     try {
-                        // Try parsing as JSON array first
                         JSONArray jsonArray = new JSONArray(response);
                         double total = 0;
-
                         vaultList.clear();
 
                         for (int i = 0; i < jsonArray.length(); i++) {
@@ -80,10 +77,16 @@ public class VaultActivity extends AppCompatActivity {
                             double otHours = obj.getDouble("ot_hours");
                             double otSalary = obj.getDouble("ot_salary");
                             String updatedAt = obj.getString("updated_at");
+                            String transactionType = obj.getString("transaction_type");
+                            String status = obj.getString("status");
 
-                            total += salary + otSalary;
+                            double totalAmount = salary + otSalary;
 
-                            VaultModel model = new VaultModel(jobId, salary, otHours, otSalary, updatedAt);
+                            total += transactionType.equalsIgnoreCase("credit") ? totalAmount : -totalAmount;
+
+                            VaultModel model = new VaultModel(
+                                    jobId, salary, otHours, otSalary, updatedAt, transactionType, status
+                            );
                             vaultList.add(model);
                         }
 
@@ -91,28 +94,13 @@ public class VaultActivity extends AppCompatActivity {
                         adapter.notifyDataSetChanged();
 
                     } catch (Exception e) {
-                        // If not array, maybe it's an error object
-                        try {
-                            JSONObject json = new JSONObject(response);
-
-                            if (json.has("already_requested")) {
-                                Toast.makeText(VaultActivity.this, json.getString("already_requested"), Toast.LENGTH_LONG).show();
-                            } else if (json.has("error")) {
-                                Toast.makeText(VaultActivity.this, json.getString("error"), Toast.LENGTH_LONG).show();
-                            } else if (json.has("warning")) {
-                                Toast.makeText(VaultActivity.this, json.getString("warning"), Toast.LENGTH_LONG).show();
-                            } else {
-                                Toast.makeText(VaultActivity.this, "Unknown response received", Toast.LENGTH_SHORT).show();
-                            }
-                        } catch (Exception jsonEx) {
-                            jsonEx.printStackTrace();
-                            Toast.makeText(VaultActivity.this, "Parsing error (invalid format).", Toast.LENGTH_SHORT).show();
-                        }
+                        e.printStackTrace();
+                        Toast.makeText(VaultActivity.this, "Parsing error or invalid response.", Toast.LENGTH_LONG).show();
                     }
                 },
                 error -> {
                     error.printStackTrace();
-                    Toast.makeText(VaultActivity.this, "Network error.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(VaultActivity.this, "Network error: " + error.getMessage(), Toast.LENGTH_LONG).show();
                 }) {
 
             @Override

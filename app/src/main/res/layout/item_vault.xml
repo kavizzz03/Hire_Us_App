@@ -4,83 +4,109 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
+    android:layout_marginBottom="12dp"
+    android:layout_marginHorizontal="4dp"
     app:cardCornerRadius="12dp"
-    app:cardElevation="4dp"
-    android:clickable="true"
-    android:focusable="true"
-    android:foreground="?attr/selectableItemBackground">
+    app:cardElevation="6dp"
+    android:padding="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
         android:orientation="vertical">
 
+        <!-- Job ID -->
         <TextView
             android:id="@+id/jobIdText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Job ID: 12345"
-            android:textAppearance="?attr/textAppearanceHeadlineSmall"
-            android:textColor="?attr/colorPrimary"
-            android:textStyle="bold"/>
+            android:text="Job ID: 123"
+            android:textColor="?attr/colorOnSurface"
+            android:textStyle="bold"
+            android:textSize="16sp"/>
 
+        <!-- Salary -->
         <TextView
             android:id="@+id/salaryText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Salary: Rs. 0.00"
-            android:layout_marginTop="4dp"
-            android:textAppearance="?attr/textAppearanceBodyMedium" />
+            android:text="Salary: Rs. 1000"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp"/>
 
+        <!-- OT Hours -->
         <TextView
             android:id="@+id/otHoursText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="OT Hours: 0"
-            android:layout_marginTop="2dp"
-            android:textAppearance="?attr/textAppearanceBodyMedium" />
+            android:text="OT Hours: 5"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="14sp"/>
 
+        <!-- OT Salary -->
         <TextView
             android:id="@+id/otSalaryText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="OT Salary: Rs. 0.00"
-            android:layout_marginTop="2dp"
-            android:textAppearance="?attr/textAppearanceBodyMedium" />
+            android:text="OT Salary: Rs. 500"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="14sp"/>
 
+        <!-- Transaction Type -->
+        <TextView
+            android:id="@+id/transactionTypeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Type: credit"
+            android:textColor="?attr/colorSecondary"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp"/>
+
+        <!-- Status -->
+        <TextView
+            android:id="@+id/statusText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status: pending"
+            android:textColor="?attr/colorError"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp"/>
+
+        <!-- Total -->
         <TextView
             android:id="@+id/totalText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Total: Rs. 0.00"
-            android:layout_marginTop="4dp"
-            android:textAppearance="?attr/textAppearanceTitleMedium"
+            android:text="Total: Rs. 1500"
+            android:textColor="?attr/colorOnSurface"
             android:textStyle="bold"
-            android:textColor="?attr/colorSecondary" />
+            android:textSize="15sp"
+            android:layout_marginTop="4dp"/>
 
+        <!-- Updated At -->
         <TextView
             android:id="@+id/updatedAtText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Updated At: 2025-01-01"
-            android:layout_marginTop="6dp"
-            android:textAppearance="?attr/textAppearanceBodySmall"
-            android:textColor="?attr/colorOnSurfaceVariant" />
+            android:text="Updated: 2025-08-17"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="12sp"
+            android:layout_marginTop="4dp"/>
 
-        <Button
+        <!-- Withdraw Button -->
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnWithdraw"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Withdraw"
-            android:layout_marginTop="12dp"
-            android:backgroundTint="?attr/colorPrimary"
-            android:textColor="@android:color/white"
-            android:paddingLeft="24dp"
-            android:paddingRight="24dp"
-            android:fontFamily="sans-serif-medium" />
+            android:layout_marginTop="8dp"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            app:cornerRadius="8dp"
+            app:strokeColor="?attr/colorPrimary"
+            app:strokeWidth="2dp"
+            android:textColor="?attr/colorPrimary"/>
 
     </LinearLayout>
-
 </com.google.android.material.card.MaterialCardView>
