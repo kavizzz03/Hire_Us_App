@@ -29,42 +29,143 @@
         android:layout_margin="16dp" />
 
     <!-- Action Buttons -->
-    <LinearLayout
+    <androidx.gridlayout.widget.GridLayout
         android:id="@+id/contentLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/welcomeText"
-        android:orientation="vertical"
-        android:paddingHorizontal="16dp">
+        android:paddingHorizontal="16dp"
+        app:alignmentMode="alignMargins"
+        app:columnCount="2"
+        app:useDefaultMargins="true">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/makeJobBtn"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:minHeight="112dp"
+            android:paddingVertical="16dp"
             android:text="Make Job"
-            android:layout_marginBottom="8dp" />
+            android:textSize="15sp"
+            android:textAllCaps="false"
+            android:maxLines="2"
+            android:ellipsize="end"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill_horizontal"
+            app:icon="@drawable/outline_add_job_24"
+            app:iconGravity="top"
+            app:iconSize="40dp"
+            app:iconPadding="8dp"
+            app:iconTint="?attr/colorOnSecondaryContainer"
+            app:cornerRadius="20dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/editProfileBtn"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:minHeight="112dp"
+            android:paddingVertical="16dp"
             android:text="Edit Profile"
-            android:layout_marginBottom="8dp" />
+            android:textSize="15sp"
+            android:textAllCaps="false"
+            android:maxLines="2"
+            android:ellipsize="end"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill_horizontal"
+            app:icon="@drawable/outline_person_edit_24"
+            app:iconGravity="top"
+            app:iconSize="40dp"
+            app:iconPadding="8dp"
+            app:iconTint="?attr/colorOnSecondaryContainer"
+            app:cornerRadius="20dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/jobHistoryBtn"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:minHeight="112dp"
+            android:paddingVertical="16dp"
             android:text="Job History"
-            android:layout_marginBottom="8dp" />
+            android:textSize="15sp"
+            android:textAllCaps="false"
+            android:maxLines="2"
+            android:ellipsize="end"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill_horizontal"
+            app:icon="@drawable/outline_history_24"
+            app:iconGravity="top"
+            app:iconSize="40dp"
+            app:iconPadding="8dp"
+            app:iconTint="?attr/colorOnSecondaryContainer"
+            app:cornerRadius="20dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/withdrawRequestBtn"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Withdraw Request" />
+            android:layout_margin="8dp"
+            android:minHeight="112dp"
+            android:paddingVertical="16dp"
+            android:text="Withdraw Request"
+            android:textSize="15sp"
+            android:textAllCaps="false"
+            android:maxLines="2"
+            android:ellipsize="end"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill_horizontal"
+            app:icon="@drawable/ic_salary"
+            app:iconGravity="top"
+            app:iconSize="40dp"
+            app:iconPadding="8dp"
+            app:iconTint="?attr/colorOnSecondaryContainer"
+            app:cornerRadius="20dp" />
 
-    </LinearLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/chatBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:minHeight="112dp"
+            android:paddingVertical="16dp"
+            android:text="Message"
+            android:textSize="15sp"
+            android:textAllCaps="false"
+            android:maxLines="2"
+            android:ellipsize="end"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill_horizontal"
+            app:icon="@drawable/outline_chat_24"
+            app:iconGravity="top"
+            app:iconSize="40dp"
+            app:iconPadding="8dp"
+            app:iconTint="?attr/colorOnSecondaryContainer"
+            app:cornerRadius="20dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/editJobBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:minHeight="112dp"
+            android:paddingVertical="16dp"
+            android:text="Manage Job"
+            android:textSize="15sp"
+            android:textAllCaps="false"
+            android:maxLines="2"
+            android:ellipsize="end"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill_horizontal"
+            app:icon="@drawable/outline_contract_edit_24"
+            app:iconGravity="top"
+            app:iconSize="40dp"
+            app:iconPadding="8dp"
+            app:iconTint="?attr/colorOnSecondaryContainer"
+            app:cornerRadius="20dp" />
+
+    </androidx.gridlayout.widget.GridLayout>
 
     <!-- Logout Button -->
     <com.google.android.material.button.MaterialButton
