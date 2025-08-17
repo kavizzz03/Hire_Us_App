@@ -10,7 +10,7 @@ import com.example.hire_me_test.R;
 public class DashboardActivity extends AppCompatActivity {
 
     TextView welcomeText;
-    Button makeJobBtn,jobHistoryBtn,logoutBtn,withdrawRequestBtn;
+    Button makeJobBtn,jobHistoryBtn,logoutBtn,withdrawRequestBtn,editJobBtn,chatBtn;
 
     String userId, companyName;
 
@@ -24,6 +24,8 @@ public class DashboardActivity extends AppCompatActivity {
         jobHistoryBtn=findViewById(R.id.jobHistoryBtn);
         logoutBtn=findViewById(R.id.logoutBtn);
         withdrawRequestBtn=findViewById(R.id.withdrawRequestBtn);
+        editJobBtn=findViewById(R.id.editJobBtn);
+        chatBtn=findViewById(R.id.chatBtn);
 
         userId = getIntent().getStringExtra("user_id");
         companyName = getIntent().getStringExtra("company_name");
@@ -36,15 +38,25 @@ public class DashboardActivity extends AppCompatActivity {
             startActivity(intent);
         });
         jobHistoryBtn.setOnClickListener(view -> {
-            Intent intent = new Intent(DashboardActivity.this, EmployerJobsActivity.class);
+            /*Intent intent = new Intent(DashboardActivity.this, EmployerJobsActivity.class);
             intent.putExtra("employer_id", userId);
-            startActivity(intent);
+            startActivity(intent);*/
         });
         withdrawRequestBtn.setOnClickListener(view -> {
             Intent intent = new Intent(DashboardActivity.this,WithdrawRequestActivity.class);
             intent.putExtra("employer_id", userId);
             startActivity(intent);
         });
+        editJobBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(DashboardActivity.this, EmployerJobsActivity.class);
+            intent.putExtra("employer_id", userId);
+            startActivity(intent);
+        });
+        chatBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(DashboardActivity.this, ChatActivity.class);
+            startActivity(intent);
+        });
+
         logoutBtn.setOnClickListener(view -> {
             Intent intent = new Intent(DashboardActivity.this, GiveJobActivity.class);
             startActivity(intent);
