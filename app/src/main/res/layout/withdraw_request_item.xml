@@ -1,33 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="12dp"
-    android:background="#1a1a1a"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp">
+    android:layout_marginHorizontal="12dp"
+    android:layout_marginVertical="8dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="6dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="?attr/colorPrimaryContainer"
+    app:cardBackgroundColor="?attr/colorSurface">
 
-    <TextView
-        android:id="@+id/tvJobInfo"
-        android:textColor="#FFD700"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:id="@+id/tvStatus"
-        android:textColor="#FFFFFF"
-        android:layout_marginTop="4dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <Button
-        android:id="@+id/btnWithdraw"
-        android:text="Mark as Withdrawn"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="#FFD700"
-        android:textColor="#000000"/>
-</LinearLayout>
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Job Info -->
+        <TextView
+            android:id="@+id/tvJobInfo"
+            style="@style/TextAppearance.Material3.TitleMedium"
+            android:text="Job #123 - Software Engineer"
+            android:textColor="?attr/colorOnSurface"
+            android:textStyle="bold"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!-- Status -->
+        <TextView
+            android:id="@+id/tvStatus"
+            style="@style/TextAppearance.Material3.BodyMedium"
+            android:text="Status: Pending"
+            android:textColor="?attr/colorSecondary"
+            android:layout_marginTop="6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <!-- Updated At -->
+        <TextView
+            android:id="@+id/tvUpdatedAt"
+            style="@style/TextAppearance.Material3.BodySmall"
+            android:text="Updated: 2025-08-17"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:layout_marginTop="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <!-- Withdraw Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnWithdraw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Withdraw"
+            android:layout_marginTop="12dp"
+            app:cornerRadius="12dp"
+            android:textColor="?attr/colorOnPrimary"/>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
