@@ -2,6 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="#FFFFFF">
 
     <!-- Top App Bar with notification icon -->
@@ -17,23 +18,73 @@
         app:navigationIcon="@drawable/ic_menu" />
 
     <!-- Welcome Text -->
-    <TextView
-        android:id="@+id/welcomeText"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/headerCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome, [Name]"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="#333"
-        android:layout_below="@id/topAppBar"
-        android:layout_margin="16dp" />
+        android:layout_below="@+id/topAppBar"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="?attr/colorSurface"
+        app:cardCornerRadius="20dp"
+        app:strokeColor="?attr/colorOutlineVariant">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                    app:srcCompat="@drawable/outline_profile_24"
+                    app:strokeColor="?attr/colorOutline"
+                    app:strokeWidth="1dp"
+                    app:tint="?attr/colorOnPrimaryContainer" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/welcomeText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/topAppBar"
+                        android:layout_margin="16dp"
+                        android:text="Welcome, [Name]"
+                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:text="Welcome, Alex" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
 
     <!-- Action Buttons -->
     <androidx.gridlayout.widget.GridLayout
         android:id="@+id/contentLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/welcomeText"
+        android:layout_below="@id/headerCard"
         android:paddingHorizontal="16dp"
         app:alignmentMode="alignMargins"
         app:columnCount="2"
@@ -48,13 +99,12 @@
             android:paddingVertical="16dp"
             android:text="Make Job"
             android:textSize="15sp"
-            android:textAllCaps="false"
             android:maxLines="2"
             android:ellipsize="end"
             app:layout_columnWeight="1"
             app:layout_gravity="fill_horizontal"
             app:icon="@drawable/outline_add_job_24"
-            app:iconGravity="top"
+            app:iconGravity="textTop"
             app:iconSize="40dp"
             app:iconPadding="8dp"
             app:iconTint="?attr/colorOnSecondaryContainer"
@@ -69,13 +119,12 @@
             android:paddingVertical="16dp"
             android:text="Edit Profile"
             android:textSize="15sp"
-            android:textAllCaps="false"
             android:maxLines="2"
             android:ellipsize="end"
             app:layout_columnWeight="1"
             app:layout_gravity="fill_horizontal"
             app:icon="@drawable/outline_person_edit_24"
-            app:iconGravity="top"
+            app:iconGravity="textTop"
             app:iconSize="40dp"
             app:iconPadding="8dp"
             app:iconTint="?attr/colorOnSecondaryContainer"
@@ -90,13 +139,12 @@
             android:paddingVertical="16dp"
             android:text="Job History"
             android:textSize="15sp"
-            android:textAllCaps="false"
             android:maxLines="2"
             android:ellipsize="end"
             app:layout_columnWeight="1"
             app:layout_gravity="fill_horizontal"
             app:icon="@drawable/outline_history_24"
-            app:iconGravity="top"
+            app:iconGravity="textTop"
             app:iconSize="40dp"
             app:iconPadding="8dp"
             app:iconTint="?attr/colorOnSecondaryContainer"
@@ -109,15 +157,14 @@
             android:layout_margin="8dp"
             android:minHeight="112dp"
             android:paddingVertical="16dp"
-            android:text="Withdraw Request"
+            android:text="Withdraw"
             android:textSize="15sp"
-            android:textAllCaps="false"
             android:maxLines="2"
             android:ellipsize="end"
             app:layout_columnWeight="1"
             app:layout_gravity="fill_horizontal"
             app:icon="@drawable/ic_salary"
-            app:iconGravity="top"
+            app:iconGravity="textTop"
             app:iconSize="40dp"
             app:iconPadding="8dp"
             app:iconTint="?attr/colorOnSecondaryContainer"
@@ -132,13 +179,12 @@
             android:paddingVertical="16dp"
             android:text="Message"
             android:textSize="15sp"
-            android:textAllCaps="false"
             android:maxLines="2"
             android:ellipsize="end"
             app:layout_columnWeight="1"
             app:layout_gravity="fill_horizontal"
             app:icon="@drawable/outline_chat_24"
-            app:iconGravity="top"
+            app:iconGravity="textTop"
             app:iconSize="40dp"
             app:iconPadding="8dp"
             app:iconTint="?attr/colorOnSecondaryContainer"
@@ -153,13 +199,12 @@
             android:paddingVertical="16dp"
             android:text="Manage Job"
             android:textSize="15sp"
-            android:textAllCaps="false"
             android:maxLines="2"
             android:ellipsize="end"
             app:layout_columnWeight="1"
             app:layout_gravity="fill_horizontal"
             app:icon="@drawable/outline_contract_edit_24"
-            app:iconGravity="top"
+            app:iconGravity="textTop"
             app:iconSize="40dp"
             app:iconPadding="8dp"
             app:iconTint="?attr/colorOnSecondaryContainer"
