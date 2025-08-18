@@ -11,6 +11,10 @@
 
     <style name="Widget.MaterialComponents.Toolbar.Title" parent="TextAppearance.MaterialComponents.Headline6"/>
     <style name="Widget.MaterialComponents.Toolbar.Subtitle" parent="TextAppearance.MaterialComponents.Body2"/>
+    <style name="ShapeAppearanceOverlay.Circle" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
 
 
 </resources>
