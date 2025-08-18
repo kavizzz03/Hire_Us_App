@@ -17,6 +17,12 @@
         android:theme="@style/Theme.Hire_me_test"
         tools:targetApi="31">
         <activity
+            android:name=".view.actvities.JobParticipantsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.actvities.EmployerJobsHistoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.actvities.ChatActivity"
             android:exported="false" />
         <activity

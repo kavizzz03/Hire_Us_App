@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_margin="6dp"
+    android:background="?attr/colorSurface"
+    android:elevation="2dp"
+    android:clipToOutline="true">
+
+    <!-- Job Title -->
+    <TextView
+        android:id="@+id/textJobTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Job Title"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="?attr/colorPrimary" />
+
+    <!-- Job Date with PNG icon -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/ic_baseline_calendar_today_24"
+        android:contentDescription="Calendar Icon"/>
+
+        <TextView
+            android:id="@+id/textJobDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date - 2025-08-18"
+            android:textSize="14sp"
+            android:textColor="?attr/colorSecondary"
+            android:layout_marginStart="6dp"/>
+    </LinearLayout>
+
+    <!-- Job Location with PNG icon -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/ic_baseline_location_on_24"
+        android:contentDescription="Location Icon"/>
+
+        <TextView
+            android:id="@+id/textJobLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Location - Kaduwela"
+            android:textSize="14sp"
+            android:textColor="?attr/colorSecondary"
+            android:layout_marginStart="6dp"/>
+    </LinearLayout>
+
+</LinearLayout>
