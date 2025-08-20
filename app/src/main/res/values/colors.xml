@@ -34,4 +34,29 @@
     <color name="background_dark">#121212</color>  <!-- Window background dark -->
     <color name="surface_dark">#1E1E1E</color>     <!-- Card/input surface dark -->
     <color name="text_primary_dark">#FFFFFF</color>
+
+    <!--Colors 47-->
+    <!-- Brand -->
+    <color name="primary_47">#FFC107</color>
+    <color name="primary_hover_47">#FFB300</color>
+    <color name="primary_pressed_47">#FFA000</color>
+    <color name="onPrimary_47">#0B0B0C</color>
+
+    <!-- Neutrals -->
+    <color name="Background_47">#FFFFFF</color>
+    <color name="onBackground_47">#111827</color>
+    <color name="surface_47">#FAFAFA</color>
+    <color name="onSurface_47">#111827</color>
+    <color name="outline_47">#E5E7EB</color>
+    <color name="hint_47">#9CA3AF</color>
+
+    <!-- Semantics (optional) -->
+    <color name="success_47">#16A34A</color>
+    <color name="warning_47">#F59E0B</color>
+    <color name="error_47">#DC2626</color>
+    <color name="info_47">#2563EB</color>
+
+    <!-- Ripple overlays -->
+    <color name="ripple_on_primary_47">#260B0B0C</color> <!-- ~15% of ink -->
+    <color name="ripple_on_surface_47">#1F000000</color> <!-- ~12% black -->
 </resources>
