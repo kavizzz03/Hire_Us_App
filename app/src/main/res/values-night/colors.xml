@@ -8,6 +8,7 @@
     <color name="primary_hover_47">#FFB300</color>
     <color name="primary_pressed_47">#FFA000</color>
     <color name="onPrimary_47">#0B0B0C</color>
+    <color name="onPrimary_change_47">#FFC107</color>
 
     <!-- Neutrals -->
     <color name="Background_47">#0B0B0C</color>
