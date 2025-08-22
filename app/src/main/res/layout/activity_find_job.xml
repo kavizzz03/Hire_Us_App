@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@color/Background_47"
     android:fillViewport="true">
 
     <LinearLayout
@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="20dp">
 
         <!-- App Logo -->
         <ImageView
@@ -21,28 +21,39 @@
             android:layout_marginBottom="20dp"
             android:src="@mipmap/icon1"
             android:contentDescription="@string/app_name"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerInside"
+            android:background="@drawable/image_outline"
+            android:padding="4dp"/>
+
 
         <!-- Card for login -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_card"
-            android:elevation="6dp"
+            android:clipToOutline="true"
+            android:elevation="8dp"
+            android:layout_gravity="center"
             android:orientation="vertical"
             android:padding="20dp">
 
-            <!-- ID Number Field (email renamed to ID) -->
+            <!-- ID Number Field -->
             <EditText
                 android:id="@+id/editTextEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="ID Number"
                 android:inputType="text"
-                android:drawableStart="@drawable/ic_email"
+                android:autofillHints="username"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:drawableStart="@drawable/ic_people"
                 android:drawablePadding="12dp"
-                android:padding="12dp"
-                android:background="@drawable/bg_input" />
+                android:drawableTint="@color/onSurface_47"
+                android:padding="15dp"
+                android:textColor="@color/onSurface_47"
+                android:textColorHint="@color/hint_47"
+                android:fontFamily="sans-serif"/>
 
             <!-- Password Field with Toggle -->
             <RelativeLayout
@@ -56,20 +67,27 @@
                     android:layout_height="wrap_content"
                     android:hint="Password"
                     android:inputType="textPassword"
+                    android:autofillHints="password"
+                    android:imeOptions="actionDone"
+                    android:maxLines="1"
                     android:drawableStart="@drawable/ic_lock"
                     android:drawablePadding="12dp"
-                    android:padding="12dp"
-                    android:background="@drawable/bg_input" />
+                    android:drawableTint="@color/onSurface_47"
+                    android:padding="15dp"
+                    android:textColor="@color/onSurface_47"
+                    android:textColorHint="@color/hint_47"
+                    android:fontFamily="sans-serif"/>
 
                 <ImageButton
                     android:id="@+id/btnTogglePassword"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:src="@drawable/ic_visibility_off"
-                    android:contentDescription="Toggle Password" />
+                    android:contentDescription="Toggle Password"
+                    app:tint="@color/onSurface_47" />
             </RelativeLayout>
 
             <!-- Remember Me Checkbox -->
@@ -78,7 +96,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Remember Me" />
+                android:text="Remember Me"
+                android:foregroundTint="@color/onPrimary_change_47"/>
 
             <!-- Login Button -->
             <com.google.android.material.button.MaterialButton
@@ -88,8 +107,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Login"
-                android:backgroundTint="@color/primary"
-                android:textColor="@android:color/white" />
+                android:textAllCaps="false"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/btn_primary_text"
+                android:backgroundTint="@color/btn_primary_tint"
+                app:cornerRadius="14dp"
+                app:rippleColor="@color/ripple_on_primary_47" />
 
             <!-- New User Button -->
             <com.google.android.material.button.MaterialButton
@@ -99,7 +122,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Register New User"
-                android:textColor="@color/primary" />
+                android:textAllCaps="false"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/btn_outline_text"
+                app:strokeColor="@color/onPrimary_change_47"
+                app:strokeWidth="1dp"
+                app:cornerRadius="14dp"
+                app:rippleColor="@color/ripple_on_surface_47" />
 
             <!-- Forgot Password -->
             <TextView
@@ -107,10 +136,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="10dp"
                 android:text="Forgot Password?"
-                android:textColor="@color/primary"
-                android:textStyle="bold" />
+                android:textColor="@color/primary_47"
+                android:textStyle="bold"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="8dp" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
