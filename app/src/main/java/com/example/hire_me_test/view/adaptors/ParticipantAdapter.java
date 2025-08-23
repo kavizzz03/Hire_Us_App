@@ -1,5 +1,6 @@
 package com.example.hire_me_test.view.adaptors;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +15,17 @@ import java.util.List;
 public class ParticipantAdapter extends RecyclerView.Adapter<ParticipantAdapter.ViewHolder> {
 
     private List<Participant> list;
+    private Context context;
+    private OnParticipantClickListener listener;
 
-    public ParticipantAdapter(List<Participant> list) {
+    public interface OnParticipantClickListener {
+        void onParticipantClick(Participant participant);
+    }
+
+    public ParticipantAdapter(Context context, List<Participant> list, OnParticipantClickListener listener) {
+        this.context = context;
         this.list = list;
+        this.listener = listener;
     }
 
     @NonNull
@@ -32,6 +41,10 @@ public class ParticipantAdapter extends RecyclerView.Adapter<ParticipantAdapter.
         holder.name.setText(p.getName());
         holder.contact.setText(p.getContact());
         holder.idNumber.setText("ID: " + p.getIdNumber());
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) listener.onParticipantClick(p);
+        });
     }
 
     @Override
@@ -41,6 +54,7 @@ public class ParticipantAdapter extends RecyclerView.Adapter<ParticipantAdapter.
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView name, contact, idNumber;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.textName);

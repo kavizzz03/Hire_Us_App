@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:background="?attr/colorSurface"
+    tools:context=".view.actvities.JobParticipantsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Topic: Rating Info -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rating Info"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="?attr/colorPrimary"
+            android:layout_marginTop="8dp"
+            tools:text="Rating Info"/>
+
+        <EditText
+            android:id="@+id/edtRatedBy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Rated By"
+            android:inputType="textPersonName"
+            android:padding="12dp"
+            android:backgroundTint="?attr/colorOnSurface"
+            android:textColor="?attr/colorOnSurface"
+            android:layout_marginTop="4dp"
+            tools:text="John Doe"/>
+
+        <EditText
+            android:id="@+id/edtRating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Rating (1-5)"
+            android:inputType="number"
+            android:padding="12dp"
+            android:backgroundTint="?attr/colorOnSurface"
+            android:textColor="?attr/colorOnSurface"
+            android:layout_marginTop="4dp"
+            tools:text="5"/>
+
+        <!-- Topic: Experience -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Experience"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="?attr/colorPrimary"
+            android:layout_marginTop="12dp"
+            tools:text="Experience"/>
+
+        <EditText
+            android:id="@+id/edtExperience"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Work Experience"
+            android:inputType="textMultiLine"
+            android:padding="12dp"
+            android:backgroundTint="?attr/colorOnSurface"
+            android:textColor="?attr/colorOnSurface"
+            android:layout_marginTop="4dp"
+            tools:text="3 years in construction"/>
+
+        <EditText
+            android:id="@+id/edtFeedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Feedback"
+            android:inputType="textMultiLine"
+            android:padding="12dp"
+            android:backgroundTint="?attr/colorOnSurface"
+            android:textColor="?attr/colorOnSurface"
+            android:layout_marginTop="4dp"
+            tools:text="Hardworking and punctual"/>
+
+        <!-- Topic: Job Details -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Job Details"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="?attr/colorPrimary"
+            android:layout_marginTop="12dp"
+            tools:text="Job Details"/>
+
+        <EditText
+            android:id="@+id/edtJobTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Job Title"
+            android:inputType="text"
+            android:padding="12dp"
+            android:backgroundTint="?attr/colorOnSurface"
+            android:textColor="?attr/colorOnSurface"
+            android:layout_marginTop="4dp"
+            tools:text="Mason"/>
+
+        <EditText
+            android:id="@+id/edtCompanyName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Company Name"
+            android:inputType="text"
+            android:padding="12dp"
+            android:backgroundTint="?attr/colorOnSurface"
+            android:textColor="?attr/colorOnSurface"
+            android:layout_marginTop="4dp"
+            tools:text="ABC Constructions"/>
+
+        <EditText
+            android:id="@+id/edtDuration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Duration"
+            android:inputType="text"
+            android:padding="12dp"
+            android:backgroundTint="?attr/colorOnSurface"
+            android:textColor="?attr/colorOnSurface"
+            android:layout_marginTop="4dp"
+            tools:text="6 months"/>
+
+    </LinearLayout>
+</ScrollView>

@@ -4,12 +4,13 @@
     <string name="select_date_filter">Select date filter</string>
     <string name="toggle_password_visibility">Toggle password visibility</string>
     <string name="welcome">Welcome,</string>
-    <string name="hire_us_system">Hire Us System...</string>
+    <string name="hire_us_system">Hire Me System...</string>
     <string name="find_a_job">Find a Job</string>
-    <string name="find_job">Find Job</string>
     <string name="give_a_job">Give a Job</string>
-    <string name="give_job">Give Job</string>
     <string name="chat_with_admin">Chat with Admin</string>
-    <string name="chat">Chat</string>
+    <string name="find_job">Find Job Image</string>
+    <string name="give_job">Give Job Image</string>
+    <string name="chat">Chat Image</string>
+
 </resources>
 
