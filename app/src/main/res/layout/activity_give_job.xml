@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@color/Background_47"
     android:fillViewport="true">
 
     <LinearLayout
@@ -21,14 +21,18 @@
             android:layout_marginBottom="20dp"
             android:src="@mipmap/icon1"
             android:contentDescription="@string/app_name"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerInside"
+            android:background="@drawable/image_outline"
+            android:padding="4dp"/>
 
         <!-- Card for login -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_card"
-            android:elevation="6dp"
+            android:clipToOutline="true"
+            android:elevation="8dp"
+            android:layout_gravity="center"
             android:orientation="vertical"
             android:padding="20dp">
 
@@ -39,10 +43,14 @@
                 android:layout_height="wrap_content"
                 android:hint="Email Address"
                 android:inputType="textEmailAddress"
+                android:maxLines="1"
                 android:drawableStart="@drawable/ic_email"
                 android:drawablePadding="12dp"
                 android:padding="12dp"
-                android:background="@drawable/bg_input" />
+                android:fontFamily="sans-serif"
+                android:drawableTint="@color/onSurface_47"
+                android:textColor="@color/onSurface_47"
+                android:textColorHint="@color/hint_47"/>
 
             <!-- Password Field with Toggle -->
             <RelativeLayout
@@ -56,10 +64,14 @@
                     android:layout_height="wrap_content"
                     android:hint="Password"
                     android:inputType="textPassword"
+                    android:maxLines="1"
                     android:drawableStart="@drawable/ic_lock"
                     android:drawablePadding="12dp"
                     android:padding="12dp"
-                    android:background="@drawable/bg_input" />
+                    android:fontFamily="sans-serif"
+                    android:drawableTint="@color/onSurface_47"
+                    android:textColor="@color/onSurface_47"
+                    android:textColorHint="@color/hint_47"/>
 
                 <ImageButton
                     android:id="@+id/btnTogglePassword"
@@ -69,7 +81,8 @@
                     android:layout_centerVertical="true"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:src="@drawable/ic_visibility_off"
-                    android:contentDescription="Toggle Password" />
+                    android:contentDescription="Toggle Password"
+                    app:tint="@color/onSurface_47" />
             </RelativeLayout>
 
             <!-- Remember Me Checkbox -->
@@ -78,7 +91,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Remember Me" />
+                android:text="Remember Me"
+                android:foregroundTint="@color/onPrimary_change_47"/>
 
             <!-- Login Button -->
             <com.google.android.material.button.MaterialButton
@@ -88,8 +102,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Login"
-                android:backgroundTint="@color/primary"
-                android:textColor="@android:color/white" />
+                android:textAllCaps="false"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/btn_primary_text"
+                android:backgroundTint="@color/btn_primary_tint"
+                app:cornerRadius="14dp"
+                app:rippleColor="@color/ripple_on_primary_47"/>
 
             <!-- New User Button -->
             <com.google.android.material.button.MaterialButton
@@ -98,8 +116,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Register New Company"
-                android:textColor="@color/primary" />
+                android:text="Register New User"
+                android:textAllCaps="false"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/btn_outline_text"
+                app:strokeColor="@color/onPrimary_change_47"
+                app:strokeWidth="1dp"
+                app:cornerRadius="14dp"
+                app:rippleColor="@color/ripple_on_surface_47"/>
 
             <!-- Forgot Password -->
             <TextView
@@ -107,10 +131,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="10dp"
                 android:text="Forgot Password?"
-                android:textColor="@color/primary"
-                android:textStyle="bold" />
+                android:textColor="@color/primary_47"
+                android:textStyle="bold"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="8dp"/>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
