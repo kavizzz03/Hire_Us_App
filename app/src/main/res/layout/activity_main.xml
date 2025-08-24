@@ -1,195 +1,211 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Background_47">
+    android:background="@drawable/wave">
 
-    <LinearLayout
-        android:id="@+id/main"
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Welcome Header -->
-        <TextView
-            android:id="@+id/welcomeText"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/main"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/welcome"
-            android:textColor="@color/onSurface_47"
-            android:textSize="36sp"
-            android:textStyle="bold"
-            android:layout_gravity="center_horizontal"
-            android:fontFamily="sans-serif-medium"
-            android:letterSpacing="0.02" />
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/hireMeText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/hire_us_system"
-            android:textColor="@color/primary_47"
-            android:textSize="28sp"
-            android:textStyle="italic"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="24dp"
-            android:fontFamily="sans-serif-medium"
-            android:letterSpacing="0.01" />
+            <!-- Welcome Header -->
+            <TextView
+                android:id="@+id/welcomeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="0.02"
+                android:text="@string/welcome"
+                android:textColor="@color/text_primary"
+                android:textSize="40sp"
+                android:textStyle="bold" />
 
-        <!-- Find a Job Card -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/findJobLayout"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?attr/selectableItemBackground"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="8dp"
-            app:cardBackgroundColor="@color/surface_47"
-            app:strokeColor="@color/outline_47"
-            app:strokeWidth="1dp"
-            app:rippleColor="@color/ripple_on_surface_47">
+            <TextView
+                android:id="@+id/hireMeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="24dp"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="0.01"
+                android:text="@string/hire_us_system"
+                android:textColor="@color/text_primary"
+                android:textSize="30sp"
+                android:paddingBottom="25dp"
+                android:textStyle="italic" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <!-- Find a Job Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/findJobLayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="16dp">
+                android:layout_height="150dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="20dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardBackgroundColor="@color/surface_47"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp"
+                app:rippleColor="@color/ripple_on_surface_47"
+                app:strokeColor="@color/outline_47"
+                app:strokeWidth="1dp">
 
-                <TextView
-                    android:id="@+id/findJobText"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/find_a_job"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/onSurface_47"
-                    android:fontFamily="sans-serif-medium"
-                    android:letterSpacing="0.01"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/findJobImage"
-                    app:layout_constraintVertical_bias="0.5" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="16dp">
 
-                <ImageView
-                    android:id="@+id/findJobImage"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/job_find"
-                    android:contentDescription="@string/find_job"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </com.google.android.material.card.MaterialCardView>
+                    <TextView
+                        android:id="@+id/findJobText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:gravity="center"
+                        android:letterSpacing="0.01"
+                        android:text="@string/find_a_job"
+                        android:textColor="@color/onSurface_47"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/findJobImage"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5" />
 
-        <!-- Give a Job Card -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/giveJobLayout"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?attr/selectableItemBackground"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="8dp"
-            app:cardBackgroundColor="@color/surface_47"
-            app:strokeColor="@color/outline_47"
-            app:strokeWidth="1dp"
-            app:rippleColor="@color/ripple_on_surface_47">
+                    <ImageView
+                        android:id="@+id/findJobImage"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:contentDescription="@string/find_job"
+                        android:src="@drawable/job_find"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <!-- Give a Job Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/giveJobLayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="16dp">
+                android:layout_height="150dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="20dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardBackgroundColor="@color/surface_47"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp"
+                app:rippleColor="@color/ripple_on_surface_47"
+                app:strokeColor="@color/outline_47"
+                app:strokeWidth="1dp">
 
-                <TextView
-                    android:id="@+id/giveJobText"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/give_a_job"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/onSurface_47"
-                    android:fontFamily="sans-serif-medium"
-                    android:letterSpacing="0.01"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/giveJobImage"
-                    app:layout_constraintVertical_bias="0.5" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="16dp">
 
-                <ImageView
-                    android:id="@+id/giveJobImage"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/job"
-                    android:contentDescription="@string/give_job"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </com.google.android.material.card.MaterialCardView>
+                    <TextView
+                        android:id="@+id/giveJobText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:gravity="center"
+                        android:letterSpacing="0.01"
+                        android:text="@string/give_a_job"
+                        android:textColor="@color/onSurface_47"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/giveJobImage"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5" />
 
-        <!-- Chat with Admin Card -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/chatLayout"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?attr/selectableItemBackground"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="8dp"
-            app:cardBackgroundColor="@color/surface_47"
-            app:strokeColor="@color/outline_47"
-            app:strokeWidth="1dp"
-            app:rippleColor="@color/ripple_on_surface_47">
+                    <ImageView
+                        android:id="@+id/giveJobImage"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:contentDescription="@string/give_job"
+                        android:src="@drawable/job"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <!-- Chat with Admin Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/chatLayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="16dp">
+                android:layout_height="150dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="20dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardBackgroundColor="@color/surface_47"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp"
+                app:rippleColor="@color/ripple_on_surface_47"
+                app:strokeColor="@color/outline_47"
+                app:strokeWidth="1dp">
 
-                <TextView
-                    android:id="@+id/chatText"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/chat_with_admin"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/onSurface_47"
-                    android:fontFamily="sans-serif-medium"
-                    android:letterSpacing="0.01"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/chatImage"
-                    app:layout_constraintVertical_bias="0.5" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="16dp">
 
-                <ImageView
-                    android:id="@+id/chatImage"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/ic_chat"
-                    android:contentDescription="@string/chat"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </com.google.android.material.card.MaterialCardView>
+                    <TextView
+                        android:id="@+id/chatText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:gravity="center"
+                        android:letterSpacing="0.01"
+                        android:text="@string/chat_with_admin"
+                        android:textColor="@color/onSurface_47"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/chatImage"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5" />
 
-    </LinearLayout>
-</ScrollView>
+                    <ImageView
+                        android:id="@+id/chatImage"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:contentDescription="@string/chat"
+                        android:src="@drawable/ic_chat"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
