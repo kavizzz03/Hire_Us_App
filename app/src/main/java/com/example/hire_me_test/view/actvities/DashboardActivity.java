@@ -12,9 +12,10 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.example.hire_me_test.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.imageview.ShapeableImageView;
 
 import org.json.JSONException;
@@ -33,7 +34,7 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        // Init views
+        // Initialize views
         welcomeText = findViewById(R.id.welcomeText);
         makeJobBtn = findViewById(R.id.makeJobBtn);
         jobHistoryBtn = findViewById(R.id.jobHistoryBtn);
@@ -44,34 +45,61 @@ public class DashboardActivity extends AppCompatActivity {
         editProfileBtn = findViewById(R.id.editProfileBtn);
         companyIcon = findViewById(R.id.companyIconImage);
 
-        // Get userId
-        userId = getIntent().getStringExtra("user_id");
-        if (userId != null && !userId.isEmpty()) fetchEmployerData(userId);
+        BottomNavigationView bottomNavigation = findViewById(R.id.bottomNavigation);
+        bottomNavigation.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.nav_home) {
+                openActivity(DashboardActivity.class, "user_id", userId);
+                return true;
+            } else if (id == R.id.nav_salary) {
+                openActivity(WithdrawRequestActivity.class, "employer_id", userId);
+                return true;
+            } else if (id == R.id.nav_notifications) {
+                startActivity(new Intent(DashboardActivity.this, ChatActivity.class));
+                return true;
+            } else if (id == R.id.nav_profile) {
+                openActivity(EmployerProfileActivity.class, "employer_id", userId);
+                return true;
+            }
+            return false;
+        });
 
-        // Button listeners
+
+        // Get userId from Intent
+        userId = getIntent().getStringExtra("user_id");
+        if (userId != null && !userId.isEmpty()) {
+            fetchEmployerData(userId);
+        } else {
+            welcomeText.setText("Welcome, Employer");
+            companyIcon.setImageResource(R.drawable.outline_profile_24);
+        }
+
+        // Button click listeners
         makeJobBtn.setOnClickListener(v -> openActivity(PostJobActivity.class, "employer_id", userId));
         jobHistoryBtn.setOnClickListener(v -> openActivity(EmployerJobsHistoryActivity.class, "employer_id", userId));
         withdrawRequestBtn.setOnClickListener(v -> openActivity(WithdrawRequestActivity.class, "employer_id", userId));
         editJobBtn.setOnClickListener(v -> openActivity(EmployerJobsActivity.class, "employer_id", userId));
         editProfileBtn.setOnClickListener(v -> openActivity(EmployerProfileActivity.class, "employer_id", userId));
-        chatBtn.setOnClickListener(v -> startActivity(new Intent(this, ChatActivity.class)));
+        chatBtn.setOnClickListener(v -> startActivity(new Intent(DashboardActivity.this, ChatActivity.class)));
         logoutBtn.setOnClickListener(v -> logout());
     }
 
+    // Open activity with extra
     private void openActivity(Class<?> cls, String key, String value) {
-        if (value == null || value.isEmpty()) return;
-        Intent intent = new Intent(this, cls);
-        intent.putExtra(key, value);
+        Intent intent = new Intent(DashboardActivity.this, cls);
+        if (key != null && value != null) intent.putExtra(key, value);
         startActivity(intent);
     }
 
+    // Logout and clear back stack
     private void logout() {
-        Intent intent = new Intent(this, GiveJobActivity.class);
+        Intent intent = new Intent(DashboardActivity.this, GiveJobActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
     }
 
+    // Fetch employer details from server
     private void fetchEmployerData(String userId) {
         RequestQueue queue = Volley.newRequestQueue(this);
         JSONObject postData = new JSONObject();

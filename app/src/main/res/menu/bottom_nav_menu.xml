@@ -7,7 +7,7 @@
     <item
         android:id="@+id/nav_salary"
         android:icon="@drawable/ic_salary"
-        android:title="Salary" />
+        android:title="Withdraw" />
     <item
         android:id="@+id/nav_notifications"
         android:icon="@drawable/ic_notifications"
