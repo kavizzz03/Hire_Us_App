@@ -27,6 +27,7 @@ public class DashboardActivity extends AppCompatActivity {
     private Button makeJobBtn, jobHistoryBtn, logoutBtn, withdrawRequestBtn, editJobBtn, chatBtn, editProfileBtn;
     private ShapeableImageView companyIcon;
     private String userId;
+    private String companyName;
     private final String phpUrl = "https://hireme.cpsharetxt.com/get_company_icon.php";
 
     @Override
@@ -64,7 +65,6 @@ public class DashboardActivity extends AppCompatActivity {
             return false;
         });
 
-
         // Get userId from Intent
         userId = getIntent().getStringExtra("user_id");
         if (userId != null && !userId.isEmpty()) {
@@ -76,7 +76,14 @@ public class DashboardActivity extends AppCompatActivity {
 
         // Button click listeners
         makeJobBtn.setOnClickListener(v -> openActivity(PostJobActivity.class, "employer_id", userId));
-        jobHistoryBtn.setOnClickListener(v -> openActivity(EmployerJobsHistoryActivity.class, "employer_id", userId));
+
+        jobHistoryBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(DashboardActivity.this, EmployerJobsHistoryActivity.class);
+            intent.putExtra("employer_id", userId);
+            intent.putExtra("company_name", companyName); // Pass company name
+            startActivity(intent);
+        });
+
         withdrawRequestBtn.setOnClickListener(v -> openActivity(WithdrawRequestActivity.class, "employer_id", userId));
         editJobBtn.setOnClickListener(v -> openActivity(EmployerJobsActivity.class, "employer_id", userId));
         editProfileBtn.setOnClickListener(v -> openActivity(EmployerProfileActivity.class, "employer_id", userId));
@@ -84,14 +91,12 @@ public class DashboardActivity extends AppCompatActivity {
         logoutBtn.setOnClickListener(v -> logout());
     }
 
-    // Open activity with extra
     private void openActivity(Class<?> cls, String key, String value) {
         Intent intent = new Intent(DashboardActivity.this, cls);
         if (key != null && value != null) intent.putExtra(key, value);
         startActivity(intent);
     }
 
-    // Logout and clear back stack
     private void logout() {
         Intent intent = new Intent(DashboardActivity.this, GiveJobActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -99,7 +104,6 @@ public class DashboardActivity extends AppCompatActivity {
         finish();
     }
 
-    // Fetch employer details from server
     private void fetchEmployerData(String userId) {
         RequestQueue queue = Volley.newRequestQueue(this);
         JSONObject postData = new JSONObject();
@@ -111,7 +115,7 @@ public class DashboardActivity extends AppCompatActivity {
                     if (status.equals("success")) {
                         JSONObject data = response.optJSONObject("data");
                         if (data != null) {
-                            String companyName = data.optString("company_name", "Employer");
+                            companyName = data.optString("company_name", "Employer"); // Store company name
                             String companyIconUrl = data.optString("company_icon_url", "");
 
                             welcomeText.setText("Welcome, " + companyName);

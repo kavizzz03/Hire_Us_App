@@ -31,6 +31,7 @@ public class JobParticipantsActivity extends AppCompatActivity {
     List<Participant> participantList;
     ParticipantAdapter adapter;
     int jobId;
+    String companyName, jobTitle;
     ImageView backButton;
 
     @Override
@@ -45,7 +46,10 @@ public class JobParticipantsActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         participantList = new ArrayList<>();
 
+        // Get jobId, companyName, jobTitle from intent
         jobId = getIntent().getIntExtra("job_id", -1);
+        companyName = getIntent().getStringExtra("company_name");
+        jobTitle = getIntent().getStringExtra("job_title");
 
         fetchParticipants();
     }
@@ -98,9 +102,14 @@ public class JobParticipantsActivity extends AppCompatActivity {
         EditText edtCompanyName = dialogView.findViewById(R.id.edtCompanyName);
         EditText edtDuration = dialogView.findViewById(R.id.edtDuration);
 
+        // Auto-fill fields
+        edtRatedBy.setText(companyName);
+        edtJobTitle.setText(jobTitle);
+        edtCompanyName.setText(companyName);
+
         builder.setPositiveButton("Submit", (dialog, which) -> {
             sendWorkerRating(
-                    participant.getIdNumber(),  // send ID number
+                    participant.getIdNumber(),
                     edtRatedBy.getText().toString(),
                     edtRating.getText().toString(),
                     edtExperience.getText().toString(),

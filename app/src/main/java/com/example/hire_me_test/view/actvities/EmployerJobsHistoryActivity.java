@@ -27,6 +27,7 @@ public class EmployerJobsHistoryActivity extends AppCompatActivity {
     List<JobHistory> jobList;
     JobHistoryAdapter adapter;
     String employerId;
+    String companyName;
     ImageView backButton;
 
     @Override
@@ -36,15 +37,16 @@ public class EmployerJobsHistoryActivity extends AppCompatActivity {
 
         // Back button
         backButton = findViewById(R.id.backButton);
-        backButton.setOnClickListener(v -> finish());  // Go back when clicked
+        backButton.setOnClickListener(v -> finish());
 
         // RecyclerView setup
         recyclerView = findViewById(R.id.recyclerViewJobHistory);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         jobList = new ArrayList<>();
 
-        // Get employer ID from intent
+        // Get employer ID and company name from intent
         employerId = getIntent().getStringExtra("employer_id");
+        companyName = getIntent().getStringExtra("company_name");
 
         // Fetch jobs
         fetchJobs();
@@ -71,6 +73,8 @@ public class EmployerJobsHistoryActivity extends AppCompatActivity {
                         adapter = new JobHistoryAdapter(jobList, job -> {
                             Intent intent = new Intent(this, JobParticipantsActivity.class);
                             intent.putExtra("job_id", job.getJobId());
+                            intent.putExtra("job_title", job.getJobTitle());
+                            intent.putExtra("company_name", companyName); // Pass company name
                             startActivity(intent);
                         });
                         recyclerView.setAdapter(adapter);

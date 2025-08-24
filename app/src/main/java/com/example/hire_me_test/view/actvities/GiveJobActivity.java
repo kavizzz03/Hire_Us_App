@@ -3,6 +3,8 @@ package com.example.hire_me_test.view.actvities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.InputType;
 import android.widget.*;
@@ -48,6 +50,11 @@ public class GiveJobActivity extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
 
+        // Check network connection on activity load
+        if (!isNetworkConnected()) {
+            Toast.makeText(this, "No internet connection. Please connect and try again.", Toast.LENGTH_LONG).show();
+        }
+
         // Load saved credentials if Remember Me was checked
         loadSavedCredentials();
 
@@ -66,6 +73,11 @@ public class GiveJobActivity extends AppCompatActivity {
 
         // Login button click
         buttonLogin.setOnClickListener(view -> {
+            if (!isNetworkConnected()) {
+                Toast.makeText(this, "No internet connection. Please connect and try again.", Toast.LENGTH_LONG).show();
+                return;
+            }
+
             String email = editTextEmail.getText().toString().trim();
             String password = editTextPassword.getText().toString().trim();
 
@@ -84,6 +96,15 @@ public class GiveJobActivity extends AppCompatActivity {
         textViewForgotPassword.setOnClickListener(view -> {
             startActivity(new Intent(GiveJobActivity.this, ForgotPasswordActivity.class));
         });
+    }
+
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (cm != null) {
+            NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+            return activeNetwork != null && activeNetwork.isConnected();
+        }
+        return false;
     }
 
     private void loadSavedCredentials() {

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.InputType;
 import android.widget.Button;
@@ -32,11 +34,9 @@ public class FindJobActivity extends AppCompatActivity {
     private TextView textViewForgotPassword;
     private ImageButton btnTogglePassword;
     private CheckBox checkBoxRemember;
-
     private boolean isPasswordVisible = false;
 
     private static final String LOGIN_URL = "https://hireme.cpsharetxt.com/login.php";
-
     private SharedPreferences sharedPreferences;
     private static final String PREF_NAME = "HireMePrefs";
     private static final String KEY_ID_NUMBER = "id_number";
@@ -57,24 +57,16 @@ public class FindJobActivity extends AppCompatActivity {
         textViewForgotPassword = findViewById(R.id.textViewForgotPassword);
 
         sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-
         loadSavedCredentials();
 
-        btnTogglePassword.setOnClickListener(v -> {
-            if (isPasswordVisible) {
-                editTextPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                btnTogglePassword.setImageResource(R.drawable.ic_visibility_off);
-            } else {
-                editTextPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-                btnTogglePassword.setImageResource(R.drawable.ic_visibility);
-            }
-            // Reset typeface to avoid monospace weirdness
-            editTextPassword.setTypeface(Typeface.DEFAULT);
-            editTextPassword.setSelection(editTextPassword.getText().length());
-            isPasswordVisible = !isPasswordVisible;
-        });
+        btnTogglePassword.setOnClickListener(v -> togglePasswordVisibility());
 
         buttonLogin.setOnClickListener(v -> {
+            if (!isNetworkConnected()) {
+                Toast.makeText(this, "No internet connection. Please connect and try again.", Toast.LENGTH_LONG).show();
+                return;
+            }
+
             String idNumber = editTextEmail.getText().toString().trim();
             String password = editTextPassword.getText().toString().trim();
 
@@ -84,13 +76,24 @@ public class FindJobActivity extends AppCompatActivity {
             }
 
             saveCredentials(idNumber, password);
-
             checkLogin(idNumber, password);
         });
 
         buttonNewUser.setOnClickListener(v -> startActivity(new Intent(this, RegisterActivity.class)));
-
         textViewForgotPassword.setOnClickListener(v -> startActivity(new Intent(this, ResetRequestActivity.class)));
+    }
+
+    private void togglePasswordVisibility() {
+        if (isPasswordVisible) {
+            editTextPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            btnTogglePassword.setImageResource(R.drawable.ic_visibility_off);
+        } else {
+            editTextPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+            btnTogglePassword.setImageResource(R.drawable.ic_visibility);
+        }
+        editTextPassword.setTypeface(Typeface.DEFAULT);
+        editTextPassword.setSelection(editTextPassword.getText().length());
+        isPasswordVisible = !isPasswordVisible;
     }
 
     private void loadSavedCredentials() {
@@ -112,6 +115,15 @@ public class FindJobActivity extends AppCompatActivity {
             editor.clear();
         }
         editor.apply();
+    }
+
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (cm != null) {
+            NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+            return activeNetwork != null && activeNetwork.isConnected();
+        }
+        return false;
     }
 
     private void checkLogin(String idNumber, String password) {
@@ -139,7 +151,7 @@ public class FindJobActivity extends AppCompatActivity {
                         Toast.makeText(this, "Response parsing error: " + e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 },
-                error -> Toast.makeText(this, "Error: " + error.getMessage(), Toast.LENGTH_LONG).show()
+                error -> Toast.makeText(this, "Network error: " + error.getMessage(), Toast.LENGTH_LONG).show()
         ) {
             @Override
             protected Map<String, String> getParams() {
