@@ -1,11 +1,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    tools:context=".view.actvities.DashboardActivity">
 
-    <!-- Top App Bar with notification icon -->
+    <!-- Top App Bar -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/topAppBar"
         android:layout_width="match_parent"
@@ -17,14 +18,12 @@
         android:theme="@style/ThemeOverlay.Material3.Dark.ActionBar"
         app:navigationIcon="@drawable/ic_menu" />
 
-    <!-- Welcome Text -->
+    <!-- Header Card with Company Icon -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/headerCard"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/topAppBar"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
+        android:layout_below="@id/topAppBar"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="16dp"
@@ -32,54 +31,47 @@
         app:cardCornerRadius="20dp"
         app:strokeColor="?attr/colorOutlineVariant">
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="center_vertical">
+
+            <!-- Company Icon -->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/companyIconImage"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/outline_profile_24"
+                app:strokeColor="?attr/colorOutline"
+                app:strokeWidth="1dp"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Material3.Corner.Full"
+                tools:src="@drawable/outline_profile_24" />
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="12dp">
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
-                    app:srcCompat="@drawable/outline_profile_24"
-                    app:strokeColor="?attr/colorOutline"
-                    app:strokeWidth="1dp"
-                    app:tint="?attr/colorOnPrimaryContainer" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/welcomeText"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/welcomeText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/topAppBar"
-                        android:layout_margin="16dp"
-                        android:text="Welcome, [Name]"
-                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
-                        android:textColor="?attr/colorOnSurface"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        tools:text="Welcome, Alex" />
-                </LinearLayout>
+                    android:text="Welcome, Name"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:text="Welcome, Alex" />
             </LinearLayout>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-
-    <!-- Action Buttons -->
+    <!-- Action Buttons Grid -->
     <androidx.gridlayout.widget.GridLayout
         android:id="@+id/contentLayout"
         android:layout_width="match_parent"
@@ -90,6 +82,7 @@
         app:columnCount="2"
         app:useDefaultMargins="true">
 
+        <!-- Buttons -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/makeJobBtn"
             android:layout_width="0dp"
@@ -217,9 +210,9 @@
         android:id="@+id/logoutBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Log Out"
         android:layout_above="@id/bottomNavigation"
         android:layout_margin="16dp"
+        android:text="Log Out"
         android:backgroundTint="#FF4444"
         android:textColor="#FFFFFF" />
 

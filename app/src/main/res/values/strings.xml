@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Hire Me</string>
+    <string name="app_name">Hire Us</string>
     <string name="select_job_title">Select Job Title</string>
     <string name="select_date_filter">Select date filter</string>
     <string name="toggle_password_visibility">Toggle password visibility</string>
@@ -11,6 +11,24 @@
     <string name="find_job">Find Job Image</string>
     <string name="give_job">Give Job Image</string>
     <string name="chat">Chat Image</string>
+
+    <!-- Employer Profile Strings -->
+    <string name="employer_profile">Employer Profile</string>
+    <string name="company_icon">Company Icon</string>
+    <string name="choose_image">Choose Image</string>
+    <string name="company_name">Company Name</string>
+    <string name="employer_name">Employer Name</string>
+    <string name="address">Address</string>
+    <string name="email">Email</string>
+    <string name="contact">Contact</string>
+    <string name="update_profile">Update Profile</string>
+    <string name="delete_account">Delete Account</string>
+
+    <!-- Confirmation Messages -->
+    <string name="delete_account_confirmation">Are you sure you want to delete this account?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="missing_employer_id">Missing Employer ID!</string>
 
 </resources>
 
