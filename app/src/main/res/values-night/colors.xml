@@ -13,7 +13,8 @@
     <!-- Neutrals -->
     <color name="Background_47">#0B0B0C</color>
     <color name="onBackground_47">#F5F5F6</color>
-    <color name="surface_47">#1E1F22</color>
+    <color name="surface_47">#E41E1F22</color>
+    <color name="card_surface_47">#3A3C45</color>
     <color name="onSurface_47">#F5F5F6</color>
     <color name="outline_47">#23262D</color>
     <color name="hint_47">#9CA3AF</color>

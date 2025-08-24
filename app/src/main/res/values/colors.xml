@@ -46,7 +46,8 @@
     <!-- Neutrals -->
     <color name="Background_47">#FFFFFF</color>
     <color name="onBackground_47">#111827</color>
-    <color name="surface_47">#FAFAFA</color>
+    <color name="surface_47">#D0FFFDE7</color>
+    <color name="card_surface_47">#FFF9C4</color>
     <color name="onSurface_47">#111827</color>
     <color name="outline_47">#E5E7EB</color>
     <color name="hint_47">#9CA3AF</color>
