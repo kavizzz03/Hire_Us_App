@@ -75,6 +75,9 @@ public class EmpProfileActivity extends AppCompatActivity {
 
         btnJobHistory.setOnClickListener(v -> {
             // Go to Job History screen
+            Intent intentView = new Intent(EmpProfileActivity.this, EmpJobHistoryActivity.class);
+            intentView.putExtra("id_number", idNumber);
+            startActivity(intentView);
         });
 
         btnOrderFood.setOnClickListener(v -> {
