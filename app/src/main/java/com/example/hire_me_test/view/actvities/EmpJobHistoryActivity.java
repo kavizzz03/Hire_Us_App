@@ -1,5 +1,6 @@
 package com.example.hire_me_test.view.actvities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,6 +39,13 @@ public class EmpJobHistoryActivity extends AppCompatActivity {
         adapter = new EmpJobHistoryAdapter(jobHistoryList);
         recyclerView.setAdapter(adapter);
 
+        // ✅ Set click listener AFTER setting adapter
+        adapter.setOnItemClickListener(job -> {
+            Intent intent = new Intent(EmpJobHistoryActivity.this, JobDetailActivity.class);
+            intent.putExtra("job_id", job.getJobId());
+            startActivity(intent);
+        });
+
         idNumber = getIntent().getStringExtra("id_number");
         if (idNumber != null && !idNumber.isEmpty()) {
             loadJobHistory(idNumber);
@@ -47,7 +55,6 @@ public class EmpJobHistoryActivity extends AppCompatActivity {
     }
 
     private void loadJobHistory(String idNumber) {
-        // Pass id_number via GET parameter
         String urlWithParam = URL + "?id_number=" + idNumber;
 
         Request request = new Request.Builder()

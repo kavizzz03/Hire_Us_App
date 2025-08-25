@@ -87,7 +87,7 @@ public class DashboardActivity extends AppCompatActivity {
         withdrawRequestBtn.setOnClickListener(v -> openActivity(WithdrawRequestActivity.class, "employer_id", userId));
         editJobBtn.setOnClickListener(v -> openActivity(EmployerJobsActivity.class, "employer_id", userId));
         editProfileBtn.setOnClickListener(v -> openActivity(EmployerProfileActivity.class, "employer_id", userId));
-        chatBtn.setOnClickListener(v -> startActivity(new Intent(DashboardActivity.this, ChatActivity.class)));
+        chatBtn.setOnClickListener(v -> openActivity(ChatActivity.class, "employer_id", userId));
         logoutBtn.setOnClickListener(v -> logout());
     }
 

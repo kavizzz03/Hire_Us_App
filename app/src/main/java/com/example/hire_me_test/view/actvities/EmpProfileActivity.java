@@ -12,7 +12,7 @@ import com.example.hire_me_test.R;
 public class EmpProfileActivity extends AppCompatActivity {
 
     TextView textViewWelcome, textViewJobTitle, textViewId;
-    Button btnFindJobs, btnMyVault, btnMyReviews, btnViewProfile, btnEditJobs, btnJobHistory, btnLogout, btnOrderFood;
+    Button btnFindJobs, btnMyVault, btnMyReviews, btnViewProfile, btnEditJobs, btnJobHistory, btnLogout, btnOrderFood,chatBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,8 @@ public class EmpProfileActivity extends AppCompatActivity {
         btnEditJobs = findViewById(R.id.btnEditJobs);
         btnJobHistory = findViewById(R.id.btnJobHistory);
         btnLogout = findViewById(R.id.btnLogout);
-        btnOrderFood = findViewById(R.id.btnOrderFood); // New button
+        btnOrderFood = findViewById(R.id.btnOrderFood);
+        chatBtn=findViewById(R.id.chatBtn);// New button
 
         // Display passed user info
         textViewWelcome.setText("👋 Welcome, " + fullName);
@@ -71,6 +72,9 @@ public class EmpProfileActivity extends AppCompatActivity {
 
         btnEditJobs.setOnClickListener(v -> {
             // Go to Edit Jobs screen
+            Intent intentView = new Intent(EmpProfileActivity.this, WorkerApplicationsActivity.class);
+            intentView.putExtra("id_number", idNumber);
+            startActivity(intentView);
         });
 
         btnJobHistory.setOnClickListener(v -> {
@@ -85,6 +89,12 @@ public class EmpProfileActivity extends AppCompatActivity {
             Intent intentOrder = new Intent(EmpProfileActivity.this, OrderFoodActivity.class);
             intentOrder.putExtra("id_number", idNumber); // Optional
             startActivity(intentOrder);
+        });
+        chatBtn.setOnClickListener(v -> {
+            // Go to Job History screen
+            Intent intentView = new Intent(EmpProfileActivity.this, ChatActivity.class);
+            intentView.putExtra("id_number", idNumber);
+            startActivity(intentView);
         });
 
         btnLogout.setOnClickListener(v -> {

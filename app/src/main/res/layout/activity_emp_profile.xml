@@ -162,39 +162,39 @@
                 android:id="@+id/btnEditJobs"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
                 android:minHeight="100dp"
                 android:paddingVertical="16dp"
-                android:text="Edit My Jobs"
+                android:text="Edit My Applicants"
                 android:textSize="15sp"
-                android:maxLines="2"
-                android:ellipsize="end"
-                app:layout_columnWeight="1"
-                app:layout_gravity="fill_horizontal"
+                app:cornerRadius="20dp"
                 app:icon="@drawable/outline_contract_edit_24"
                 app:iconGravity="textTop"
-                app:iconSize="40dp"
                 app:iconPadding="8dp"
-                app:cornerRadius="20dp"
-                app:iconTint="?attr/colorOnSecondaryContainer"/>
+                app:iconSize="40dp"
+                app:iconTint="?attr/colorOnSecondaryContainer"
+                app:layout_columnWeight="1"
+                app:layout_gravity="fill_horizontal" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnJobHistory"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
                 android:minHeight="100dp"
                 android:paddingVertical="16dp"
                 android:text="Job History"
                 android:textSize="15sp"
-                android:maxLines="2"
-                android:ellipsize="end"
-                app:layout_columnWeight="1"
-                app:layout_gravity="fill_horizontal"
+                app:cornerRadius="20dp"
                 app:icon="@drawable/outline_history_24"
                 app:iconGravity="textTop"
-                app:iconSize="40dp"
                 app:iconPadding="8dp"
-                app:cornerRadius="20dp"
-                app:iconTint="?attr/colorOnSecondaryContainer"/>
+                app:iconSize="40dp"
+                app:iconTint="?attr/colorOnSecondaryContainer"
+                app:layout_columnWeight="1"
+                app:layout_gravity="fill_horizontal" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnOrderFood"
@@ -215,6 +215,25 @@
                 app:cornerRadius="20dp"
                 app:iconTint="?attr/colorOnSecondaryContainer"/>
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/chatBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:minHeight="112dp"
+                android:paddingVertical="16dp"
+                android:text="Message"
+                android:textSize="15sp"
+                app:cornerRadius="20dp"
+                app:icon="@drawable/outline_chat_24"
+                app:iconGravity="textTop"
+                app:iconPadding="8dp"
+                app:iconSize="40dp"
+                app:iconTint="?attr/colorOnSecondaryContainer"
+                app:layout_columnWeight="1"
+                app:layout_gravity="fill_horizontal" />
         </androidx.gridlayout.widget.GridLayout>
 
         <Button

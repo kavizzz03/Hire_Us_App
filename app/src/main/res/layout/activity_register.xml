@@ -11,7 +11,6 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal">
 
-        <!-- Header -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -38,283 +37,47 @@
             android:background="@drawable/rounded_button_white"
             android:layout_marginBottom="24dp" />
 
-        <!-- Personal Details -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Personal Details"
-            android:textColor="#006064"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="8dp" />
+        <!-- Personal Info -->
+        <EditText android:id="@+id/fullName" android:hint="Full Name" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+        <EditText android:id="@+id/username" android:hint="Username" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+        <EditText android:id="@+id/contactNumber" android:hint="Contact Number" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+        <EditText android:id="@+id/email" android:hint="Email" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+        <EditText android:id="@+id/idNumber" android:hint="ID Number" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+        <EditText android:id="@+id/permanentAddress" android:hint="Permanent Address" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+        <EditText android:id="@+id/currentAddress" android:hint="Current Address" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+        <EditText android:id="@+id/workExperience" android:hint="Work Experience" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+        <EditText android:id="@+id/password" android:hint="Password" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textPassword"/>
+        <EditText android:id="@+id/confirmPassword" android:hint="Confirm Password" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textPassword"/>
 
-        <EditText
-            android:id="@+id/fullName"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="Full Name"
-            android:background="@drawable/rounded_edittext_white"
-            android:padding="12dp"
-            android:textColor="#000000" />
-
-        <EditText
-            android:id="@+id/username"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="Username"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/rounded_edittext_white"
-            android:padding="12dp"
-            android:textColor="#000000" />
-
-        <EditText
-            android:id="@+id/contactNumber"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="Contact Number"
-            android:inputType="phone"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/rounded_edittext_white"
-            android:padding="12dp"
-            android:textColor="#000000" />
-
-        <EditText
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="Email Address"
-            android:inputType="textEmailAddress"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/rounded_edittext_white"
-            android:padding="12dp"
-            android:textColor="#000000" />
-
-        <EditText
-            android:id="@+id/idNumber"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="National ID Number"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/rounded_edittext_white"
-            android:padding="12dp"
-            android:textColor="#000000" />
-
-        <EditText
-            android:id="@+id/permanentAddress"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="Permanent Address"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/rounded_edittext_white"
-            android:padding="12dp"
-            android:textColor="#000000" />
-
-        <EditText
-            android:id="@+id/currentAddress"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="Current Address (Optional)"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/rounded_edittext_white"
-            android:padding="12dp"
-            android:textColor="#000000" />
-
-        <!-- Job Title -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Select Job Title"
-            android:textColor="#006064"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="8dp" />
-
-        <Spinner
-            android:id="@+id/jobTitleSpinner"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/rounded_edittext_white"
-            android:padding="12dp" />
-
-        <!-- Custom Job Title Input (initially hidden) -->
-        <LinearLayout
-            android:id="@+id/customJobTitleLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="gone"
-            android:layout_marginTop="12dp">
-
-            <EditText
-                android:id="@+id/customJobTitle"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="Enter Custom Job Title"
-                android:background="@drawable/rounded_edittext_white"
-                android:padding="12dp"
-                android:textColor="#000000" />
+        <!-- Job Title Spinner -->
+        <Spinner android:id="@+id/jobTitleSpinner" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+        <LinearLayout android:id="@+id/customJobTitleLayout" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+            <EditText android:id="@+id/customJobTitle" android:hint="Enter Custom Job Title" android:layout_width="match_parent" android:layout_height="wrap_content"/>
         </LinearLayout>
 
-        <!-- Work Experience -->
-        <EditText
-            android:id="@+id/workExperience"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:hint="Previous Work Experience"
-            android:layout_marginTop="12dp"
-            android:gravity="top"
-            android:inputType="textMultiLine"
-            android:background="@drawable/rounded_edittext_white"
-            android:padding="12dp"
-            android:textColor="#000000" />
+        <!-- ID Front -->
+        <TextView android:text="Upload ID Front Side" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <ImageView android:id="@+id/idFrontImage" android:layout_width="match_parent" android:layout_height="200dp" android:background="#FFFFFF"/>
+        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:weightSum="2">
+            <Button android:id="@+id/cameraFrontBtn" android:layout_width="0dp" android:layout_weight="1" android:layout_height="50dp" android:text="Camera"/>
+            <Button android:id="@+id/galleryFrontBtn" android:layout_width="0dp" android:layout_weight="1" android:layout_height="50dp" android:text="Gallery"/>
+        </LinearLayout>
 
-        <!-- Security -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Security"
-            android:textColor="#006064"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="8dp" />
-
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="Password (min 6 characters)"
-            android:inputType="textPassword"
-            android:background="@drawable/rounded_edittext_white"
-            android:padding="12dp"
-            android:textColor="#000000" />
-
-        <EditText
-            android:id="@+id/confirmPassword"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="Confirm Password"
-            android:inputType="textPassword"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/rounded_edittext_white"
-            android:padding="12dp"
-            android:textColor="#000000" />
-
-        <!-- ID Document Upload -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ID Document Upload"
-            android:textColor="#006064"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="8dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Upload ID Front Side"
-            android:textColor="#004D40" />
-
-        <ImageView
-            android:id="@+id/idFrontImage"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            android:background="#FFFFFF"
-            android:layout_marginTop="8dp" />
-
-        <Button
-            android:id="@+id/uploadIdFrontBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Select Front Side"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/rounded_button_white"
-            android:textColor="#000000" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Upload ID Back Side"
-            android:textColor="#004D40"
-            android:layout_marginTop="16dp" />
-
-        <ImageView
-            android:id="@+id/idBackImage"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            android:background="#FFFFFF"
-            android:layout_marginTop="8dp" />
-
-        <Button
-            android:id="@+id/uploadIdBackBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Select Back Side"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/rounded_button_white"
-            android:textColor="#000000" />
+        <!-- ID Back -->
+        <TextView android:text="Upload ID Back Side" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <ImageView android:id="@+id/idBackImage" android:layout_width="match_parent" android:layout_height="200dp" android:background="#FFFFFF"/>
+        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:weightSum="2">
+            <Button android:id="@+id/cameraBackBtn" android:layout_width="0dp" android:layout_weight="1" android:layout_height="50dp" android:text="Camera"/>
+            <Button android:id="@+id/galleryBackBtn" android:layout_width="0dp" android:layout_weight="1" android:layout_height="50dp" android:text="Gallery"/>
+        </LinearLayout>
 
         <!-- Bank Details -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bank Details"
-            android:textColor="#006064"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="8dp" />
+        <Spinner android:id="@+id/bankNameSpinner" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+        <EditText android:id="@+id/bankAccountNumber" android:hint="Bank Account Number" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+        <EditText android:id="@+id/bankBranch" android:hint="Bank Branch" android:layout_width="match_parent" android:layout_height="wrap_content"/>
 
-        <EditText
-            android:id="@+id/bankAccountNumber"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="Bank Account Number"
-            android:inputType="number"
-            android:background="@drawable/rounded_edittext_white"
-            android:padding="12dp"
-            android:textColor="#000000" />
+        <CheckBox android:id="@+id/privacyPolicyCheckbox" android:text="I agree to the Privacy Policy" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <Button android:id="@+id/createAccountBtn" android:text="Create Account" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp"/>
 
-        <Spinner
-            android:id="@+id/bankNameSpinner"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/rounded_edittext_white"
-            android:padding="12dp"
-            android:layout_marginTop="12dp" />
-
-        <EditText
-            android:id="@+id/bankBranch"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="Branch"
-            android:background="@drawable/rounded_edittext_white"
-            android:padding="12dp"
-            android:layout_marginTop="12dp"
-            android:textColor="#000000" />
-
-        <!-- Privacy Policy -->
-        <CheckBox
-            android:id="@+id/privacyPolicyCheckbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="I agree to the Privacy Policy"
-            android:textColor="#000000"
-            android:layout_marginTop="16dp" />
-
-        <Button
-            android:id="@+id/createAccountBtn"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="Create Account"
-            android:textColor="#FFFFFF"
-            android:background="@drawable/rounded_button_blue"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="24dp" />
     </LinearLayout>
 </ScrollView>

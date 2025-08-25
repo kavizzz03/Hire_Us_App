@@ -13,6 +13,15 @@ import java.util.ArrayList;
 public class EmpJobHistoryAdapter extends RecyclerView.Adapter<EmpJobHistoryAdapter.ViewHolder> {
 
     private final ArrayList<JobHistoryModel> jobHistoryList;
+    private OnItemClickListener listener;
+
+    public interface OnItemClickListener {
+        void onItemClick(JobHistoryModel job);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
 
     public EmpJobHistoryAdapter(ArrayList<JobHistoryModel> jobHistoryList) {
         this.jobHistoryList = jobHistoryList;
@@ -31,6 +40,12 @@ public class EmpJobHistoryAdapter extends RecyclerView.Adapter<EmpJobHistoryAdap
         holder.tvJobId.setText("Job ID: " + job.getJobId());
         holder.tvHiredAt.setText("Hired At: " + job.getHiredAt());
         holder.tvWantsMeals.setText("Wants Meals: " + job.getWantsMeals());
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onItemClick(job);
+            }
+        });
     }
 
     @Override
