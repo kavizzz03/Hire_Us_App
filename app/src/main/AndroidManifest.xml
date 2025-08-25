@@ -18,6 +18,9 @@
         android:theme="@style/Theme.Hire_me_test"
         tools:targetApi="31">
         <activity
+            android:name=".view.actvities.EmpJobHistoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.actvities.EmployerProfileActivity"
             android:exported="false" />
         <activity
