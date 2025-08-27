@@ -67,7 +67,7 @@
                     android:maxLines="1"
                     android:drawableStart="@drawable/ic_email"
                     android:drawablePadding="12dp"
-                    android:padding="12dp"
+                    android:padding="15dp"
                     android:fontFamily="sans-serif"
                     android:drawableTint="@color/onSurface_47"
                     android:textColor="@color/onSurface_47"
@@ -138,7 +138,7 @@
                         android:padding="10dp"
                         android:text="Forgot Password?"
                         android:textColor="@color/primary_47"
-                        android:textSize="20sp"
+                        android:textSize="15sp"
                         android:textStyle="bold"/>
 
                 </LinearLayout>
