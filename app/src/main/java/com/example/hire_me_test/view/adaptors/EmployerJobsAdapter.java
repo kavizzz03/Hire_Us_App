@@ -1,6 +1,7 @@
 package com.example.hire_me_test.view.adaptors;
 
 import android.content.Context;
+import android.widget.Toast;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,20 +11,26 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+
 import com.example.hire_me_test.R;
 import com.example.hire_me_test.model.model.data.JobModel;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class EmployerJobsAdapter extends RecyclerView.Adapter<EmployerJobsAdapter.JobViewHolder> {
 
-    // Interfaces for different click actions
     public interface OnViewApplicantsClickListener {
         void onViewApplicantsClick(JobModel job);
-    }
-
-    public interface OnAddMealsClickListener {
-        void onAddMealsClick(JobModel job);
     }
 
     public interface OnFinishJobClickListener {
@@ -33,19 +40,15 @@ public class EmployerJobsAdapter extends RecyclerView.Adapter<EmployerJobsAdapte
     private final Context context;
     private final List<JobModel> jobList;
     private final OnViewApplicantsClickListener applicantsListener;
-    private final OnAddMealsClickListener mealsListener;
     private final OnFinishJobClickListener finishJobListener;
 
-    // Constructor
     public EmployerJobsAdapter(Context context,
                                List<JobModel> jobList,
                                OnViewApplicantsClickListener applicantsListener,
-                               OnAddMealsClickListener mealsListener,
                                OnFinishJobClickListener finishJobListener) {
         this.context = context;
         this.jobList = jobList;
         this.applicantsListener = applicantsListener;
-        this.mealsListener = mealsListener;
         this.finishJobListener = finishJobListener;
     }
 
@@ -60,14 +63,17 @@ public class EmployerJobsAdapter extends RecyclerView.Adapter<EmployerJobsAdapte
     public void onBindViewHolder(@NonNull JobViewHolder holder, int position) {
         JobModel job = jobList.get(position);
 
-        // Set values to UI
-        holder.txtJobTitle.setText(job.getJobTitle());
-        holder.txtCompany.setText("Date: " + job.getJobDate());
-        holder.txtSalary.setText("Rs. " + job.getBasicSalary());
+        holder.txtJobTitle.setText(job.getJobTitle() != null ? job.getJobTitle() : "N/A");
+        holder.txtCompany.setText("Date: " + (job.getJobDate() != null ? job.getJobDate() : "N/A"));
+        holder.txtSalary.setText("Rs. " + (job.getBasicSalary() != null ? job.getBasicSalary() : "0"));
 
-        // Set listeners
+        // View applicants
         holder.btnViewApplicants.setOnClickListener(v -> applicantsListener.onViewApplicantsClick(job));
-        holder.btnAddMeal.setOnClickListener(v -> mealsListener.onAddMealsClick(job));
+
+        // Add meal
+        holder.btnAddMeal.setOnClickListener(v -> sendMealToServer(job));
+
+        // Finish job
         holder.btnFinishJob.setOnClickListener(v -> {
             if (finishJobListener != null) {
                 finishJobListener.onFinishJobClick(job);
@@ -77,7 +83,39 @@ public class EmployerJobsAdapter extends RecyclerView.Adapter<EmployerJobsAdapte
 
     @Override
     public int getItemCount() {
-        return jobList.size();
+        return jobList != null ? jobList.size() : 0;
+    }
+
+    private void sendMealToServer(JobModel job) {
+        String url = "https://hireme.cpsharetxt.com/add_meal.php";
+
+        StringRequest request = new StringRequest(Request.Method.POST, url,
+                response -> {
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response);
+                        boolean success = jsonResponse.optBoolean("success", false);
+                        String message = jsonResponse.optString("message", "Unknown response");
+                        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+                    } catch (JSONException e) {
+                        Toast.makeText(context, "Response parse error", Toast.LENGTH_SHORT).show();
+                        e.printStackTrace();
+                    }
+                },
+                error -> Toast.makeText(context, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show()
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("job_id", String.valueOf(job.getId()));
+                params.put("job_title", job.getJobTitle() != null ? job.getJobTitle() : "");
+                params.put("company_name", job.getCompanyName() != null ? job.getCompanyName() : "");
+                params.put("basic_salary", job.getBasicSalary() != null ? job.getBasicSalary() : "0");
+                params.put("job_date", job.getJobDate() != null ? job.getJobDate() : "");
+                return params;
+            }
+        };
+
+        Volley.newRequestQueue(context).add(request);
     }
 
     static class JobViewHolder extends RecyclerView.ViewHolder {

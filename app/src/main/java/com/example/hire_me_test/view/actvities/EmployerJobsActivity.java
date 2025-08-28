@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -22,9 +24,9 @@ import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.android.volley.VolleyError;
-import com.example.hire_me_test.view.adaptors.EmployerJobsAdapter;
 import com.example.hire_me_test.R;
 import com.example.hire_me_test.model.model.data.JobModel;
+import com.example.hire_me_test.view.adaptors.EmployerJobsAdapter;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -67,11 +69,6 @@ public class EmployerJobsActivity extends AppCompatActivity {
                 jobList,
                 job -> {
                     Intent intent = new Intent(this, ApplicantsActivity.class);
-                    intent.putExtra("job_id", job.getId());
-                    startActivity(intent);
-                },
-                job -> {
-                    Intent intent = new Intent(this, AddMealActivity.class);
                     intent.putExtra("job_id", job.getId());
                     startActivity(intent);
                 },
@@ -139,7 +136,7 @@ public class EmployerJobsActivity extends AppCompatActivity {
         int padding = (int) getResources().getDimension(R.dimen.dialog_padding);
         layout.setPadding(padding, padding, padding, padding);
 
-        // Rating input as number 1-5
+        // Rating input
         TextInputLayout ratingLayout = new TextInputLayout(this);
         ratingLayout.setHint("Enter rating (1-5)");
         TextInputEditText inputRating = new TextInputEditText(ratingLayout.getContext());
@@ -164,9 +161,9 @@ public class EmployerJobsActivity extends AppCompatActivity {
         builder.setView(layout);
 
         builder.setPositiveButton("Submit", (dialog, which) -> {
-            String ratingStr = inputRating.getText().toString().trim();
-            String feedback = inputFeedback.getText().toString().trim();
-            String experience = inputExperience.getText().toString().trim();
+            String ratingStr = inputRating.getText() != null ? inputRating.getText().toString().trim() : "";
+            String feedback = inputFeedback.getText() != null ? inputFeedback.getText().toString().trim() : "";
+            String experience = inputExperience.getText() != null ? inputExperience.getText().toString().trim() : "";
 
             if (ratingStr.isEmpty() || feedback.isEmpty() || experience.isEmpty()) {
                 Toast.makeText(this, "All fields are required!", Toast.LENGTH_SHORT).show();
@@ -198,10 +195,10 @@ public class EmployerJobsActivity extends AppCompatActivity {
                     Log.d("UpdateRatingsResponse", response);
                     try {
                         JSONObject obj = new JSONObject(response);
-                        if (obj.getString("status").equalsIgnoreCase("success")) {
+                        if (obj.optString("status").equalsIgnoreCase("success")) {
                             askForOtHoursAndFinishJob(jobId);
                         } else {
-                            Toast.makeText(this, "Failed: " + obj.getString("message"), Toast.LENGTH_LONG).show();
+                            Toast.makeText(this, "Failed: " + obj.optString("message"), Toast.LENGTH_LONG).show();
                         }
                     } catch (Exception e) {
                         Log.e("UpdateRatingsParseError", e.toString());
@@ -252,7 +249,7 @@ public class EmployerJobsActivity extends AppCompatActivity {
         builder.setView(layout);
 
         builder.setPositiveButton("Submit", (dialog, which) -> {
-            String otHoursStr = input.getText().toString().trim();
+            String otHoursStr = input.getText() != null ? input.getText().toString().trim() : "";
             if (otHoursStr.isEmpty()) {
                 Toast.makeText(this, "Please enter OT hours", Toast.LENGTH_SHORT).show();
                 return;
@@ -289,7 +286,6 @@ public class EmployerJobsActivity extends AppCompatActivity {
                     }
                 },
                 error -> logVolleyError(error, "Finishing job failed")) {
-
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
@@ -304,26 +300,20 @@ public class EmployerJobsActivity extends AppCompatActivity {
 
     // Notification
     private void showJobFinishedNotification() {
-        androidx.core.app.NotificationCompat.Builder builder =
-                new androidx.core.app.NotificationCompat.Builder(this, CHANNEL_ID)
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.POST_NOTIFICATIONS}, 100);
+            return;
+        }
+
+        NotificationCompat.Builder builder =
+                new NotificationCompat.Builder(this, CHANNEL_ID)
                         .setSmallIcon(R.drawable.ic_notifications)
                         .setContentTitle("Job Completed")
                         .setContentText("This job was successfully completed and logged.")
-                        .setPriority(androidx.core.app.NotificationCompat.PRIORITY_DEFAULT)
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                         .setAutoCancel(true);
 
-        androidx.core.app.NotificationManagerCompat notificationManager =
-                androidx.core.app.NotificationManagerCompat.from(this);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
         notificationManager.notify(1001, builder.build());
     }
 
@@ -341,7 +331,7 @@ public class EmployerJobsActivity extends AppCompatActivity {
     }
 
     private void logVolleyError(VolleyError error, String contextMessage) {
-        if (error.networkResponse != null) {
+        if (error.networkResponse != null && error.networkResponse.data != null) {
             int statusCode = error.networkResponse.statusCode;
             String body = new String(error.networkResponse.data);
             Log.e("VolleyError", contextMessage + " | Status: " + statusCode + " | Body: " + body);
