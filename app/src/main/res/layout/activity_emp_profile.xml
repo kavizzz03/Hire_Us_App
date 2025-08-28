@@ -1,250 +1,270 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="20dp"
-    android:background="#FAFAFA">
+    android:background="@drawable/wave">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:paddingBottom="24dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-
-
-        <!-- Profile Header -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardProfile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            app:cardElevation="0dp"
-            app:cardBackgroundColor="?attr/colorSurface"
-            app:strokeColor="?attr/colorOutline"
-            app:strokeWidth="1dp"
-            app:cardCornerRadius="24dp">
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="5dp"
-            android:gravity="center_vertical">
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingBottom="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="20dp">
 
-            <LinearLayout
-                android:layout_width="0dp"
+
+            <!-- Profile Header -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardProfile"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_marginStart="18dp">
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                app:cardBackgroundColor="?attr/colorSurface"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutline"
+                app:strokeWidth="1dp">
 
-                <TextView
-                    android:id="@+id/textViewWelcome"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Welcome, User"
-                    android:textColor="?attr/colorOnSurface"
-                    android:textStyle="bold"
-                    android:textSize="25sp"
-                    style="@style/TextAppearance.MaterialComponents.Headline5"/>
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
 
-                <TextView
-                    android:id="@+id/textViewJobTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Job Title"
-                    android:textSize="18sp"
-                    android:layout_marginTop="5dp"
-                    style="@style/TextAppearance.MaterialComponents.Headline6"/>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="18dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/textViewIdNumber"
-                    android:layout_width="wrap_content"
+                        <TextView
+                            android:id="@+id/textViewWelcome"
+                            style="@style/TextAppearance.MaterialComponents.Headline5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Welcome, User"
+                            android:textColor="?attr/colorOnSurface"
+                            android:textSize="25sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textViewJobTitle"
+                            style="@style/TextAppearance.MaterialComponents.Headline6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="Job Title"
+                            android:textSize="18sp" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/textViewIdNumber"
+                            style="@style/Widget.Material3.Chip.Assist.Elevated"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="1dp"
+                            android:text="ID: 123456"
+                            app:chipIconTint="?attr/colorOnSecondaryContainer" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <androidx.gridlayout.widget.GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="1dp"
+                android:paddingTop="10dp"
+                app:alignmentMode="alignMargins"
+                app:columnCount="2"
+                app:useDefaultMargins="true">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnFindJobs"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="ID: 123456"
-                    android:layout_marginTop="1dp"
-                    style="@style/Widget.Material3.Chip.Assist.Elevated"
-                    app:chipIconTint="?attr/colorOnSecondaryContainer"/>
-            </LinearLayout>
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:minHeight="100dp"
+                    android:paddingVertical="16dp"
+                    android:text="Find New Job"
+                    android:textSize="15sp"
+                    app:cornerRadius="20dp"
+                    app:icon="@drawable/outline_search_24"
+                    app:iconGravity="textTop"
+                    app:iconPadding="8dp"
+                    app:iconSize="40dp"
+                    app:iconTint="@color/onPrimary_47"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnMyVault"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:minHeight="100dp"
+                    android:paddingVertical="16dp"
+                    android:text="My Vault"
+                    android:textSize="15sp"
+                    app:cornerRadius="20dp"
+                    app:icon="@drawable/outline_account_balance_wallet_24"
+                    app:iconGravity="textTop"
+                    app:iconPadding="8dp"
+                    app:iconSize="40dp"
+                    app:iconTint="@color/onPrimary_47"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnMyReviews"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:minHeight="100dp"
+                    android:paddingVertical="16dp"
+                    android:text="My Ratings"
+                    android:textSize="15sp"
+                    app:cornerRadius="20dp"
+                    app:icon="@drawable/outline_star_24"
+                    app:iconGravity="textTop"
+                    app:iconPadding="8dp"
+                    app:iconSize="40dp"
+                    app:iconTint="@color/onPrimary_47"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnViewProfile"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:minHeight="100dp"
+                    android:paddingVertical="16dp"
+                    android:text="View Profile"
+                    android:textSize="15sp"
+                    app:cornerRadius="20dp"
+                    app:icon="@drawable/outline_profile_24"
+                    app:iconGravity="textTop"
+                    app:iconPadding="8dp"
+                    app:iconSize="40dp"
+                    app:iconTint="@color/onPrimary_47"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnEditJobs"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:minHeight="100dp"
+                    android:paddingVertical="16dp"
+                    android:text="Edit My Applicants"
+                    android:textSize="15sp"
+                    app:cornerRadius="20dp"
+                    app:icon="@drawable/outline_contract_edit_24"
+                    app:iconGravity="textTop"
+                    app:iconPadding="8dp"
+                    app:iconSize="40dp"
+                    app:iconTint="@color/onPrimary_47"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnJobHistory"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:minHeight="100dp"
+                    android:paddingVertical="16dp"
+                    android:text="Job History"
+                    android:textSize="15sp"
+                    app:cornerRadius="20dp"
+                    app:icon="@drawable/outline_history_24"
+                    app:iconGravity="textTop"
+                    app:iconPadding="8dp"
+                    app:iconSize="40dp"
+                    app:iconTint="@color/onPrimary_47"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOrderFood"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:minHeight="100dp"
+                    android:paddingVertical="16dp"
+                    android:text="Oder Food"
+                    android:textSize="15sp"
+                    app:cornerRadius="20dp"
+                    app:icon="@drawable/outline_briefcase_meal_24"
+                    app:iconGravity="textTop"
+                    app:iconPadding="8dp"
+                    app:iconSize="40dp"
+                    app:iconTint="@color/onPrimary_47"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/chatBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:minHeight="100dp"
+                    android:paddingVertical="16dp"
+                    android:text="Message"
+                    android:textSize="15sp"
+                    app:cornerRadius="20dp"
+                    app:icon="@drawable/outline_chat_24"
+                    app:iconGravity="textTop"
+                    app:iconPadding="8dp"
+                    app:iconSize="40dp"
+                    app:iconTint="@color/onPrimary_47"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal" />
+            </androidx.gridlayout.widget.GridLayout>
         </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+    </androidx.core.widget.NestedScrollView>
 
-        <androidx.gridlayout.widget.GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="1dp"
-            app:alignmentMode="alignMargins"
-            android:paddingTop="10dp"
-            app:columnCount="2"
-            app:useDefaultMargins="true">
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nestedScrollView2"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#E53935"
+        android:elevation="4dp"
+        android:text="Log Out"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nestedScrollView2" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnFindJobs"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:minHeight="100dp"
-                android:paddingVertical="16dp"
-                android:text="Find New Job"
-                android:textSize="15sp"
-                android:maxLines="2"
-                android:ellipsize="end"
-                app:layout_columnWeight="1"
-                app:layout_gravity="fill_horizontal"
-                app:icon="@drawable/outline_search_24"
-                app:iconGravity="textTop"
-                app:iconSize="40dp"
-                app:iconPadding="8dp"
-                app:cornerRadius="20dp"
-                app:iconTint="?attr/colorOnSecondaryContainer"/>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnMyVault"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:minHeight="100dp"
-                android:paddingVertical="16dp"
-                android:text="My Vault"
-                android:textSize="15sp"
-                android:maxLines="2"
-                android:ellipsize="end"
-                app:layout_columnWeight="1"
-                app:layout_gravity="fill_horizontal"
-                app:icon="@drawable/outline_account_balance_wallet_24"
-                app:iconGravity="textTop"
-                app:iconSize="40dp"
-                app:iconPadding="8dp"
-                app:cornerRadius="20dp"
-                app:iconTint="?attr/colorOnSecondaryContainer"/>
-
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnMyReviews"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:minHeight="100dp"
-                android:paddingVertical="16dp"
-                android:text="My Ratings"
-                android:textSize="15sp"
-                android:maxLines="2"
-                android:ellipsize="end"
-                app:layout_columnWeight="1"
-                app:layout_gravity="fill_horizontal"
-                app:icon="@drawable/outline_star_24"
-                app:iconGravity="textTop"
-                app:iconSize="40dp"
-                app:iconPadding="8dp"
-                app:cornerRadius="20dp"
-                app:iconTint="?attr/colorOnSecondaryContainer"/>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnViewProfile"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:minHeight="100dp"
-                android:paddingVertical="16dp"
-                android:text="View Profile"
-                android:textSize="15sp"
-                android:maxLines="2"
-                android:ellipsize="end"
-                app:layout_columnWeight="1"
-                app:layout_gravity="fill_horizontal"
-                app:icon="@drawable/outline_profile_24"
-                app:iconGravity="textTop"
-                app:iconSize="40dp"
-                app:iconPadding="8dp"
-                app:cornerRadius="20dp"
-                app:iconTint="?attr/colorOnSecondaryContainer"/>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnEditJobs"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="2"
-                android:minHeight="100dp"
-                android:paddingVertical="16dp"
-                android:text="Edit My Applicants"
-                android:textSize="15sp"
-                app:cornerRadius="20dp"
-                app:icon="@drawable/outline_contract_edit_24"
-                app:iconGravity="textTop"
-                app:iconPadding="8dp"
-                app:iconSize="40dp"
-                app:iconTint="?attr/colorOnSecondaryContainer"
-                app:layout_columnWeight="1"
-                app:layout_gravity="fill_horizontal" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnJobHistory"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="2"
-                android:minHeight="100dp"
-                android:paddingVertical="16dp"
-                android:text="Job History"
-                android:textSize="15sp"
-                app:cornerRadius="20dp"
-                app:icon="@drawable/outline_history_24"
-                app:iconGravity="textTop"
-                app:iconPadding="8dp"
-                app:iconSize="40dp"
-                app:iconTint="?attr/colorOnSecondaryContainer"
-                app:layout_columnWeight="1"
-                app:layout_gravity="fill_horizontal" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnOrderFood"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:minHeight="100dp"
-                android:paddingVertical="16dp"
-                android:text="Oder Food"
-                android:textSize="15sp"
-                android:maxLines="2"
-                android:ellipsize="end"
-                app:layout_columnWeight="1"
-                app:layout_gravity="fill_horizontal"
-                app:icon="@drawable/outline_briefcase_meal_24"
-                app:iconGravity="textTop"
-                app:iconSize="40dp"
-                app:iconPadding="8dp"
-                app:cornerRadius="20dp"
-                app:iconTint="?attr/colorOnSecondaryContainer"/>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/chatBtn"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:ellipsize="end"
-                android:maxLines="2"
-                android:minHeight="112dp"
-                android:paddingVertical="16dp"
-                android:text="Message"
-                android:textSize="15sp"
-                app:cornerRadius="20dp"
-                app:icon="@drawable/outline_chat_24"
-                app:iconGravity="textTop"
-                app:iconPadding="8dp"
-                app:iconSize="40dp"
-                app:iconTint="?attr/colorOnSecondaryContainer"
-                app:layout_columnWeight="1"
-                app:layout_gravity="fill_horizontal" />
-        </androidx.gridlayout.widget.GridLayout>
-
-        <Button
-            android:id="@+id/btnLogout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Log Out"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"
-            android:backgroundTint="#E53935"
-            android:textColor="#FFFFFF"
-            android:elevation="4dp" />
-    </LinearLayout>
-</ScrollView>
+</RelativeLayout>
