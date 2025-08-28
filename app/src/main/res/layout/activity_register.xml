@@ -2,7 +2,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E0F7FA">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/wave">
 
     <LinearLayout
         android:orientation="vertical"
@@ -38,19 +39,211 @@
             android:layout_marginBottom="24dp" />
 
         <!-- Personal Info -->
-        <EditText android:id="@+id/fullName" android:hint="Full Name" android:layout_width="match_parent" android:layout_height="wrap_content"/>
-        <EditText android:id="@+id/username" android:hint="Username" android:layout_width="match_parent" android:layout_height="wrap_content"/>
-        <EditText android:id="@+id/contactNumber" android:hint="Contact Number" android:layout_width="match_parent" android:layout_height="wrap_content"/>
-        <EditText android:id="@+id/email" android:hint="Email" android:layout_width="match_parent" android:layout_height="wrap_content"/>
-        <EditText android:id="@+id/idNumber" android:hint="ID Number" android:layout_width="match_parent" android:layout_height="wrap_content"/>
-        <EditText android:id="@+id/permanentAddress" android:hint="Permanent Address" android:layout_width="match_parent" android:layout_height="wrap_content"/>
-        <EditText android:id="@+id/currentAddress" android:hint="Current Address" android:layout_width="match_parent" android:layout_height="wrap_content"/>
-        <EditText android:id="@+id/workExperience" android:hint="Work Experience" android:layout_width="match_parent" android:layout_height="wrap_content"/>
-        <EditText android:id="@+id/password" android:hint="Password" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textPassword"/>
-        <EditText android:id="@+id/confirmPassword" android:hint="Confirm Password" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textPassword"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Full Name"
+            app:endIconMode="clear_text">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/fullName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:imeOptions="actionNext"
+                android:autofillHints="name"
+                android:maxLines="1"
+                android:background="@drawable/bg_input"
+                android:textColor="@color/onSurface_47"
+                android:textColorHint="@color/hint_47"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Username"
+            app:endIconMode="clear_text">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:imeOptions="actionNext"
+                android:autofillHints="username"
+                android:maxLines="1"
+                android:background="@drawable/bg_input"
+                android:textColor="@color/onSurface_47"
+                android:textColorHint="@color/hint_47"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Contact Number">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/contactNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:imeOptions="actionNext"
+                android:autofillHints="phone"
+                android:maxLines="1"
+                android:background="@drawable/bg_input"
+                android:textColor="@color/onSurface_47"
+                android:textColorHint="@color/hint_47"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Email"
+            app:endIconMode="clear_text">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:imeOptions="actionNext"
+                android:autofillHints="emailAddress"
+                android:maxLines="1"
+                android:background="@drawable/bg_input"
+                android:textColor="@color/onSurface_47"
+                android:textColorHint="@color/hint_47"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="ID Number">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/idNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:background="@drawable/bg_input"
+                android:textColor="@color/onSurface_47"
+                android:textColorHint="@color/hint_47"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Permanent Address">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/permanentAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPostalAddress|textMultiLine"
+                android:minLines="2"
+                android:maxLines="5"
+                android:gravity="top"
+                android:imeOptions="actionNext"
+                android:autofillHints="postalAddress"
+                android:background="@drawable/bg_input"
+                android:textColor="@color/onSurface_47"
+                android:textColorHint="@color/hint_47"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Current Address">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/currentAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPostalAddress|textMultiLine"
+                android:minLines="2"
+                android:maxLines="5"
+                android:gravity="top"
+                android:imeOptions="actionNext"
+                android:autofillHints="postalAddress"
+                android:background="@drawable/bg_input"
+                android:textColor="@color/onSurface_47"
+                android:textColorHint="@color/hint_47"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Work Experience (summary)">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/workExperience"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:minLines="3"
+                android:maxLines="6"
+                android:gravity="top"
+                android:imeOptions="actionNext"
+                android:background="@drawable/bg_input"
+                android:textColor="@color/onSurface_47"
+                android:textColorHint="@color/hint_47"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Passwords -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Password"
+            app:endIconMode="password_toggle">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:imeOptions="actionNext"
+                android:autofillHints="newPassword"
+                android:maxLines="1"
+                android:background="@drawable/bg_input"
+                android:textColor="@color/onSurface_47"
+                android:textColorHint="@color/hint_47"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Confirm Password"
+            app:endIconMode="password_toggle">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/confirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:background="@drawable/bg_input"
+                android:textColor="@color/onSurface_47"
+                android:textColorHint="@color/hint_47"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <!-- Job Title Spinner -->
-        <Spinner android:id="@+id/jobTitleSpinner" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+        <Spinner android:id="@+id/jobTitleSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
         <LinearLayout android:id="@+id/customJobTitleLayout" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
             <EditText android:id="@+id/customJobTitle" android:hint="Enter Custom Job Title" android:layout_width="match_parent" android:layout_height="wrap_content"/>
         </LinearLayout>
