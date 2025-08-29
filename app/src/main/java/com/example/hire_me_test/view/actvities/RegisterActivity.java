@@ -10,7 +10,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
-import android.widget.*;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,21 +28,36 @@ import com.android.volley.toolbox.Volley;
 import com.example.hire_me_test.R;
 import com.example.hire_me_test.model.model.network.VolleyMultipartRequest;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.textfield.MaterialAutoCompleteTextView;
+import com.google.android.material.textfield.TextInputEditText;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
     EditText fullName, username, contactNumber, email, idNumber, permanentAddress, currentAddress,
-            workExperience, password, confirmPassword, bankAccountNumber, bankBranch, customJobTitle;
-    Spinner jobTitleSpinner, bankNameSpinner;
-    LinearLayout customJobTitleLayout;
+            workExperience, password, confirmPassword, bankAccountNumber, bankBranch;
+
+    // Exposed dropdowns
+    MaterialAutoCompleteTextView jobTitleDropdown;
+    MaterialAutoCompleteTextView bankNameDropdown;
+
+    // Custom job title
+    LinearLayout customJobTitleLayout2;
+    TextInputEditText customJobTitle2;
+
     ImageView idFrontImage, idBackImage;
     Button createAccountBtn, signInBtn;
     Button cameraFrontBtn, cameraBackBtn, galleryFrontBtn, galleryBackBtn;
     CheckBox privacyPolicyCheckbox;
+
+    ImageView btnBack;
 
     Bitmap bitmapFront, bitmapBack;
 
@@ -45,15 +66,15 @@ public class RegisterActivity extends AppCompatActivity {
     private static final int CAMERA_PERMISSION_CODE = 300;
 
     List<String> jobTitles = Arrays.asList(
-            "Select Job Title","Welder","Labour/Helper","Electrician","Mason","Painter",
-            "Aluminium Fitter","Technician","Other (Fill Custom Title Field)"
+            "  Select Job Title","  Welder","  Labour/Helper","  Electrician","  Mason","  Painter",
+            "  Aluminium Fitter","  Technician","  Other (Fill Custom Title Field)"
     );
 
     List<String> banks = Arrays.asList(
-            "Select Bank Name","People's Bank","Sampath Bank","Commercial Bank","Hatton National Bank",
-            "National Savings Bank","Bank of Ceylon","Nations Trust Bank","DFCC Bank","Pan Asia Bank",
-            "Amana Bank","Seylan Bank","Union Bank","State Bank of India","Indian Bank","Axis Bank",
-            "Cargills Bank","HNB Grameen","Public Bank","Standard Chartered Bank"
+            "  Select Bank Name","  People's Bank","  Sampath Bank","  Commercial Bank","  Hatton National Bank",
+            "  National Savings Bank","  Bank of Ceylon","  Nations Trust Bank","  DFCC Bank","  Pan Asia Bank",
+            "  Amana Bank","  Seylan Bank","  Union Bank","  State Bank of India","  Indian Bank","  Axis Bank",
+            "  Cargills Bank","  HNB Grameen","  Public Bank","  Standard Chartered Bank"
     );
 
     @Override
@@ -61,10 +82,13 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(v -> finish());
+
         checkPermissions();
 
         initViews();
-        setupSpinners();
+        setupSpinners(); // sets up both dropdowns
         setupListeners();
     }
 
@@ -106,11 +130,14 @@ public class RegisterActivity extends AppCompatActivity {
         confirmPassword = findViewById(R.id.confirmPassword);
         bankAccountNumber = findViewById(R.id.bankAccountNumber);
         bankBranch = findViewById(R.id.bankBranch);
-        customJobTitle = findViewById(R.id.customJobTitle);
 
-        jobTitleSpinner = findViewById(R.id.jobTitleSpinner);
-        bankNameSpinner = findViewById(R.id.bankNameSpinner);
-        customJobTitleLayout = findViewById(R.id.customJobTitleLayout);
+        // Material exposed dropdowns
+        jobTitleDropdown = findViewById(R.id.jobTitleSpinner);
+        bankNameDropdown = findViewById(R.id.bankNameSpinner); // matches your XML id
+
+        // Custom job title UI
+        customJobTitleLayout2 = findViewById(R.id.customJobTitleLayout);
+        customJobTitle2 = findViewById(R.id.customJobTitle);
 
         idFrontImage = findViewById(R.id.idFrontImage);
         idBackImage = findViewById(R.id.idBackImage);
@@ -125,22 +152,25 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void setupSpinners(){
-        ArrayAdapter<String> jobAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, jobTitles);
-        jobAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        jobTitleSpinner.setAdapter(jobAdapter);
-
-        ArrayAdapter<String> bankAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, banks);
-        bankAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        bankNameSpinner.setAdapter(bankAdapter);
-
-        jobTitleSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selected = jobTitles.get(position);
-                customJobTitleLayout.setVisibility(selected.equals("Other (Fill Custom Title Field)") ? View.VISIBLE : View.GONE);
-            }
-            @Override public void onNothingSelected(AdapterView<?> parent) { customJobTitleLayout.setVisibility(View.GONE); }
+        // Job title dropdown
+        ArrayAdapter<String> jobAdapter =
+                new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, jobTitles);
+        jobTitleDropdown.setAdapter(jobAdapter);
+        jobTitleDropdown.setText(jobTitles.get(0), false);
+        jobTitleDropdown.setOnItemClickListener((parent, view, position, id) -> {
+            String selected = jobTitles.get(position);
+            customJobTitleLayout2.setVisibility(
+                    selected.equals("Other (Fill Custom Title Field)") ? View.VISIBLE : View.GONE
+            );
         });
+
+        // Bank name dropdown
+        ArrayAdapter<String> bankAdapter =
+                new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, banks);
+        bankNameDropdown.setAdapter(bankAdapter);
+        bankNameDropdown.setText(banks.get(0), false);
+        // Optional: listener if you need any side effects on selection
+        // bankNameDropdown.setOnItemClickListener((p, v, pos, id) -> { /* ... */ });
     }
 
     private void setupListeners(){
@@ -154,10 +184,24 @@ public class RegisterActivity extends AppCompatActivity {
         createAccountBtn.setOnClickListener(v -> {
             if(!areAllFieldsFilled()) { showToast("Please fill all required fields"); return; }
             if(!password.getText().toString().equals(confirmPassword.getText().toString())) { showToast("Passwords do not match"); return; }
-            if(jobTitleSpinner.getSelectedItemPosition() == 0) { showToast("Select Job Title"); return; }
-            if(jobTitleSpinner.getSelectedItem().toString().equals("Other (Fill Custom Title Field)") &&
-                    customJobTitle.getText().toString().trim().isEmpty()) { showToast("Enter custom job title"); return; }
-            if(bankNameSpinner.getSelectedItemPosition() == 0) { showToast("Select Bank"); return; }
+
+            String selectedJob = jobTitleDropdown.getText() != null
+                    ? jobTitleDropdown.getText().toString().trim() : "";
+            if(selectedJob.isEmpty() || selectedJob.equals("Select Job Title")) {
+                showToast("Select Job Title"); return;
+            }
+            if(selectedJob.equals("Other (Fill Custom Title Field)") &&
+                    (customJobTitle2.getText() == null ||
+                            customJobTitle2.getText().toString().trim().isEmpty())) {
+                showToast("Enter custom job title"); return;
+            }
+
+            String selectedBank = bankNameDropdown.getText() != null
+                    ? bankNameDropdown.getText().toString().trim() : "";
+            if(selectedBank.isEmpty() || selectedBank.equals("Select Bank Name")) {
+                showToast("Select Bank"); return;
+            }
+
             if(!privacyPolicyCheckbox.isChecked()) { showToast("Accept Privacy Policy"); return; }
 
             showPrivacyPolicyDialog();
@@ -185,10 +229,10 @@ public class RegisterActivity extends AppCompatActivity {
         if(resultCode == Activity.RESULT_OK){
             try {
                 Bitmap bitmap = null;
-                if(data.getData()!=null) { // gallery
+                if(data != null && data.getData()!=null) { // gallery
                     Uri uri = data.getData();
                     bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
-                } else if(data.getExtras()!=null) { // camera
+                } else if(data != null && data.getExtras()!=null) { // camera
                     bitmap = (Bitmap) data.getExtras().get("data");
                 }
 
@@ -216,10 +260,18 @@ public class RegisterActivity extends AppCompatActivity {
                 !bankBranch.getText().toString().isEmpty() &&
                 bitmapFront!=null && bitmapBack!=null;
 
-        if(jobTitleSpinner.getSelectedItem().toString().equals("Other (Fill Custom Title Field)"))
-            return basic && !customJobTitle.getText().toString().trim().isEmpty();
+        String selectedJob = jobTitleDropdown.getText() != null
+                ? jobTitleDropdown.getText().toString().trim() : "";
+        boolean jobChosen = !selectedJob.isEmpty() && !selectedJob.equals("Select Job Title");
 
-        return basic;
+        if(selectedJob.equals("Other (Fill Custom Title Field)")) {
+            return basic && jobChosen &&
+                    customJobTitle2.getText() != null &&
+                    !customJobTitle2.getText().toString().trim().isEmpty();
+        }
+
+        // Bank chosen check is done in click validation; keep basic here.
+        return basic && jobChosen;
     }
 
     private void showPrivacyPolicyDialog(){
@@ -237,7 +289,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         VolleyMultipartRequest request = new VolleyMultipartRequest(Request.Method.POST, url,
                 response -> showSuccessDialog(),
-                error -> showToast("Error: "+error.getMessage())) {
+                error -> showToast("Error: "+(error != null && error.getMessage()!=null ? error.getMessage() : "Unknown error"))) {
 
             @Override
             protected Map<String,String> getParams(){
@@ -254,11 +306,17 @@ public class RegisterActivity extends AppCompatActivity {
                 params.put("bankAccountNumber", bankAccountNumber.getText().toString());
                 params.put("bankBranch", bankBranch.getText().toString());
 
-                String jobTitle = jobTitleSpinner.getSelectedItem().toString();
-                if(jobTitle.equals("Other (Fill Custom Title Field)"))
-                    jobTitle = customJobTitle.getText().toString().trim();
-                params.put("jobTitle",jobTitle);
-                params.put("bankName",bankNameSpinner.getSelectedItem().toString());
+                String selectedJob = jobTitleDropdown.getText() != null
+                        ? jobTitleDropdown.getText().toString().trim() : "";
+                String jobTitle = selectedJob.equals("Other (Fill Custom Title Field)")
+                        ? (customJobTitle2.getText() == null ? "" : customJobTitle2.getText().toString().trim())
+                        : selectedJob;
+
+                String bankName = bankNameDropdown.getText() != null
+                        ? bankNameDropdown.getText().toString().trim() : "";
+
+                params.put("jobTitle", jobTitle);
+                params.put("bankName", bankName);
 
                 return params;
             }
@@ -297,11 +355,22 @@ public class RegisterActivity extends AppCompatActivity {
     private void clearAllFields(){
         fullName.setText(""); username.setText(""); contactNumber.setText(""); email.setText("");
         idNumber.setText(""); permanentAddress.setText(""); currentAddress.setText(""); workExperience.setText("");
-        password.setText(""); confirmPassword.setText(""); bankAccountNumber.setText(""); bankBranch.setText(""); customJobTitle.setText("");
+        password.setText(""); confirmPassword.setText(""); bankAccountNumber.setText(""); bankBranch.setText("");
+
+        // Reset dropdowns
+        jobTitleDropdown.setText(jobTitles.get(0), false);
+        bankNameDropdown.setText(banks.get(0), false);
+
+        // Reset custom job title section
+        customJobTitleLayout2.setVisibility(View.GONE);
+        customJobTitle2.setText("");
+
+        // Reset images
         bitmapFront=null; bitmapBack=null;
         idFrontImage.setImageResource(android.R.drawable.ic_menu_camera);
         idBackImage.setImageResource(android.R.drawable.ic_menu_camera);
-        jobTitleSpinner.setSelection(0); bankNameSpinner.setSelection(0);
+
+        // Reset privacy checkbox
         privacyPolicyCheckbox.setChecked(false);
     }
 }
