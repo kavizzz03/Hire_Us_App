@@ -12,31 +12,32 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal">
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/TextAppearance.Material3.HeadlineLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hire Me"
-            android:textSize="36sp"
-            android:textStyle="bold|italic"
-            android:textColor="#006064"
-            android:layout_marginBottom="8dp" />
+            android:textColor="@color/onPrimary_47"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp"/>
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/TextAppearance.Material3.BodyMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Create your profile to get started"
-            android:textSize="16sp"
-            android:textColor="#004D40"
-            android:layout_marginBottom="24dp" />
+            android:textColor="@color/onPrimary_47"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/signInBtn"
+            style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="← Already have an account? Sign In"
-            android:textColor="#000000"
-            android:background="@drawable/rounded_button_white"
-            android:layout_marginBottom="24dp" />
+            android:text="Already have an account? Sign In"
+            android:textColor="@color/btn_primary_text"
+            app:backgroundTint="@color/btn_primary_tint"/>
 
         <!-- Personal Info -->
 
@@ -242,32 +243,187 @@
         <!-- Job Title Spinner -->
         <Spinner android:id="@+id/jobTitleSpinner"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:id="@+id/customJobTitleLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
-        <LinearLayout android:id="@+id/customJobTitleLayout" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
-            <EditText android:id="@+id/customJobTitle" android:hint="Enter Custom Job Title" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            android:visibility="gone">
+            <EditText
+                android:id="@+id/customJobTitle"
+                android:hint="Enter Custom Job Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
         <!-- ID Front -->
-        <TextView android:text="Upload ID Front Side" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-        <ImageView android:id="@+id/idFrontImage" android:layout_width="match_parent" android:layout_height="200dp" android:background="#FFFFFF"/>
-        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:weightSum="2">
-            <Button android:id="@+id/cameraFrontBtn" android:layout_width="0dp" android:layout_weight="1" android:layout_height="50dp" android:text="Camera"/>
-            <Button android:id="@+id/galleryFrontBtn" android:layout_width="0dp" android:layout_weight="1" android:layout_height="50dp" android:text="Gallery"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/TextAppearance.Material3.TitleMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ID verification"
+            android:layout_marginTop="20dp"/>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="12dp"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/TextAppearance.Material3.BodyMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upload ID Front Side"
+            android:layout_marginBottom="6dp"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:cardUseCompatPadding="true"
+            app:strokeColor="?attr/colorOutline"
+            app:strokeWidth="1dp">
+
+            <ImageView
+                android:id="@+id/idFrontImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:contentDescription="Front side of ID preview"/>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cameraFrontBtn"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="Camera"
+                app:icon="@drawable/outline_add_a_photo_24"
+                app:iconPadding="8dp"
+                app:iconGravity="textStart"/>
+
+            <Space
+                android:layout_width="8dp"
+                android:layout_height="1dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/galleryFrontBtn"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="Gallery"
+                app:icon="@drawable/outline_add_photo_alternate_24"
+                app:iconPadding="8dp"
+                app:iconGravity="textStart"/>
         </LinearLayout>
 
+
         <!-- ID Back -->
-        <TextView android:text="Upload ID Back Side" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-        <ImageView android:id="@+id/idBackImage" android:layout_width="match_parent" android:layout_height="200dp" android:background="#FFFFFF"/>
-        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:weightSum="2">
-            <Button android:id="@+id/cameraBackBtn" android:layout_width="0dp" android:layout_weight="1" android:layout_height="50dp" android:text="Camera"/>
-            <Button android:id="@+id/galleryBackBtn" android:layout_width="0dp" android:layout_weight="1" android:layout_height="50dp" android:text="Gallery"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/TextAppearance.Material3.BodyMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upload ID Back Side"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="6dp"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:cardUseCompatPadding="true"
+            app:strokeColor="?attr/colorOutline"
+            app:strokeWidth="1dp">
+
+            <ImageView
+                android:id="@+id/idBackImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:contentDescription="Back side of ID preview"/>
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cameraBackBtn"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="Camera"
+                app:icon="@drawable/outline_add_a_photo_24"
+                app:iconPadding="8dp"
+                app:iconGravity="textStart"/>
+
+            <Space
+                android:layout_width="8dp"
+                android:layout_height="1dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/galleryBackBtn"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="Gallery"
+                app:icon="@drawable/outline_add_photo_alternate_24"
+                app:iconPadding="8dp"
+                app:iconGravity="textStart"/>
         </LinearLayout>
 
         <!-- Bank Details -->
         <Spinner android:id="@+id/bankNameSpinner" android:layout_width="match_parent" android:layout_height="wrap_content"/>
-        <EditText android:id="@+id/bankAccountNumber" android:hint="Bank Account Number" android:layout_width="match_parent" android:layout_height="wrap_content"/>
-        <EditText android:id="@+id/bankBranch" android:hint="Bank Branch" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Bank Account Number">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/bankAccountNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:background="@drawable/bg_input"
+                android:textColor="@color/onSurface_47"
+                android:textColorHint="@color/hint_47"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Bank Branch">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/bankBranch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords"
+                android:imeOptions="actionDone"
+                android:maxLines="1"
+                android:background="@drawable/bg_input"
+                android:textColor="@color/onSurface_47"
+                android:textColorHint="@color/hint_47"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <CheckBox android:id="@+id/privacyPolicyCheckbox" android:text="I agree to the Privacy Policy" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
         <Button android:id="@+id/createAccountBtn" android:text="Create Account" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp"/>
