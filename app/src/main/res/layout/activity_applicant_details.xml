@@ -1,59 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#F9F9F9"
-    android:padding="16dp">
+    android:background="@drawable/wave">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/outline_arrow_back_24"
+            app:tint="#000000"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header">
 
         <!-- Profile Section -->
         <TextView
-            android:text="👤 Worker Profile"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="#000000"
-            android:layout_marginBottom="12dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:text="👤 Worker Profile"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            app:cardUseCompatPadding="true"
-            app:cardElevation="0dp"
+            app:cardBackgroundColor="?attr/colorSurface"
             app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            app:cardUseCompatPadding="true"
             app:strokeColor="?attr/colorOutline"
-            app:strokeWidth="1dp"
-            app:cardBackgroundColor="?attr/colorSurface">
+            app:strokeWidth="1dp">
 
             <LinearLayout
-                android:padding="16dp"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
 
-                <TextView android:id="@+id/txtDetailFullName"
-                    android:text="Full Name"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:textColor="#333"
-                    android:layout_marginBottom="8dp"
+                <TextView
+                    android:id="@+id/txtDetailFullName"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Full Name"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <!-- Email -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="35dp"
@@ -69,19 +95,19 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="Email"
                             android:textColor="?attr/colorOnSurfaceVariant"
-                            android:textSize="12sp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:textSize="12sp" />
 
                         <TextView
                             android:id="@+id/txtDetailEmail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="—"
                             android:textColor="?attr/colorOnSurface"
                             android:textSize="16sp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             tools:text="alex.johnson@mail.com" />
                     </LinearLayout>
                 </LinearLayout>
@@ -95,8 +121,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="35dp"
@@ -112,19 +138,19 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="Contact"
                             android:textColor="?attr/colorOnSurfaceVariant"
-                            android:textSize="12sp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:textSize="12sp" />
 
                         <TextView
                             android:id="@+id/txtDetailContact"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="—"
                             android:textColor="?attr/colorOnSurface"
                             android:textSize="16sp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             tools:text="+1 (555) 010-5678" />
                     </LinearLayout>
                 </LinearLayout>
@@ -138,8 +164,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="35dp"
@@ -155,19 +181,19 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="Address"
                             android:textColor="?attr/colorOnSurfaceVariant"
-                            android:textSize="12sp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:textSize="12sp" />
 
                         <TextView
                             android:id="@+id/txtDetailAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="—"
                             android:textColor="?attr/colorOnSurface"
                             android:textSize="16sp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
                             tools:text="221B Baker Street, London" />
                     </LinearLayout>
                 </LinearLayout>
@@ -181,8 +207,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="35dp"
@@ -198,19 +224,19 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="Work Experience"
                             android:textColor="?attr/colorOnSurfaceVariant"
-                            android:textSize="12sp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:textSize="12sp" />
 
                         <TextView
                             android:id="@+id/txtDetailExperience"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="—"
                             android:textColor="?attr/colorOnSurface"
                             android:textSize="16sp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
                             tools:text="5 years • Plumbing, Electrical" />
                     </LinearLayout>
                 </LinearLayout>
@@ -224,8 +250,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="35dp"
@@ -241,19 +267,19 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="Bank Information"
                             android:textColor="?attr/colorOnSurfaceVariant"
-                            android:textSize="12sp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:textSize="12sp" />
 
                         <TextView
                             android:id="@+id/txtDetailBank"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="—"
                             android:textColor="?attr/colorOnSurface"
                             android:textSize="16sp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
                             tools:text="Bank of X • **** 1234" />
                     </LinearLayout>
                 </LinearLayout>
@@ -262,30 +288,30 @@
 
         <!-- Reviews Section -->
         <TextView
-            android:text="⭐ Worker Reviews"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="?attr/colorOnSurface"
-            android:layout_marginBottom="12dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:text="⭐ Worker Reviews"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            app:cardUseCompatPadding="true"
-            app:cardElevation="0dp"
+            app:cardBackgroundColor="?attr/colorSurface"
             app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            app:cardUseCompatPadding="true"
             app:strokeColor="?attr/colorOutline"
-            app:strokeWidth="1dp"
-            app:cardBackgroundColor="?attr/colorSurface">
+            app:strokeWidth="1dp">
 
             <LinearLayout
-                android:padding="16dp"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -298,21 +324,21 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="4.8"
-                        android:textStyle="bold"
-                        android:textSize="32sp"
                         android:textColor="?attr/colorPrimary"
+                        android:textSize="32sp"
+                        android:textStyle="bold"
                         tools:text="4.8" />
 
                     <RatingBar
                         android:id="@+id/ratingBarSummary"
+                        style="?android:attr/ratingBarStyleSmall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
                         android:isIndicator="true"
                         android:numStars="5"
-                        android:stepSize="0.5"
                         android:rating="4.8"
-                        style="?android:attr/ratingBarStyleSmall" />
+                        android:stepSize="0.5" />
                 </LinearLayout>
 
                 <TextView
@@ -329,19 +355,21 @@
                     android:layout_height="1dp"
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="8dp" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-                <TextView
-                    android:id="@+id/txtDetailReviews"
-                    android:text="Review details will appear here."
-                    android:textColor="#555"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/txtDetailReviews"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Review details will appear here."
+                        android:textColor="?attr/colorOnSurfaceVariant" />
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
