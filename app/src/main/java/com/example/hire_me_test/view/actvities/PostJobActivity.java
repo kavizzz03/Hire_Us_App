@@ -22,7 +22,7 @@ public class PostJobActivity extends AppCompatActivity {
             editLocation, editSalary, editOtSalary, editRequirements,
             editDate, editPickup, editContact;
     Button btnPostJob;
-    ImageButton btnDatePicker;
+    ImageButton btnDatePicker, btnBack;
 
     String[] jobTitles = {
             "Select the Job Title","Welder", "Labour/Helper", "Electrician", "Meason", "Painter",
@@ -52,6 +52,9 @@ public class PostJobActivity extends AppCompatActivity {
         editContact = findViewById(com.example.hire_me_test.R.id.editContact);
         btnPostJob = findViewById(com.example.hire_me_test.R.id.btnPostJob);
         btnDatePicker = findViewById(R.id.btnDatePicker);
+
+        btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(v -> finish());
 
         // Get employeeId from intent extras (key: "employer_id")
         employeeId = getIntent().getStringExtra("employer_id");
