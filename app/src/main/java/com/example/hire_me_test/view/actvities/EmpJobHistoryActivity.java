@@ -2,6 +2,7 @@ package com.example.hire_me_test.view.actvities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -28,6 +29,8 @@ public class EmpJobHistoryActivity extends AppCompatActivity {
     private OkHttpClient client = new OkHttpClient();
     private static final String URL = "https://hireme.cpsharetxt.com/get_job_history.php";
 
+    ImageView btnBack;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +41,9 @@ public class EmpJobHistoryActivity extends AppCompatActivity {
 
         adapter = new EmpJobHistoryAdapter(jobHistoryList);
         recyclerView.setAdapter(adapter);
+
+        btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(v -> finish());
 
         // ✅ Set click listener AFTER setting adapter
         adapter.setOnItemClickListener(job -> {
