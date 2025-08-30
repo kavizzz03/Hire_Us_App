@@ -32,14 +32,15 @@
             style="@style/TextAppearance.Material3.HeadlineLarge"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="Edit Your Profile"
             android:textColor="@color/onPrimary_47"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:gravity="center"
-            app:layout_constraintStart_toEndOf="@id/btnBack"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintStart_toStartOf="@+id/btnBack"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -233,7 +234,7 @@
                 android:gravity="center"
                 android:paddingBottom="8dp"
                 android:text="Bank Details"
-                android:textColor="#444444"
+                android:textColor="#B1B1B1"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -285,7 +286,7 @@
                 android:layout_height="56dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="16dp"
-                android:backgroundTint="#FF5722"
+                android:backgroundTint="@color/error_47"
                 android:fontFamily="sans-serif-medium"
                 android:text="Update Profile"
                 android:textAllCaps="false"
