@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ public class FindJobEmpActivity extends AppCompatActivity {
             tvContactInfo, tvEmail;
 
     Button btnApply;
+    ImageView btnBack;
 
     private int jobId;
     private String idNumber;
@@ -55,6 +57,9 @@ public class FindJobEmpActivity extends AppCompatActivity {
         tvEmail = findViewById(R.id.tvEmail);
 
         btnApply = findViewById(R.id.btnApply);
+        btnBack = findViewById(R.id.btnBack);
+
+        btnBack.setOnClickListener(v -> onBackPressed());
 
         // Get job details from intent
         jobId = getIntent().getIntExtra("job_id", -1);

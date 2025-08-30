@@ -33,14 +33,15 @@
             style="@style/TextAppearance.Material3.HeadlineLarge"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="Job Information"
             android:textColor="@color/onPrimary_47"
+            android:textSize="22sp"
             android:textStyle="bold"
-            android:gravity="center"
-            app:layout_constraintStart_toEndOf="@id/btnBack"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintStart_toStartOf="@+id/btnBack"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.card.MaterialCardView
@@ -100,6 +101,7 @@
                 android:layout_marginTop="12dp"
                 android:drawablePadding="8dp"
                 android:text="Vacancies: 0"
+                android:textSize="20sp"
                 android:textColor="?attr/colorOnSurface"
                 app:drawableStartCompat="@drawable/outline_group_24"
                 app:drawableTint="?attr/colorOnSurfaceVariant" />
@@ -112,6 +114,7 @@
                 android:layout_marginTop="8dp"
                 android:drawablePadding="8dp"
                 android:text="Time Range: N/A"
+                android:textSize="20sp"
                 android:textColor="?attr/colorOnSurface"
                 app:drawableStartCompat="@drawable/outline_nest_clock_farsight_analog_24"
                 app:drawableTint="?attr/colorOnSurfaceVariant" />
@@ -124,6 +127,7 @@
                 android:layout_marginTop="8dp"
                 android:drawablePadding="8dp"
                 android:text="Location: Unknown"
+                android:textSize="20sp"
                 android:textColor="?attr/colorOnSurface"
                 app:drawableStartCompat="@drawable/ic_location_24"
                 app:drawableTint="?attr/colorOnSurfaceVariant" />
@@ -136,6 +140,7 @@
                 android:layout_marginTop="8dp"
                 android:drawablePadding="8dp"
                 android:text="Basic Salary: Rs. 0.00"
+                android:textSize="20sp"
                 android:textColor="?attr/colorPrimary"
                 app:drawableStartCompat="@drawable/ic_salary"
                 app:drawableTint="?attr/colorPrimary" />
@@ -148,6 +153,7 @@
                 android:layout_marginTop="8dp"
                 android:drawablePadding="8dp"
                 android:text="OT Salary: Rs. 0.00"
+                android:textSize="20sp"
                 android:textColor="?attr/colorPrimary"
                 app:drawableStartCompat="@drawable/ic_salary"
                 app:drawableTint="?attr/colorPrimary" />
@@ -160,6 +166,7 @@
                 android:layout_marginTop="12dp"
                 android:drawablePadding="8dp"
                 android:text="Requirements:"
+                android:textSize="20sp"
                 android:textColor="?attr/colorOnSurface"
                 app:drawableStartCompat="@drawable/outline_checklist_24"
                 app:drawableTint="?attr/colorOnSurfaceVariant"/>
@@ -172,6 +179,7 @@
                 android:layout_marginTop="12dp"
                 android:drawablePadding="8dp"
                 android:text="Job Date: N/A"
+                android:textSize="20sp"
                 android:textColor="?attr/colorOnSurface"
                 app:drawableStartCompat="@drawable/outline_calendar_today_24"
                 app:drawableTint="?attr/colorOnSurfaceVariant" />
@@ -184,6 +192,7 @@
                 android:layout_marginTop="8dp"
                 android:drawablePadding="8dp"
                 android:text="Pickup Location: N/A"
+                android:textSize="20sp"
                 android:textColor="?attr/colorOnSurface"
                 app:drawableStartCompat="@drawable/outline_person_pin_circle_24"
                 app:drawableTint="?attr/colorOnSurfaceVariant" />
@@ -196,6 +205,7 @@
                 android:layout_marginTop="8dp"
                 android:drawablePadding="8dp"
                 android:text="Contact Info: N/A"
+                android:textSize="20sp"
                 android:textColor="?attr/colorOnSurface"
                 app:drawableStartCompat="@drawable/ic_call_24"
                 app:drawableTint="?attr/colorOnSurfaceVariant" />
@@ -209,6 +219,7 @@
                 android:layout_marginBottom="8dp"
                 android:drawablePadding="8dp"
                 android:text="Email: N/A"
+                android:textSize="20sp"
                 android:textColor="?attr/colorOnSurface"
                 app:drawableStartCompat="@drawable/outline_mail_24"
                 app:drawableTint="?attr/colorOnSurfaceVariant" />
