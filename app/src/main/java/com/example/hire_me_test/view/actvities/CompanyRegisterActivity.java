@@ -24,6 +24,7 @@ public class CompanyRegisterActivity extends AppCompatActivity {
     Button uploadIcon, createAccountBtn;
     CheckBox policyCheckbox;
     Uri iconUri;
+    ImageView btnBack;
 
     private static final int PICK_ICON_REQUEST = 1;
     private static final String UPLOAD_URL = "https://hireme.cpsharetxt.com/register_employer.php"; // Change to your real path
@@ -46,6 +47,9 @@ public class CompanyRegisterActivity extends AppCompatActivity {
         createAccountBtn = findViewById(R.id.createAccountBtn);
 
         uploadIcon.setOnClickListener(v -> openFileChooser());
+
+        btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(v -> onBackPressed());
 
         createAccountBtn.setOnClickListener(v -> {
             if (!policyCheckbox.isChecked()) {
