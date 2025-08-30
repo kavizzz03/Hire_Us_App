@@ -71,8 +71,8 @@ public class ApplicantAdapter extends RecyclerView.Adapter<ApplicantAdapter.View
 
         holder.txtName.setText(worker.getFullName());
         holder.txtEmail.setText(worker.getEmail());
-        holder.txtContact.setText("Contact: " + worker.getContactNumber());
-        holder.txtRating.setText("Rating: " + worker.getRating());
+        holder.txtContact.setText(worker.getContactNumber());
+        holder.txtRating.setText(worker.getRating());
 
         String status = worker.getStatus();
 

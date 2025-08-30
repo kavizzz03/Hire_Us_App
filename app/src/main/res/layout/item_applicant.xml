@@ -1,98 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardElevation="4dp"
-    app:cardCornerRadius="12dp"
-    android:foreground="?attr/selectableItemBackground">
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardBackgroundColor="?attr/colorSurface"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="1dp"
+    app:strokeColor="?attr/colorOutlineVariant"
+    app:strokeWidth="1dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="12dp">
+        android:minHeight="88dp"
+        android:padding="16dp">
 
-        <CheckBox
+        <!-- Modern checkbox with theme colors -->
+        <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/applicantCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
+            app:useMaterialThemeColors="true"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:focusable="false"
-            android:focusableInTouchMode="false"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <!-- Name -->
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/applicantName"
+            style="@style/TextAppearance.Material3.TitleMedium"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:paddingBottom="8dp"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:text="Full Name"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="#000"
             app:layout_constraintStart_toEndOf="@id/applicantCheckbox"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toStartOf="@id/applicantRating" />
 
-        <TextView
+        <!-- Rating as a compact chip with star -->
+        <com.google.android.material.chip.Chip
+            android:id="@+id/applicantRating"
+            style="@style/Widget.Material3.Chip.Assist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="false"
+            android:clickable="false"
+            android:text="4.5"
+            app:ensureMinTouchTargetSize="false"
+            app:chipIcon="@drawable/outline_star_24"
+            app:chipIconTint="?attr/colorPrimary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Email with icon -->
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/applicantEmail"
+            style="@style/TextAppearance.Material3.BodyMedium"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:drawablePadding="6dp"
             android:text="email@example.com"
-            android:textSize="14sp"
-            android:textColor="#555"
+            app:drawableStartCompat="@drawable/outline_mail_24"
+            app:drawableTint="?attr/colorOnSurfaceVariant"
             app:layout_constraintStart_toStartOf="@id/applicantName"
             app:layout_constraintTop_toBottomOf="@id/applicantName"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <TextView
+        <!-- Contact with icon -->
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/applicantContact"
+            style="@style/TextAppearance.Material3.BodyMedium"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Contact: 0123456789"
-            android:textSize="14sp"
-            android:textColor="#555"
+            android:paddingBottom="8dp"
+            android:drawablePadding="6dp"
+            android:text="0123456789"
+            app:drawableStartCompat="@drawable/ic_call_24"
+            app:drawableTint="?attr/colorOnSurfaceVariant"
             app:layout_constraintStart_toStartOf="@id/applicantName"
             app:layout_constraintTop_toBottomOf="@id/applicantEmail"
-            app:layout_constraintEnd_toStartOf="@id/applicantRating" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
-        <TextView
-            android:id="@+id/applicantRating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rating: 4.5"
-            android:textSize="14sp"
-            android:textColor="#388E3C"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBaseline_toBaselineOf="@id/applicantContact" />
-
-        <TextView
+        <!-- Status chip -->
+        <com.google.android.material.chip.Chip
             android:id="@+id/applicantHiredStatus"
+            style="@style/Widget.Material3.Chip.Assist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Status"
-            android:textColor="#FF9800"
-            android:textSize="13sp"
-            android:textStyle="italic"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
+            android:checkable="false"
+            android:clickable="false"
+            android:text="Available"
+            app:ensureMinTouchTargetSize="false"
+            app:chipIcon="@drawable/outline_check_circle_24"
+            app:chipIconTint="@color/success_47"
             app:layout_constraintStart_toStartOf="@id/applicantName"
-            app:layout_constraintTop_toBottomOf="@id/applicantContact"/>
+            app:layout_constraintTop_toBottomOf="@id/applicantContact"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-        <TextView
+        <!-- Already hired (hidden by default) -->
+        <com.google.android.material.chip.Chip
             android:id="@+id/alreadyHiredLabel"
+            style="@style/Widget.Material3.Chip.Assist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Already Hired"
-            android:textColor="#D32F2F"
-            android:textSize="12sp"
-            android:textStyle="bold"
+            android:layout_marginStart="8dp"
+            android:checkable="false"
+            android:clickable="false"
+            android:text="Already hired"
             android:visibility="gone"
-            android:layout_marginTop="4dp"
-            app:layout_constraintTop_toBottomOf="@id/applicantHiredStatus"
-            app:layout_constraintStart_toStartOf="@id/applicantName"/>
+            app:ensureMinTouchTargetSize="false"
+            app:chipIcon="@drawable/outline_cancel_24"
+            app:chipIconTint="@color/error_47"
+            app:layout_constraintStart_toEndOf="@id/applicantHiredStatus"
+            app:layout_constraintBaseline_toBaselineOf="@id/applicantHiredStatus" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
