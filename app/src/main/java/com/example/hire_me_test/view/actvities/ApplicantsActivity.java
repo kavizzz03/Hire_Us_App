@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +35,7 @@ public class ApplicantsActivity extends AppCompatActivity {
     private ApplicantAdapter adapter;
     private int jobId, vacancies;
     private Button btnSelectApplicants;
+    ImageView btnBack;
 
     // Store already hired worker idNumbers to disable selection
     private final Set<String> alreadyHired = new HashSet<>();
@@ -46,6 +48,9 @@ public class ApplicantsActivity extends AppCompatActivity {
         recyclerApplicants = findViewById(R.id.recyclerApplicants);
         recyclerApplicants.setLayoutManager(new LinearLayoutManager(this));
         btnSelectApplicants = findViewById(R.id.btnSelectApplicants);
+
+        btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(v -> finish());
 
         jobId = getIntent().getIntExtra("job_id", -1);
         vacancies = getIntent().getIntExtra("vacancies", 1);
