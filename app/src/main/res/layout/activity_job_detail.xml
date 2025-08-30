@@ -1,97 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/android:windowBackground"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:clipToPadding="false">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Job Detail Card -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:padding="24dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="8dp"
-            android:backgroundTint="?attr/colorSurface">
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:padding="20dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="@drawable/bg_card"
+            app:cardBackgroundColor="?attr/colorSurface"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="2dp"
+            app:strokeColor="?attr/colorOutlineVariant"
+            app:strokeWidth="1dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingStart="15dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
 
-                <TextView
+                <!-- Title -->
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tvTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Job Title"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:textColor="?attr/android:textColor"/>
+                    android:textAppearance="?attr/textAppearanceTitleLarge"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textStyle="bold" />
 
-                <View
+                <!-- Employer (subtle) -->
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvEmployer"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="12dp"
-                    android:background="?attr/colorPrimary"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Employer: "
+                    android:textAppearance="?attr/textAppearanceBodyMedium"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:drawablePadding="8dp"
+                    app:drawableTint="?attr/colorSecondary" />
 
-                <TextView
+                <!-- Divider -->
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    app:dividerThickness="1dp"
+                    app:dividerColor="?attr/colorOutlineVariant" />
+
+                <!-- Quick info rows -->
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tvVacancies"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Vacancies: "
-                    android:textSize="16sp"
-                    android:textColor="?attr/android:textColor"
-                    android:layout_marginBottom="6dp"/>
+                    android:textAppearance="?attr/textAppearanceBodyLarge"
+                    android:textColor="?attr/colorOnSurface"
+                    android:drawableStart="@drawable/outline_group_24"
+                    android:drawablePadding="8dp"
+                    app:drawableTint="?attr/colorPrimary"
+                    android:layout_marginBottom="8dp" />
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tvSalary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Salary: "
-                    android:textSize="16sp"
-                    android:textColor="?attr/android:textColor"
-                    android:layout_marginBottom="6dp"/>
+                    android:textAppearance="?attr/textAppearanceBodyLarge"
+                    android:textColor="?attr/colorOnSurface"
+                    android:drawableStart="@drawable/ic_salary"
+                    android:drawablePadding="8dp"
+                    app:drawableTint="?attr/colorPrimary"
+                    android:layout_marginBottom="8dp" />
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tvLocation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Location: "
-                    android:textSize="16sp"
-                    android:textColor="?attr/android:textColor"
-                    android:layout_marginBottom="12dp"/>
+                    android:textAppearance="?attr/textAppearanceBodyLarge"
+                    android:textColor="?attr/colorOnSurface"
+                    android:drawableStart="@drawable/ic_location_24"
+                    android:drawablePadding="8dp"
+                    app:drawableTint="?attr/colorPrimary"
+                    android:layout_marginBottom="12dp" />
 
-                <TextView
-                    android:id="@+id/tvEmployer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Employer: "
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="?attr/android:textColor"
-                    android:layout_marginBottom="6dp"/>
-
-                <TextView
+                <!-- Contact -->
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tvContact"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Contact: "
-                    android:textSize="16sp"
-                    android:textColor="?attr/android:textColor"/>
+                    android:textAppearance="?attr/textAppearanceBodyLarge"
+                    android:textColor="?attr/colorOnSurface"
+                    android:drawableStart="@drawable/ic_call_24"
+                    android:drawablePadding="8dp"
+                    app:drawableTint="?attr/colorPrimary" />
+
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
-
-</ScrollView>
+</androidx.core.widget.NestedScrollView>
