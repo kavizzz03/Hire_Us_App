@@ -38,6 +38,16 @@
             android:layout_marginTop="4dp"
             android:maxLines="1"
             android:ellipsize="end" />
+        <!-- Meals Count -->
+        <TextView
+            android:id="@+id/txtMealsCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Meals: 0"
+            android:textSize="14sp"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:layout_marginTop="6dp"/>
+
 
         <!-- Salary and Icon -->
         <LinearLayout
@@ -47,12 +57,7 @@
             android:gravity="center_vertical"
             android:layout_marginTop="12dp">
 
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_salary"
-                android:tint="?attr/colorPrimary"
-                android:contentDescription="Salary Icon" />
+
 
             <TextView
                 android:id="@+id/txtSalary"

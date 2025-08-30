@@ -24,7 +24,8 @@ public class OrderFoodActivity extends AppCompatActivity {
 
     private static final String TAG = "OrderFoodActivity";
 
-    private String idNumber, jobId;
+    private String idNumber;
+    private int jobId = -1; // default invalid value
     private TextView txtMealInfo;
     private Button btnYesMeal, btnNoMeal;
 
@@ -37,11 +38,9 @@ public class OrderFoodActivity extends AppCompatActivity {
         btnYesMeal = findViewById(R.id.btnYesMeal);
         btnNoMeal = findViewById(R.id.btnNoMeal);
 
-        // Hide buttons initially
         btnYesMeal.setVisibility(View.GONE);
         btnNoMeal.setVisibility(View.GONE);
 
-        // Retrieve ID from intent
         idNumber = getIntent().getStringExtra("idNumber");
         if (idNumber == null) {
             idNumber = getIntent().getStringExtra("id_number");
@@ -73,7 +72,11 @@ public class OrderFoodActivity extends AppCompatActivity {
                         }
 
                         if (obj.optBoolean("hired", false)) {
-                            jobId = obj.optString("job_id", "");
+                            jobId = obj.optInt("job_id", -1);
+                            if (jobId <= 0) {
+                                txtMealInfo.setText("❌ Job ID not found for this worker.");
+                                return;
+                            }
                             Log.d(TAG, "Worker is hired for job ID: " + jobId);
                             fetchMeals(jobId);
                         } else {
@@ -93,7 +96,12 @@ public class OrderFoodActivity extends AppCompatActivity {
         Volley.newRequestQueue(this).add(request);
     }
 
-    private void fetchMeals(String jobId) {
+    private void fetchMeals(int jobId) {
+        if (jobId <= 0) {
+            txtMealInfo.setText("❌ Invalid job ID");
+            return;
+        }
+
         String url = "https://hireme.cpsharetxt.com/meals.php?job_id=" + jobId;
 
         StringRequest request = new StringRequest(Request.Method.GET, url,
@@ -111,10 +119,12 @@ public class OrderFoodActivity extends AppCompatActivity {
                                 String name = meal.optString("meal_name", "Unnamed Meal");
                                 String desc = meal.optString("description", "No description");
                                 String price = meal.optString("meal_price", "0.00");
+                                boolean selected = meal.optBoolean("selected", false);
 
                                 mealDetails.append("🍽️ ").append(name)
                                         .append("\n📋 ").append(desc)
                                         .append("\n💰 Rs. ").append(price)
+                                        .append("\n✅ Selected: ").append(selected ? "Yes" : "No")
                                         .append("\n\n");
                             }
 
@@ -140,9 +150,12 @@ public class OrderFoodActivity extends AppCompatActivity {
         Volley.newRequestQueue(this).add(request);
     }
 
-
-
     private void updateMealPreference(String choice) {
+        if (jobId <= 0) {
+            Toast.makeText(this, "❌ Invalid job ID", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         String url = "https://hireme.cpsharetxt.com/update_meals_choice.php";
 
         StringRequest request = new StringRequest(Request.Method.POST, url,
@@ -169,7 +182,7 @@ public class OrderFoodActivity extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map<String, String> map = new HashMap<>();
                 map.put("id_number", idNumber);
-                map.put("job_id", jobId);
+                map.put("job_id", String.valueOf(jobId));
                 map.put("wants_meals", choice);
                 return map;
             }
