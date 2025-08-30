@@ -18,6 +18,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     EditText emailInput;
     Button sendEmailBtn;
     ProgressDialog progressDialog;
+    ImageView btnBack;
 
     String URL = "https://hireme.cpsharetxt.com/forgot_password.php"; // Replace with your real PHP URL
 
@@ -28,6 +29,9 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
         emailInput = findViewById(com.example.hire_me_test.R.id.emailInput);
         sendEmailBtn = findViewById(R.id.sendEmailBtn);
+        btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(v -> finish());
+
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please wait...");
 
