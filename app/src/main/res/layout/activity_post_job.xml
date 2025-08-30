@@ -31,14 +31,15 @@
             style="@style/TextAppearance.Material3.HeadlineLarge"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="Post Your Jobs"
             android:textColor="@color/onPrimary_47"
             android:textStyle="bold"
-            android:gravity="center"
-            app:layout_constraintStart_toEndOf="@id/btnBack"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintStart_toStartOf="@+id/btnBack"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.core.widget.NestedScrollView
