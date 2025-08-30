@@ -21,7 +21,7 @@ public class CompanyRegisterActivity extends AppCompatActivity {
 
     EditText companyName, name, address, email, contact, password, confirmPassword;
     TextView selectedFile;
-    Button uploadIcon, createAccountBtn;
+    Button uploadIcon, createAccountBtn, signInBtn;
     CheckBox policyCheckbox;
     Uri iconUri;
     ImageView btnBack;
@@ -45,11 +45,17 @@ public class CompanyRegisterActivity extends AppCompatActivity {
         uploadIcon = findViewById(R.id.uploadIcon);
         selectedFile = findViewById(R.id.selectedFile);
         createAccountBtn = findViewById(R.id.createAccountBtn);
+        signInBtn = findViewById(R.id.signInBtn);
 
         uploadIcon.setOnClickListener(v -> openFileChooser());
 
         btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> onBackPressed());
+
+        signInBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(CompanyRegisterActivity.this, GiveJobActivity.class);
+            startActivity(intent);
+        });
 
         createAccountBtn.setOnClickListener(v -> {
             if (!policyCheckbox.isChecked()) {

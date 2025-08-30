@@ -213,7 +213,7 @@
         android:layout_above="@id/bottomNavigation"
         android:layout_margin="16dp"
         android:text="Log Out"
-        android:backgroundTint="#FF4444"
+        android:backgroundTint="@color/error_47"
         android:textColor="#FFFFFF" />
 
     <!-- Bottom Navigation -->
