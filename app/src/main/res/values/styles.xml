@@ -21,4 +21,20 @@
     </style>
 
 
+        <!-- Base application theme. -->
+        <style name="Theme.MyApp" parent="Theme.Material3.DayNight.NoActionBar">
+            <!-- Primary brand color. -->
+            <!-- ... other theme attributes ... -->
+        </style>
+
+        <!-- You can add your custom styles here -->
+        <style name="ShapeAppearanceOverlay.MyApp.Card" parent="">
+            <item name="cornerFamily">rounded</item>
+            <item name="cornerSize">8dp</item> <!-- Adjust the corner radius as needed -->
+        </style>
+
+    <style name="ShapeAppearanceOverlay.MyApp.Circle" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>
