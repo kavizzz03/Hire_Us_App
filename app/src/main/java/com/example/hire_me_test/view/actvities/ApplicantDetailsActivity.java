@@ -1,6 +1,7 @@
 package com.example.hire_me_test.view.actvities;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ import java.util.Map;
 public class ApplicantDetailsActivity extends AppCompatActivity {
 
     TextView txtFullName, txtEmail, txtContact, txtAddress, txtExperience, txtBankInfo, txtReviewSummary, txtReviews;
+    ImageView btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,9 @@ public class ApplicantDetailsActivity extends AppCompatActivity {
         txtBankInfo = findViewById(R.id.txtDetailBank);
         txtReviewSummary = findViewById(R.id.txtReviewSummary);
         txtReviews = findViewById(R.id.txtDetailReviews);
+
+        btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(v -> finish());
 
         String idNumber = getIntent().getStringExtra("idNumber");
         if (idNumber == null || idNumber.isEmpty()) {
