@@ -1,0 +1,25 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/edtMealName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Meal Name" />
+
+    <EditText
+        android:id="@+id/edtMealDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Meal Description" />
+
+    <EditText
+        android:id="@+id/edtMealPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Meal Price"
+        android:inputType="numberDecimal" />
+</LinearLayout>

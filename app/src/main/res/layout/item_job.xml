@@ -71,7 +71,6 @@
             android:drawablePadding="6dp"
             android:text="Rs. 50,000"
             android:textColor="?attr/colorPrimary"
-            app:drawableStartCompat="@drawable/ic_salary"
             app:drawableTint="?attr/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"

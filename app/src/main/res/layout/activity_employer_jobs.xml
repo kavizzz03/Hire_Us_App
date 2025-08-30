@@ -4,30 +4,49 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FAFAFA">
-    <!-- Page Title -->
-    <TextView
-        android:id="@+id/txtTitle"
+    android:background="@drawable/wave">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingStart="16dp"
-        android:paddingTop="24dp"
-        android:paddingEnd="16dp"
-        android:paddingBottom="12dp"
-        android:text="My Jobs"
-        android:textColor="#212121"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/outline_arrow_back_24"
+            app:tint="#000000"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/job"
+            style="@style/TextAppearance.Material3.HeadlineLarge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="My Jobs"
+            android:textColor="@color/onPrimary_47"
+            android:textStyle="bold"
+            android:gravity="center"
+            app:layout_constraintStart_toEndOf="@id/btnBack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
         android:id="@+id/divider"
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:background="#DDDDDD"
-        app:layout_constraintTop_toBottomOf="@id/txtTitle"
+        app:layout_constraintTop_toBottomOf="@id/header"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -46,7 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
-            android:padding="12dp"
+            android:padding="16dp"
             android:scrollbars="vertical" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

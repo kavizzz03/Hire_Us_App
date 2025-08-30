@@ -23,96 +23,95 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/titleHireMe"
-            style="@style/TextAppearance.Material3.HeadlineLarge"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textColor="@color/onPrimary_47"
-            android:textStyle="bold"
-            android:gravity="center"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@drawable/bg_card"
+        android:gravity="center"
         android:orientation="vertical"
-        android:padding="24dp"
+        android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Back Button -->
-
-
-        <!-- Title -->
-        <TextView
-            android:id="@+id/txtTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="24dp"
-            android:text="Add Meal Details"
-            android:textColor="#000000"
-            android:textSize="22sp"
-            android:textStyle="bold" />
-
-        <!-- Meal Name -->
-        <EditText
-            android:id="@+id/edtMealName"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:background="@android:drawable/edit_text"
-            android:hint="Enter Meal Name"
-            android:padding="12dp"
-            android:textColor="#000000" />
+            android:layout_gravity="center"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Meal Description -->
-        <EditText
-            android:id="@+id/edtDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:background="@android:drawable/edit_text"
-            android:hint="Enter Description"
-            android:padding="12dp"
-            android:textColor="#000000" />
+            <!-- Title -->
+            <TextView
+                android:id="@+id/txtTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="24dp"
+                android:text="Add Meal Details"
+                android:textColor="@color/onBackground_47"
+                android:textSize="22sp"
+                android:textStyle="bold" />
 
-        <!-- Meal Price -->
-        <EditText
-            android:id="@+id/edtPrice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:background="@android:drawable/edit_text"
-            android:hint="Enter Price (LKR)"
-            android:inputType="numberDecimal"
-            android:padding="12dp"
-            android:textColor="#000000" />
+            <!-- Meal Name -->
+            <EditText
+                android:id="@+id/edtMealName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="Enter Meal Name"
+                android:padding="12dp"
+                android:textColor="@color/onSurface_47"
+                android:textColorHint="@color/hint_47"
+                android:background="@drawable/bg_input"/>
 
-        <!-- Save Button -->
-        <Button
-            android:id="@+id/btnSaveMeal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="32dp"
-            android:background="#FFC107"
-            android:padding="14dp"
-            android:text="Save Meal"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold" />
+            <!-- Meal Description -->
+            <EditText
+                android:id="@+id/edtDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="Enter Description"
+                android:padding="12dp"
+                android:maxLines="8"
+                android:minLines="2"
+                android:textColor="@color/onSurface_47"
+                android:textColorHint="@color/hint_47"
+                android:background="@drawable/bg_input"/>
 
+            <!-- Meal Price -->
+            <EditText
+                android:id="@+id/edtPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:hint="Enter Price (LKR)"
+                android:inputType="numberDecimal"
+                android:padding="12dp"
+                android:textColor="@color/onSurface_47"
+                android:textColorHint="@color/hint_47"
+                android:background="@drawable/bg_input"/>
+
+            <!-- Save Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSaveMeal"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/btn_primary_tint"
+                android:fontFamily="sans-serif-medium"
+                android:text="Save Meal"
+                android:textAllCaps="false"
+                android:textColor="@color/btn_primary_text"
+                app:cornerRadius="14dp"
+                app:rippleColor="@color/ripple_on_primary_47" />
+
+        </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
