@@ -152,7 +152,7 @@
                     android:layout_height="48dp"
                     android:layout_marginEnd="12dp"
                     android:layout_weight="1"
-                    android:backgroundTint="?attr/colorSecondary"
+                    android:backgroundTint="@color/info_47"
                     android:elevation="6dp"
                     android:fontFamily="sans-serif-medium"
                     android:stateListAnimator="@null"
