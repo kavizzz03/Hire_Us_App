@@ -22,6 +22,7 @@ public class EditProfileActivity extends AppCompatActivity {
     TextView txtEmail, txtIdNumber;
     Button btnUpdate;
     String idNumber;
+    ImageView btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,9 @@ public class EditProfileActivity extends AppCompatActivity {
 
         txtEmail = findViewById(com.example.hire_me_test.R.id.txtEmail);
         txtIdNumber = findViewById(com.example.hire_me_test.R.id.txtIdNumber);
+
+        btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(v -> onBackPressed());
 
         btnUpdate = findViewById(R.id.btnUpdateProfile);
 
