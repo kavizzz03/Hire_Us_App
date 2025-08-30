@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -45,6 +46,7 @@ public class EmployerJobsActivity extends AppCompatActivity {
     private final ArrayList<JobModel> jobList = new ArrayList<>();
     private String employerId;
     private SwipeRefreshLayout swipeRefreshLayout;
+    ImageView btnBack;
 
     private static final String CHANNEL_ID = "job_finish_channel";
 
@@ -62,6 +64,12 @@ public class EmployerJobsActivity extends AppCompatActivity {
 
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
         recyclerView = findViewById(R.id.recyclerJobs);
+        btnBack = findViewById(R.id.btnBack);
+
+        btnBack.setOnClickListener(v -> {
+            finish();
+        });
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         adapter = new EmployerJobsAdapter(

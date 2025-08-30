@@ -31,14 +31,15 @@
             style="@style/TextAppearance.Material3.HeadlineLarge"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="My Jobs"
             android:textColor="@color/onPrimary_47"
+            android:textSize="22sp"
             android:textStyle="bold"
-            android:gravity="center"
-            app:layout_constraintStart_toEndOf="@id/btnBack"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintStart_toStartOf="@+id/btnBack"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
@@ -55,6 +56,8 @@
         android:id="@+id/swipeRefreshLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintTop_toBottomOf="@id/divider"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +69,8 @@
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:padding="16dp"
-            android:scrollbars="vertical" />
+            android:scrollbars="vertical"
+            android:background="@color/ripple_on_surface_47"/>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
