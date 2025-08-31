@@ -62,10 +62,10 @@ public class GiveJobActivity extends AppCompatActivity {
         btnTogglePassword.setOnClickListener(v -> {
             if (isPasswordVisible) {
                 editTextPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                btnTogglePassword.setImageResource(R.drawable.ic_visibility_off);
+                btnTogglePassword.setImageResource(R.drawable.outline_visibility_off_24);
             } else {
                 editTextPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-                btnTogglePassword.setImageResource(R.drawable.ic_visibility);
+                btnTogglePassword.setImageResource(R.drawable.outline_visibility_24);
             }
             editTextPassword.setSelection(editTextPassword.getText().length());
             isPasswordVisible = !isPasswordVisible;
