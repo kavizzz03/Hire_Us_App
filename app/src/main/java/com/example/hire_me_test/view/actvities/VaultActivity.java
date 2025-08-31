@@ -80,16 +80,22 @@ public class VaultActivity extends AppCompatActivity {
                             String transactionType = obj.getString("transaction_type");
                             String status = obj.getString("status");
 
-                            double totalAmount = salary + otSalary;
-
-                            total += transactionType.equalsIgnoreCase("credit") ? totalAmount : -totalAmount;
-
+                            // ✅ Model already calculates total = salary + (otHours * otSalary)
                             VaultModel model = new VaultModel(
                                     jobId, salary, otHours, otSalary, updatedAt, transactionType, status
                             );
+
+                            // ✅ Adjust global total based on transaction type
+                            if (transactionType.equalsIgnoreCase("credit")) {
+                                total += model.total;
+                            } else if (transactionType.equalsIgnoreCase("debit")) {
+                                total -= model.total;
+                            }
+
                             vaultList.add(model);
                         }
 
+                        // ✅ Show overall total
                         totalAmountText.setText("Total Amount: Rs. " + total);
                         adapter.notifyDataSetChanged();
 

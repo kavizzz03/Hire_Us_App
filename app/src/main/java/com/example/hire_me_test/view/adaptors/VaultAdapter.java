@@ -48,10 +48,10 @@ public class VaultAdapter extends RecyclerView.Adapter<VaultAdapter.VaultViewHol
         VaultModel model = vaultList.get(position);
 
         holder.jobIdText.setText("Job ID: " + model.jobId);
-        holder.salaryText.setText("Salary: Rs. " + model.salary);
+        holder.salaryText.setText("Salary : Rs. " + model.salary);
         holder.otHoursText.setText("OT Hours: " + model.otHours);
-        holder.otSalaryText.setText("OT Salary: Rs. " + model.otSalary);
-        holder.totalText.setText("Total: Rs. " + model.total);
+        holder.otSalaryText.setText("OT Rate: Rs. " + model.otSalary);
+        holder.totalText.setText("Total : Rs. " + model.total);
         holder.updatedAtText.setText("Updated At: " + model.updatedAt);
         holder.transactionTypeText.setText("Type: " + model.transactionType);
         holder.statusText.setText("Status: " + model.status);

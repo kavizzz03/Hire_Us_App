@@ -7,10 +7,13 @@ public class VaultModel {
     public VaultModel(String jobId, double salary, double otHours, double otSalary,
                       String updatedAt, String transactionType, String status) {
         this.jobId = jobId;
-        this.salary = salary;
+        this.salary = salary;  // Keep salary as it is from DB
         this.otHours = otHours;
         this.otSalary = otSalary;
-        this.total = salary + (otSalary * otHours); // total = salary + OT
+
+        // ✅ total = salary + (ot_hours * ot_salary)
+        this.total = salary + (otHours * otSalary);
+
         this.updatedAt = updatedAt;
         this.transactionType = transactionType;
         this.status = status;
