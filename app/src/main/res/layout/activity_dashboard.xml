@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,30 +7,19 @@
     android:background="@drawable/wave"
     tools:context=".view.actvities.DashboardActivity">
 
-    <!-- Top App Bar -->
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/topAppBar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:backgroundTint="#3F51B5"
-        app:title="Dashboard"
-        app:titleTextColor="@android:color/white"
-        app:menu="@menu/top_app_bar_menu"
-        android:theme="@style/ThemeOverlay.Material3.Dark.ActionBar"
-        app:navigationIcon="@drawable/ic_menu" />
-
     <!-- Header Card with Company Icon -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/headerCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/topAppBar"
+        android:layout_marginTop="16dp"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="16dp"
+        android:layout_alignParentTop="true"
         app:cardBackgroundColor="?attr/colorSurface"
         app:cardCornerRadius="20dp"
-        app:strokeColor="?attr/colorOutlineVariant">
+        app:strokeWidth="1dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -45,7 +35,6 @@
                 android:layout_height="70dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/outline_profile_24"
-                app:strokeColor="?attr/colorOutline"
                 app:strokeWidth="1dp"
                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Material3.Corner.Full"
                 tools:src="@drawable/outline_profile_24" />
@@ -77,6 +66,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/headerCard"
+        android:layout_above="@id/logoutBtn"
         android:paddingHorizontal="16dp"
         app:alignmentMode="alignMargins"
         app:columnCount="2"
@@ -97,10 +87,10 @@
             app:layout_columnWeight="1"
             app:layout_gravity="fill_horizontal"
             app:icon="@drawable/outline_add_job_24"
-            app:iconGravity="textTop"
+            app:iconGravity="top"
             app:iconSize="40dp"
             app:iconPadding="8dp"
-            app:iconTint="?attr/colorOnSecondaryContainer"
+            app:iconTint="@color/onPrimary_47"
             app:cornerRadius="20dp" />
 
         <com.google.android.material.button.MaterialButton
@@ -117,10 +107,10 @@
             app:layout_columnWeight="1"
             app:layout_gravity="fill_horizontal"
             app:icon="@drawable/outline_person_edit_24"
-            app:iconGravity="textTop"
+            app:iconGravity="top"
             app:iconSize="40dp"
             app:iconPadding="8dp"
-            app:iconTint="?attr/colorOnSecondaryContainer"
+            app:iconTint="@color/onPrimary_47"
             app:cornerRadius="20dp" />
 
         <com.google.android.material.button.MaterialButton
@@ -137,10 +127,10 @@
             app:layout_columnWeight="1"
             app:layout_gravity="fill_horizontal"
             app:icon="@drawable/outline_history_24"
-            app:iconGravity="textTop"
+            app:iconGravity="top"
             app:iconSize="40dp"
             app:iconPadding="8dp"
-            app:iconTint="?attr/colorOnSecondaryContainer"
+            app:iconTint="@color/onPrimary_47"
             app:cornerRadius="20dp" />
 
         <com.google.android.material.button.MaterialButton
@@ -157,10 +147,10 @@
             app:layout_columnWeight="1"
             app:layout_gravity="fill_horizontal"
             app:icon="@drawable/ic_salary"
-            app:iconGravity="textTop"
+            app:iconGravity="top"
             app:iconSize="40dp"
             app:iconPadding="8dp"
-            app:iconTint="?attr/colorOnSecondaryContainer"
+            app:iconTint="@color/onPrimary_47"
             app:cornerRadius="20dp" />
 
         <com.google.android.material.button.MaterialButton
@@ -177,10 +167,10 @@
             app:layout_columnWeight="1"
             app:layout_gravity="fill_horizontal"
             app:icon="@drawable/outline_chat_24"
-            app:iconGravity="textTop"
+            app:iconGravity="top"
             app:iconSize="40dp"
             app:iconPadding="8dp"
-            app:iconTint="?attr/colorOnSecondaryContainer"
+            app:iconTint="@color/onPrimary_47"
             app:cornerRadius="20dp" />
 
         <com.google.android.material.button.MaterialButton
@@ -197,10 +187,10 @@
             app:layout_columnWeight="1"
             app:layout_gravity="fill_horizontal"
             app:icon="@drawable/outline_contract_edit_24"
-            app:iconGravity="textTop"
+            app:iconGravity="top"
             app:iconSize="40dp"
             app:iconPadding="8dp"
-            app:iconTint="?attr/colorOnSecondaryContainer"
+            app:iconTint="@color/onPrimary_47"
             app:cornerRadius="20dp" />
 
     </androidx.gridlayout.widget.GridLayout>
