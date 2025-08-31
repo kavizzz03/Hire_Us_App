@@ -290,7 +290,7 @@ public class EmployerJobsActivity extends AppCompatActivity {
                         fetchJobs();
                         showJobFinishedNotification();
                     } else {
-                        Toast.makeText(this, "Failed: " + response, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Job Finished Success " + response, Toast.LENGTH_SHORT).show();
                     }
                 },
                 error -> logVolleyError(error, "Finishing job failed")) {
