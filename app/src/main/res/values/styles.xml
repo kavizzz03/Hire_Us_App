@@ -30,7 +30,7 @@
         <!-- You can add your custom styles here -->
         <style name="ShapeAppearanceOverlay.MyApp.Card" parent="">
             <item name="cornerFamily">rounded</item>
-            <item name="cornerSize">8dp</item> <!-- Adjust the corner radius as needed -->
+            <item name="cornerSize">10dp</item> <!-- Adjust the corner radius as needed -->
         </style>
 
     <style name="ShapeAppearanceOverlay.MyApp.Circle" parent="">
