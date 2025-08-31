@@ -1,25 +1,67 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:background="?attr/colorSurface"
     android:padding="16dp">
 
-    <EditText
-        android:id="@+id/edtMealName"
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Meal Name" />
+        android:hint="Meal Name"
+        app:startIconTint="?attr/colorOnSurfaceVariant"
+        app:endIconMode="clear_text"
+        android:layout_marginTop="8dp">
 
-    <EditText
-        android:id="@+id/edtMealDescription"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtMealName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
+            tools:text="Rice"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Meal Description" />
+        android:hint="Meal Description"
+        app:startIconTint="?attr/colorOnSurfaceVariant"
+        app:counterEnabled="true"
+        app:counterMaxLength="100"
+        android:layout_marginTop="8dp">
 
-    <EditText
-        android:id="@+id/edtMealPrice"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtMealDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:minLines="3"
+            android:maxLines="6"
+            android:gravity="top|start"
+            android:imeOptions="actionNext"
+            tools:text="Rice with vegetables"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Meal Price"
-        android:inputType="numberDecimal" />
+        app:startIconTint="?attr/colorSecondary"
+        app:suffixText="Rs"
+        android:layout_marginTop="8dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtMealPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:imeOptions="actionNext" />
+    </com.google.android.material.textfield.TextInputLayout>
 </LinearLayout>
