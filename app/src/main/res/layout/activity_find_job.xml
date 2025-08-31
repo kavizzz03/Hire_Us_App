@@ -110,7 +110,7 @@
                         android:background="?attr/selectableItemBackgroundBorderless"
                         android:contentDescription="Toggle Password"
                         android:paddingEnd="15dp"
-                        android:src="@drawable/ic_visibility_off"
+                        android:src="@drawable/outline_visibility_off_24"
                         app:tint="@color/onSurface_47" />
                 </RelativeLayout>
 
