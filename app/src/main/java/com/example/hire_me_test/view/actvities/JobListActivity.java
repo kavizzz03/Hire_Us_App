@@ -6,6 +6,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -35,6 +36,7 @@ public class JobListActivity extends AppCompatActivity implements JobAdapter.OnJ
     private List<Job> jobList;
     private List<Job> filteredList;
     private String idNumber;
+    ImageView btnBack;
 
     private static final String URL = "https://hireme.cpsharetxt.com/get_jobs.php";
 
@@ -56,6 +58,9 @@ public class JobListActivity extends AppCompatActivity implements JobAdapter.OnJ
 
         adapter = new JobAdapter(filteredList, this);
         recyclerJobs.setAdapter(adapter);
+
+        btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(v -> onBackPressed());
 
         loadJobs();
 

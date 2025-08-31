@@ -21,6 +21,8 @@ public class ViewProfileActivity extends AppCompatActivity {
     Button btnEdit, btnDelete;
     String idNumber;
 
+    ImageView btnBack;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +48,9 @@ public class ViewProfileActivity extends AppCompatActivity {
         txtAccount = findViewById(R.id.txtAccount);
         btnEdit = findViewById(R.id.btnEditProfile);
         btnDelete = findViewById(R.id.btnDeleteProfile);
+
+        btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(v -> onBackPressed());
 
         loadProfile();
 

@@ -22,6 +22,7 @@ public class ResetRequestActivity extends AppCompatActivity {
 
     EditText editTextID, editTextEmail;
     Button buttonSendLink;
+    ImageView btnBack;
 
     private static final String RESET_URL = "https://hireme.cpsharetxt.com/send_reset_link.php";
 
@@ -34,7 +35,8 @@ public class ResetRequestActivity extends AppCompatActivity {
         editTextEmail = findViewById(com.example.hire_me_test.R.id.editTextEmail);
         buttonSendLink = findViewById(R.id.buttonSendLink);
 
-
+        btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(v -> onBackPressed());
 
         buttonSendLink.setOnClickListener(v -> {
             String id = editTextID.getText().toString().trim();

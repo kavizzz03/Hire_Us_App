@@ -15,8 +15,8 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:title="My Vault"
-        android:titleTextColor="?attr/colorOnPrimary"
-        app:navigationIcon="@drawable/ic_baseline_arrow_back_24"/>
+        android:titleTextColor="?attr/colorOnSurface"
+        app:navigationIcon="@drawable/outline_arrow_back_24"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,7 +28,7 @@
         <!-- Total Amount Card -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:layout_marginBottom="16dp"
             android:padding="16dp"
             app:cardCornerRadius="12dp"
@@ -38,6 +38,8 @@
                 android:id="@+id/totalAmountText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
                 android:text="Total Amount: Rs. 0.00"
                 android:textColor="?attr/colorOnSurface"
                 android:textSize="18sp"

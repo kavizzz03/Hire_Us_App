@@ -12,7 +12,7 @@
         android:id="@+id/topAppBar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorSurface"
+        android:background="?attr/colorPrimary"
         app:title="Withdraw Requests"
         app:titleTextColor="?attr/colorOnSurface"
         app:navigationIcon="@drawable/outline_arrow_back_24"/>

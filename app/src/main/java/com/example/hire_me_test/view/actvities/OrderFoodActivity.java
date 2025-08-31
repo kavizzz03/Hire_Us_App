@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +29,7 @@ public class OrderFoodActivity extends AppCompatActivity {
     private int jobId = -1; // default invalid value
     private TextView txtMealInfo;
     private Button btnYesMeal, btnNoMeal;
+    ImageView backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,9 @@ public class OrderFoodActivity extends AppCompatActivity {
 
         btnYesMeal.setVisibility(View.GONE);
         btnNoMeal.setVisibility(View.GONE);
+
+        backButton = findViewById(R.id.backButton);
+        backButton.setOnClickListener(v -> finish());
 
         idNumber = getIntent().getStringExtra("idNumber");
         if (idNumber == null) {

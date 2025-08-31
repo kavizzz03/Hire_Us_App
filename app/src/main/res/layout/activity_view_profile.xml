@@ -83,56 +83,67 @@
 
                     <TextView
                         android:id="@+id/txtFullName"
+                        android:text="Full Name : "
                         style="@style/ProfileLabel"
                         android:textColor="@color/onSurface_47"/>
 
                     <TextView
                         android:id="@+id/txtUsername"
+                        android:text="User Name : "
                         style="@style/ProfileLabel"
                         android:textColor="@color/onSurface_47"/>
 
                     <TextView
                         android:id="@+id/txtEmail"
+                        android:text="Email : "
                         style="@style/ProfileLabel"
                         android:textColor="@color/onSurface_47"/>
 
                     <TextView
                         android:id="@+id/txtIdNumber"
+                        android:text="ID Number : "
                         style="@style/ProfileLabel"
                         android:textColor="@color/onSurface_47"/>
 
                     <TextView
                         android:id="@+id/txtContact"
+                        android:text="Contact Number : "
                         style="@style/ProfileLabel"
                         android:textColor="@color/onSurface_47"/>
 
                     <TextView
                         android:id="@+id/txtPermanent"
+                        android:text="Permanent Address : "
                         style="@style/ProfileLabel"
                         android:textColor="@color/onSurface_47"/>
 
                     <TextView
                         android:id="@+id/txtCurrent"
+                        android:text="Current Address : "
                         style="@style/ProfileLabel"
                         android:textColor="@color/onSurface_47"/>
 
                     <TextView
                         android:id="@+id/txtExperience"
+                        android:text="Work Experience : "
                         style="@style/ProfileLabel"
                         android:textColor="@color/onSurface_47"/>
 
                     <TextView
                         android:id="@+id/txtBankName"
+                        android:text="Bank Name : "
                         style="@style/ProfileLabel"
                         android:textColor="@color/onSurface_47"/>
 
                     <TextView
                         android:id="@+id/txtBranch"
+                        android:text="Bank Branch : "
                         style="@style/ProfileLabel"
                         android:textColor="@color/onSurface_47"/>
 
                     <TextView
                         android:id="@+id/txtAccount"
+                        android:text="Bank Account Number : "
                         style="@style/ProfileLabel"
                         android:textColor="@color/onSurface_47"/>
 
