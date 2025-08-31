@@ -1,70 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:layout_margin="6dp"
-    android:background="?attr/colorSurface"
-    android:elevation="2dp"
-    android:clipToOutline="true">
+    android:layout_marginHorizontal="12dp"
+    android:layout_marginVertical="8dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="@drawable/bg_card"
+    app:strokeWidth="1dp"
+    app:cardElevation="0dp"
+    app:cardBackgroundColor="?attr/colorSurface">
 
-    <!-- Worker Name -->
-    <TextView
-        android:id="@+id/textName"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Worker Name"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColor="?attr/colorPrimary"/>
+        android:padding="16dp">
 
-    <!-- Worker Contact with icon -->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_marginTop="4dp">
-
-        <ImageView
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:src="@drawable/ic_call_24"
-        android:contentDescription="Contact Icon"/>
-
+        <!-- Worker Name -->
         <TextView
-            android:id="@+id/textContact"
-            android:layout_width="wrap_content"
+            android:id="@+id/textName"
+            style="@style/TextAppearance.Material3.TitleMedium"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Contact"
-            android:textSize="14sp"
-            android:textColor="?attr/colorSecondary"
-            android:layout_marginStart="6dp"/>
-    </LinearLayout>
+            android:text="Worker Name"
+            android:textColor="?attr/colorOnSurface"
+            android:maxLines="2"
+            android:ellipsize="end"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Worker ID Number with icon -->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_marginTop="2dp">
-
-        <ImageView
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:src="@drawable/ic_people"
-        android:contentDescription="ID Icon"/>
+        <!-- ID Number (chip-like) -->
 
         <TextView
             android:id="@+id/textIdNumber"
+            style="@style/TextAppearance.Material3.BodySmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_tonal_chip"
+            android:drawablePadding="6dp"
+            android:ellipsize="end"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="6dp"
             android:text="ID Number"
-            android:textSize="14sp"
-            android:textColor="?attr/colorSecondary"
-            android:layout_marginStart="6dp"/>
-    </LinearLayout>
+            android:gravity="center"
+            android:textColor="?attr/colorOnSecondaryContainer"
+            app:drawableStartCompat="@drawable/ic_people"
+            app:drawableTint="?attr/colorOnSecondaryContainer"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textName"
+            app:layout_constraintVertical_bias="0.196" />
 
-</LinearLayout>
+        <!-- Contact (chip-like) -->
+
+        <TextView
+            android:id="@+id/textContact"
+            style="@style/TextAppearance.Material3.BodySmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_tonal_chip"
+            android:drawablePadding="6dp"
+            android:ellipsize="end"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="6dp"
+            android:text="Contact"
+            android:gravity="center"
+            android:textColor="?attr/colorOnSecondaryContainer"
+            app:drawableStartCompat="@drawable/ic_call_24"
+            app:drawableTint="?attr/colorOnSecondaryContainer"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textIdNumber"
+            app:layout_constraintVertical_bias="1.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
