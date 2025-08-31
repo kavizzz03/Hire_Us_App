@@ -8,11 +8,15 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hire_me_test.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class EmpProfileActivity extends AppCompatActivity {
 
     TextView textViewWelcome, textViewJobTitle, textViewId;
-    Button btnFindJobs, btnMyVault, btnMyReviews, btnViewProfile, btnEditJobs, btnJobHistory, btnLogout, btnOrderFood,chatBtn;
+    Button btnFindJobs, btnMyVault, btnMyReviews, btnViewProfile,
+            btnEditJobs, btnJobHistory, btnLogout, btnOrderFood, chatBtn;
+
+    private String idNumber; // keep it global for reuse
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +27,7 @@ public class EmpProfileActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String fullName = intent.getStringExtra("full_name");
         String jobTitle = intent.getStringExtra("job_title");
-        String idNumber = intent.getStringExtra("id_number");
+        idNumber = intent.getStringExtra("id_number");
 
         // Bind views
         textViewWelcome = findViewById(R.id.textViewWelcome);
@@ -38,68 +42,53 @@ public class EmpProfileActivity extends AppCompatActivity {
         btnJobHistory = findViewById(R.id.btnJobHistory);
         btnLogout = findViewById(R.id.btnLogout);
         btnOrderFood = findViewById(R.id.btnOrderFood);
-        chatBtn=findViewById(R.id.chatBtn);// New button
+        chatBtn = findViewById(R.id.chatBtn);
 
         // Display passed user info
         textViewWelcome.setText("👋 Welcome, " + fullName);
         textViewJobTitle.setText("🧑‍💼 Job Title: " + jobTitle);
         textViewId.setText("🆔 ID: " + idNumber);
 
+        // Bottom Navigation
+        BottomNavigationView bottomNavigation = findViewById(R.id.bottomNavigation);
+        bottomNavigation.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.nav_home) {
+                // already here -> do nothing
+                return true;
+            } else if (id == R.id.nav_salary) {
+                openActivity(VaultActivity.class);
+                return true;
+            } else if (id == R.id.nav_notifications) {
+                openActivity(ChatActivity.class);
+                return true;
+            } else if (id == R.id.nav_profile) {
+                openActivity(ViewProfileActivity.class);
+                return true;
+            }
+            return false;
+        });
+
         // Handle button clicks
-        btnFindJobs.setOnClickListener(v -> {
-            Intent intentFindJobs = new Intent(EmpProfileActivity.this, JobListActivity.class);
-            intentFindJobs.putExtra("id_number", idNumber);
-            startActivity(intentFindJobs);
-        });
-
-        btnMyVault.setOnClickListener(v -> {
-            Intent intentReview = new Intent(EmpProfileActivity.this, VaultActivity.class);
-            intentReview.putExtra("id_number", idNumber);
-            startActivity(intentReview);
-        });
-
-        btnMyReviews.setOnClickListener(v -> {
-            Intent intentReview = new Intent(EmpProfileActivity.this, WorkerReviewActivity.class);
-            intentReview.putExtra("id_number", idNumber);
-            startActivity(intentReview);
-        });
-
-        btnViewProfile.setOnClickListener(v -> {
-            Intent intentView = new Intent(EmpProfileActivity.this, ViewProfileActivity.class);
-            intentView.putExtra("id_number", idNumber);
-            startActivity(intentView);
-        });
-
-        btnEditJobs.setOnClickListener(v -> {
-            // Go to Edit Jobs screen
-            Intent intentView = new Intent(EmpProfileActivity.this, WorkerApplicationsActivity.class);
-            intentView.putExtra("id_number", idNumber);
-            startActivity(intentView);
-        });
-
-        btnJobHistory.setOnClickListener(v -> {
-            // Go to Job History screen
-            Intent intentView = new Intent(EmpProfileActivity.this, EmpJobHistoryActivity.class);
-            intentView.putExtra("id_number", idNumber);
-            startActivity(intentView);
-        });
-
-        btnOrderFood.setOnClickListener(v -> {
-            // Navigate to order food screen
-            Intent intentOrder = new Intent(EmpProfileActivity.this, OrderFoodActivity.class);
-            intentOrder.putExtra("id_number", idNumber); // Optional
-            startActivity(intentOrder);
-        });
-        chatBtn.setOnClickListener(v -> {
-            // Go to Job History screen
-            Intent intentView = new Intent(EmpProfileActivity.this, ChatActivity.class);
-            intentView.putExtra("id_number", idNumber);
-            startActivity(intentView);
-        });
+        btnFindJobs.setOnClickListener(v -> openActivity(JobListActivity.class));
+        btnMyVault.setOnClickListener(v -> openActivity(VaultActivity.class));
+        btnMyReviews.setOnClickListener(v -> openActivity(WorkerReviewActivity.class));
+        btnViewProfile.setOnClickListener(v -> openActivity(ViewProfileActivity.class));
+        btnEditJobs.setOnClickListener(v -> openActivity(WorkerApplicationsActivity.class));
+        btnJobHistory.setOnClickListener(v -> openActivity(EmpJobHistoryActivity.class));
+        btnOrderFood.setOnClickListener(v -> openActivity(OrderFoodActivity.class));
+        chatBtn.setOnClickListener(v -> openActivity(ChatActivity.class));
 
         btnLogout.setOnClickListener(v -> {
             startActivity(new Intent(EmpProfileActivity.this, FindJobActivity.class));
             finish();
         });
+    }
+
+    // helper method to avoid duplicate intent code
+    private void openActivity(Class<?> activityClass) {
+        Intent intent = new Intent(EmpProfileActivity.this, activityClass);
+        intent.putExtra("id_number", idNumber);
+        startActivity(intent);
     }
 }
